@@ -1,0 +1,42 @@
+{
+  "name": "kwd-dashboard",
+  "version": "0.0.1",
+  "description": "Responsive dashboard built with tailwindcss alpinejs",
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development concurrently \"postcss public/tailwind.css -o public/build/tailwind.css --watch\"  \"live-server ./public\"",
+    "development": "cross-env NODE_ENV=development postcss public/tailwind.css -o public/build/tailwind.css",
+    "production": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/build/tailwind.css",
+    "start": "npm run serve"
+  },
+  "keywords": [
+    "dashboard",
+    "tailwindcss",
+    "layout",
+    "alpinejs",
+    "admin",
+    "template"
+  ],
+  "author": {
+    "name": "Ahmed Kamel",
+    "email": "ak3849909@gmail.com",
+    "url": "https://github.com/Kamona-WD"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "9",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "live-server": "^1.2.1",
+    "postcss": "7",
+    "postcss-cli": "7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}
