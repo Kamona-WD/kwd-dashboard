@@ -6,7 +6,8 @@
     "serve": "cross-env NODE_ENV=development concurrently \"postcss public/tailwind.css -o public/build/tailwind.css --watch\"  \"live-server ./public\"",
     "development": "cross-env NODE_ENV=development postcss public/tailwind.css -o public/build/tailwind.css",
     "production": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/build/tailwind.css",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "deploy": "gh-pages -d public"
   },
   "keywords": [
     "dashboard",
@@ -22,7 +23,9 @@
     "url": "https://github.com/Kamona-WD"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "9",
