@@ -249,6 +249,11 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
 /**
 Remove the inner padding in Chrome and Safari on macOS.
 */
@@ -424,7 +429,8 @@ textarea::placeholder {
   color: #9ca3af;
 }
 
-button {
+button,
+[role="button"] {
   cursor: pointer;
 }
 
@@ -553,6 +559,18 @@ video {
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
@@ -588,19 +606,9 @@ video {
   background-color: rgba(6, 182, 212, var(--tw-bg-opacity));
 }
 
-.bg-primary-lighter {
-  --tw-bg-opacity: 1;
-  background-color: rgba(34, 211, 238, var(--tw-bg-opacity));
-}
-
 .bg-primary-darker {
   --tw-bg-opacity: 1;
   background-color: rgba(21, 94, 117, var(--tw-bg-opacity));
-}
-
-.bg-success-light {
-  --tw-bg-opacity: 1;
-  background-color: rgba(34, 197, 94, var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-100:hover {
@@ -670,21 +678,8 @@ video {
   --tw-bg-opacity: 0.25;
 }
 
-.bg-center {
-  background-position: center;
-}
-
-.bg-cover {
-  background-size: cover;
-}
-
 .border-transparent {
   border-color: transparent;
-}
-
-.border-gray-100 {
-  --tw-border-opacity: 1;
-  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
 }
 
 .border-gray-900 {
@@ -741,14 +736,6 @@ video {
 
 .rounded-full {
   border-radius: 9999px;
-}
-
-.border-2 {
-  border-width: 2px;
-}
-
-.border-4 {
-  border-width: 4px;
 }
 
 .border {
@@ -871,14 +858,6 @@ video {
   height: 6rem;
 }
 
-.h-28 {
-  height: 7rem;
-}
-
-.h-32 {
-  height: 8rem;
-}
-
 .h-72 {
   height: 18rem;
 }
@@ -938,10 +917,6 @@ video {
 
 .-mt-3 {
   margin-top: -0.75rem;
-}
-
-.-mt-20 {
-  margin-top: -5rem;
 }
 
 .-ml-px {
@@ -1416,10 +1391,6 @@ video {
 
 .w-12 {
   width: 3rem;
-}
-
-.w-28 {
-  width: 7rem;
 }
 
 .w-48 {
