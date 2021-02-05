@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
   </head>
   <body>
-    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden')" :class="{ 'dark': isDark}">
+    <div x-data="setup()" x-init="$refs.loading.classList.add('hidden'); setColors(color);" :class="{ 'dark': isDark}">
       <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
         <!-- Loading screen -->
         <div
@@ -1406,7 +1406,8 @@
           x-transition:leave-end="opacity-0"
           x-show="isSettingsPanelOpen"
           @click="isSettingsPanelOpen = false"
-          class="fixed inset-0 z-10 bg-opacity-25 bg-primary-darker"
+          class="fixed inset-0 z-10 bg-primary-darker"
+          style="opacity: .5"
           aria-hidden="true"
         ></div>
         <!-- Panel -->
@@ -1469,7 +1470,7 @@
             <div class="flex-1 overflow-hidden hover:overflow-y-auto">
               <!-- Theme -->
               <div class="p-4 space-y-4 md:p-8">
-                <h6 class="text-lg font-medium text-gray-400 dark:text-light">Theme</h6>
+                <h6 class="text-lg font-medium text-gray-400 dark:text-light">Mode</h6>
                 <div class="flex items-center space-x-8">
                   <!-- Light button -->
                   <button
@@ -1523,7 +1524,48 @@
                 </div>
               </div>
 
-              <!--  -->
+              <!-- Colors -->
+              <div class="p-4 space-y-4 md:p-8">
+                <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
+                <div>
+                  <button 
+                    @click="setColors('cyan')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-cyan);">
+                  </button>
+                  <button 
+                    @click="setColors('green')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-green);">
+                  </button>
+                  <button 
+                    @click="setColors('fuchsia')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-fuchsia);">
+                  </button>
+                  <button 
+                    @click="setColors('orange')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-orange);">
+                  </button>
+                  <button 
+                    @click="setColors('yellow')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-yellow);">
+                  </button>
+                  <button 
+                    @click="setColors('red')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-red);">
+                  </button>
+                  <button 
+                    @click="setColors('teal')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-teal);">
+                  </button>
+                  <button 
+                    @click="setColors('blue')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-blue);">
+                  </button>
+                  <button 
+                    @click="setColors('violet')"
+                    class="w-10 h-10 rounded-full" style="background-color: var(--color-violet);">
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1539,7 +1581,8 @@
           x-transition:leave-end="opacity-0"
           x-show="isNotificationsPanelOpen"
           @click="isNotificationsPanelOpen = false"
-          class="fixed inset-0 z-10 bg-opacity-25 bg-primary-darker"
+          class="fixed inset-0 z-10 bg-primary-darker"
+          style="opacity: .5"
           aria-hidden="true"
         ></div>
         <!-- Panel -->
@@ -1816,7 +1859,8 @@
           x-transition:leave-end="opacity-0"
           x-show="isSearchPanelOpen"
           @click="isSearchPanelOpen = false"
-          class="fixed inset-0 z-10 bg-opacity-25 bg-primary-darker"
+          class="fixed inset-0 z-10 bg-primary-darker"
+          style="opacity: .5"
           aria-hidden="ture"
         ></div>
         <!-- Panel -->
@@ -1953,6 +1997,27 @@
           window.localStorage.setItem('dark', value)
         }
 
+        const getColor = () => {
+          if (window.localStorage.getItem('color')) {
+            return window.localStorage.getItem('color')
+          }
+          return 'cyan'
+        }
+
+        const setColors = (color) => {
+          const root = document.documentElement
+          root.style.setProperty('--color-primary', `var(--color-${color})`)
+          root.style.setProperty('--color-primary-50', `var(--color-${color}-50)`)
+          root.style.setProperty('--color-primary-100', `var(--color-${color}-100)`)
+          root.style.setProperty('--color-primary-light', `var(--color-${color}-light)`)
+          root.style.setProperty('--color-primary-lighter', `var(--color-${color}-lighter)`)
+          root.style.setProperty('--color-primary-dark', `var(--color-${color}-dark)`)
+          root.style.setProperty('--color-primary-darker', `var(--color-${color}-darker)`)
+          this.selectedColor = color
+          window.localStorage.setItem('color', color)
+          // 
+        }
+
         const updateBarChart = (on) => {
           const data = {
             data: randomData(),
@@ -2003,6 +2068,9 @@
             this.isDark = true
             setTheme(this.isDark)
           },
+          color: getColor(),
+          selectedColor: 'cyan',
+          setColors,
           toggleSidbarMenu() {
             this.isSidebarOpen = !this.isSidebarOpen
           },
