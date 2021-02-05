@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Responsive dashboard built with tailwindcss alpinejs",
   "scripts": {
-    "serve": "cross-env NODE_ENV=development concurrently \"postcss public/src/tailwind.css -o public/build/css/tailwind.css --watch\"  \"live-server ./public\"",
-    "development": "cross-env NODE_ENV=development postcss public/src/tailwind.css -o public/build/css/tailwind.css",
-    "production": "cross-env NODE_ENV=production postcss public/src/tailwind.css -o public/build/css/tailwind.css",
+    "serve": "cross-env NODE_ENV=development concurrently \"postcss src/tailwind.css -o public/build/css/tailwind.css --watch\"  \"live-server ./public\"",
+    "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o public/build/css/tailwind.css",
+    "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o public/build/css/tailwind.css",
     "start": "npm run serve",
     "deploy": "gh-pages -d public"
   },

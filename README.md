@@ -53,7 +53,7 @@ npm run production
 yarn production
 ```
 
-After that's done, check out `./public/build/tailwind.css` to see the optimized output.
+After that's done, check out `./public/build/css/tailwind.css` to see the optimized output.
 
 ---
 

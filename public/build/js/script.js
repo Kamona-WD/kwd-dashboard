@@ -23,12 +23,20 @@ const randomData = () => {
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+const cssColors = (color) => {
+  return getComputedStyle(document.documentElement).getPropertyValue(color)
+}
+
+const getColor = () => {
+  return window.localStorage.getItem('color') ?? 'cyan'
+}
+
 const colors = {
-  primary: 'rgb(8, 145, 178)',
-  primaryLight: 'rgb(6, 182, 212)',
-  primaryLighter: 'rgb(34, 211, 238)',
-  primaryDark: 'rgb(14, 116, 144)',
-  primaryDarker: 'rgb(21, 94, 117)',
+  primary: cssColors(`--color-${getColor()}`),
+  primaryLight: cssColors(`--color-${getColor()}-light`),
+  primaryLighter: cssColors(`--color-${getColor()}-lighter`),
+  primaryDark: cssColors(`--color-${getColor()}-dark`),
+  primaryDarker: cssColors(`--color-${getColor()}-darker`),
 }
 
 const barChart = new Chart(document.getElementById('barChart'), {
