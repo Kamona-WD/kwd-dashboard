@@ -15,10 +15,6 @@ To get started:
    git clone https://github.com/Kamona-WD/kwd-dashboard.git
 
    cd kwd-dashboard
-
-   # Remove unnecessary files
-
-   rm index.html # This file just for github pages
    ```
 
 2. Install the dependencies:
