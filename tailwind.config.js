@@ -4,6 +4,9 @@ module.exports = {
   purge: ['./public/**/*.html'],
   darkMode: 'class', // or 'media' or false
   theme: {
+    fontFamily: {
+      sans: ['cairo', 'sans-serif'],
+    },
     extend: {
       colors: {
         light: 'var(--light)',
@@ -73,5 +76,7 @@ module.exports = {
       overflow: ['hover'],
     },
   },
-  plugins: [],
+  plugins: [
+    // require('@tailwindcss/forms')
+  ],
 }

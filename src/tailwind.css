@@ -87,3 +87,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .toggle:checked + span {
+    @apply top-0 left-6 bg-primary;
+  }
+  .toggle:disabled + span {
+    @apply bg-gray-500 shadow-none;
+  }
+  .toggle:checked:disabled {
+    @apply bg-gray-200;
+  }
+  .toggle:checked:disabled + span {
+    @apply shadow-none bg-primary-lighter;
+  }
+  .toggle:focus + span {
+    @apply ring ring-primary-lighter ring-offset-1;
+  }
+}
