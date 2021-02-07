@@ -102,6 +102,11 @@
     @apply shadow-none bg-primary-lighter;
   }
   .toggle:focus + span {
-    @apply ring ring-primary-lighter ring-offset-1;
+    @apply ring ring-primary-lighter;
+  }
+
+  input:invalid.invalid,
+  textarea:invalid.invalid {
+    @apply ring ring-danger-light dark:ring-danger;
   }
 }

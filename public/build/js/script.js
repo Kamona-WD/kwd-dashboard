@@ -96,6 +96,7 @@ const doughnutChart = new Chart(document.getElementById('doughnutChart'), {
       {
         data: [random(), random(), random()],
         backgroundColor: [colors.primary, colors.primaryLighter, colors.primaryLight],
+        hoverBackgroundColor: colors.primaryDark,
         borderWidth: 0,
         weight: 0.5,
       },
