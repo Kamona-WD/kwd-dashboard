@@ -76,7 +76,5 @@ module.exports = {
       overflow: ['hover'],
     },
   },
-  plugins: [
-    // require('@tailwindcss/forms')
-  ],
+  plugins: [],
 }
