@@ -450,6 +450,13 @@
                   >
                     Two Columns Sidebar
                   </a>
+                  <a
+                    href="mini-plus-one-columns-sidebar.html"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                    Mini + One Columns Sidebar
+                  </a>
                 </div>
               </div>
             </nav>
@@ -608,6 +615,7 @@
           </div>
         </section>
 
+        <!-- Sidebar buttons -->
         <div class="fixed flex items-center space-x-4 top-5 right-10 lg:hidden">
           <button
             @click="isSidebarOpen = true; $nextTick(() => { $refs.sidebar.focus() })"
@@ -657,10 +665,12 @@
           </button>
         </div>
 
-        <div class="flex flex-col flex-1 min-h-screen overflow-x-hidden overflow-y-auto">
-          <!-- Main content -->
-          <main class="flex flex-col items-center justify-center flex-1 h-full p-4">
-            <h1 class="mb-4 text-3xl font-semibold">Two Columns - Sidebar</h1>
+        <!-- Main content -->
+        <main class="flex-1">
+          <div
+            class="flex flex-col items-center justify-center flex-1 h-full min-h-screen p-4 overflow-x-hidden overflow-y-auto"
+          >
+            <h1 class="mb-4 text-2xl font-semibold text-center md:text-3xl">Two Columns - Sidebar</h1>
             <div class="space-y-4">
               <div class="relative flex p-1 space-x-1 bg-white shadow-md w-80 h-72 dark:bg-darker">
                 <div class="w-16 h-full bg-gray-200 dark:bg-dark"></div>
@@ -668,8 +678,8 @@
                 <div class="flex-1 h-full bg-gray-100 dark:bg-dark"></div>
               </div>
             </div>
-          </main>
-        </div>
+          </div>
+        </main>
 
         <!-- Panels -->
 
