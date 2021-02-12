@@ -1683,6 +1683,10 @@ video {
   width: 12rem;
 }
 
+.w-56 {
+  width: 14rem;
+}
+
 .w-64 {
   width: 16rem;
 }
@@ -1962,6 +1966,11 @@ video {
 
   .md\:items-center {
     align-items: center;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .md\:p-8 {
