@@ -1059,10 +1059,8 @@
           watchScreen() {
             if (window.innerWidth <= 1024) {
               this.isSidebarOpen = false
-              this.isSecondSidebarOpen = false
             } else if (window.innerWidth >= 1024) {
               this.isSidebarOpen = true
-              this.isSecondSidebarOpen = true
             }
           },
           isSidebarOpen: window.innerWidth >= 1024 ? true : false,
