@@ -55,12 +55,3 @@ yarn production
 
 After that's done, check out `./public/build/css/tailwind.css` to see the optimized output.
 
-
----
-
-## Support
-
-<a href="https://www.buymeacoffee.com/ahmedkamel" target="_blank" style="display: inline-block !important;"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-#### Be careful and donate just if it is within your possibilities, because there is no refund system. And remember that you don't need to donate, it is just a free choice for you. Thank you!
-
