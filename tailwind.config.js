@@ -3,8 +3,8 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: "jit",
-  purge: ['./public/**/*.html'],
-  darkMode: 'class', // or 'media' or false
+  purge: ['./public/**/*.html', './src/html/**/*.edge'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
