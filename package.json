@@ -5,9 +5,13 @@
   "scripts": {
     "serve": "run-p css:watch html:serve",
     "prod": "run-s css:build",
-    "css:watch": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -w",
-    "css:build": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -m",
+    "css:watch": "tailwindcss -i src/css/tailwind.css -o public/build/css/tailwind.css -w",
+    "css:build": "tailwindcss -i src/css/tailwind.css -o public/build/css/tailwind.css -m",
     "html:serve": "live-server ./public",
+    "temporary:serve": "live-server ./temporary",
+    "temp:css:watch": "tailwindcss -i src/css/tailwind.css -o temporary/assets/css/tailwind.css -w",
+    "temp:html:watch": "edge -o temporary -a -w",
+    "temp:serve": "run-p temporary:serve temp:css:watch temp:html:watch",
     "predeploy": "run-s css:build",
     "deploy": "gh-pages -d public"
   },
