@@ -1,13 +1,15 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+  mode: "jit",
   purge: ['./public/**/*.html'],
   darkMode: 'class', // or 'media' or false
   theme: {
-    fontFamily: {
-      sans: ['cairo', 'sans-serif'],
-    },
     extend: {
+      fontFamily: {
+        sans: ['cairo', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         light: 'var(--light)',
         dark: 'var(--dark)',
