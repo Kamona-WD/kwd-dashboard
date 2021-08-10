@@ -10,8 +10,10 @@
     "html:serve": "live-server ./public",
     "temporary:serve": "live-server ./temporary",
     "temp:css:watch": "tailwindcss -i src/css/tailwind.css -o temporary/assets/css/tailwind.css -w",
-    "temp:html:watch": "edge -o temporary -a -w",
+    "temp:html:watch": "edge *.edge pages/*.edge -r src/html -o temporary -w",
+    "temp:html:build": "edge *.edge pages/*.edge -r src/html -o temporary",
     "temp:serve": "run-p temporary:serve temp:css:watch temp:html:watch",
+    "format": "prettier -w temporary",
     "predeploy": "run-s css:build",
     "deploy": "gh-pages -d public"
   },
@@ -31,12 +33,13 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@kamona/edge-cli": "^0.0.2",
+    "@kamona/edge-cli": "^0.1.1",
     "autoprefixer": "^10.3.1",
     "gh-pages": "^3.2.3",
     "live-server": "^1.2.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
     "tailwindcss": "^2.2.7"
   },
   "prettier": {

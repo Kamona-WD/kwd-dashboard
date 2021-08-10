@@ -1,4 +1,0 @@
-{
-    "root": "src/html",
-    "input": ["*.edge", "pages/*.edge"]
-}
