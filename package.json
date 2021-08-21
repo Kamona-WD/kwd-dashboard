@@ -3,7 +3,8 @@
   "description": "Responsive dashboard built with tailwindcss.",
   "private": true,
   "workspaces": [
-    "templates/*"
+    "templates/*",
+    "kwd-cli"
   ],
   "author": {
     "name": "Ahmed Kamel",
@@ -13,7 +14,9 @@
   "scripts": {
     "format": "prettier -w .",
     "vue:dev": "cd templates/kwd-vue && yarn dev",
-    "vue:build": "cd templates/kwd-vue && yarn build"
+    "vue:build": "cd templates/kwd-vue && yarn build",
+    "html:dev": "cd templates/kwd-html && yarn dev",
+    "html:build": "cd templates/kwd-html && yarn build"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
