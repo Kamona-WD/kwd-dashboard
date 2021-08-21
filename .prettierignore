@@ -1,0 +1,7 @@
+**/node_modules/**
+**/dist/assets/css/**
+**/dist/assets/js/**
+**/playground/**
+templates/kwd-vue/dist
+**/*.md
+yarn.lock

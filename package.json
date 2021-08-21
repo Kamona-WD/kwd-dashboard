@@ -9,5 +9,13 @@
     "name": "Ahmed Kamel",
     "email": "ak3849909@gmail.com",
     "url": "https://github.com/Kamona-WD"
+  },
+  "scripts": {
+    "format": "prettier -w .",
+    "vue:dev": "cd templates/kwd-vue && yarn dev",
+    "vue:build": "cd templates/kwd-vue && yarn build"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
   }
 }
