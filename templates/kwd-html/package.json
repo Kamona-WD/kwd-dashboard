@@ -1,0 +1,28 @@
+{
+  "name": "kwd-html",
+  "version": "0.0.1",
+  "description": "html version of kwd dashboard template",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kamona-WD/kwd-dashboard.git",
+    "directory": "templates/dashboard/kwd-html"
+  },
+  "bugs": {
+    "url": "https://github.com/Kamona-WD/kwd-dashboard/issues"
+  },
+  "homepage": "https://github.com/Kamona-WD/kwd-dashboard#readme",
+  "author": {
+    "name": "Ahmed Kamel",
+    "email": "ak3849909@gmail.com",
+    "url": "https://github.com/kamona-wd"
+  },
+  "keywords": [
+    "dashboard",
+    "tailwindcss",
+    "layout",
+    "alpinejs",
+    "admin",
+    "template"
+  ]
+}

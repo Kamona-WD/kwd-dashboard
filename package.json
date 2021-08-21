@@ -1,42 +1,13 @@
 {
   "name": "kwd-dashboard",
-  "version": "0.0.1",
-  "description": "Responsive dashboard built with tailwindcss alpinejs",
-  "scripts": {
-    "serve": "run-p css:watch html:serve",
-    "prod": "run-s css:build",
-    "css:watch": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -w",
-    "css:build": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -m",
-    "html:serve": "live-server ./public",
-    "predeploy": "run-s css:build",
-    "deploy": "gh-pages -d public"
-  },
-  "keywords": [
-    "dashboard",
-    "tailwindcss",
-    "layout",
-    "alpinejs",
-    "admin",
-    "template"
+  "description": "Responsive dashboard built with tailwindcss.",
+  "private": true,
+  "workspaces": [
+    "templates/*"
   ],
   "author": {
     "name": "Ahmed Kamel",
     "email": "ak3849909@gmail.com",
     "url": "https://github.com/Kamona-WD"
-  },
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^10.3.1",
-    "gh-pages": "^3.2.3",
-    "live-server": "^1.2.1",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.7"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 120
   }
 }

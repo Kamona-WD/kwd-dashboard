@@ -1,4 +1,4 @@
-# K-WD Dashboard
+# K-WD Dashboard (Vuejs version)
 
 Fully responsive dashboard template built with tailwindcss.
 
