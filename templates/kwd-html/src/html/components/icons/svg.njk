@@ -1,0 +1,14 @@
+{% macro svgIcon(classes = '', attrs = '', conditionalClasses = '') %}
+    <svg
+        aria-hidden="true"
+        class="{{ classes }}"
+        {{ attrs | safe }}
+        {{ conditionalClasses | safe }}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        {{ caller() }}
+    </svg>    
+{% endmacro %}

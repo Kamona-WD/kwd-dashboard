@@ -8,7 +8,7 @@
     <meta name="keywords" content="admin, dashboard, template, tailwindcss, alpinejs, vuejs, html, clean">
     <meta name="author" content="Ahmed Kamel">
     <link rel="icon" href="assets/images/favicon.ico">
-    <title>K-WD Dashboard template{{ ' | ' + pageTitle if pageTitle }}</title>
+    <title>K-WD Dashboard Template{{ ' | ' + pageTitle if pageTitle }}</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,26 @@
     />
 </head>
 <body>
-  {% block content %}{% endblock %}
+  <div 
+    x-data="mainState" 
+    :class="{ dark: isDark }" 
+    :dir="isRTL ? 'rtl' : 'ltr'"
+    @resize.window="watchScreen"
+  >
+    {% include "partials/loading-screen.njk" %}
+    <div class="flex min-h-screen font-sans antialiased text-gray-900 bg-gray-100 dark:bg-gray-800 dark:text-gray-200">
+      {% include "partials/sidebar/sidebar.njk" %}
+      <div
+          class="flex flex-col flex-1"
+          :class="{ 'xl:pl-64 xl:rtl:pl-0 xl:rtl:pr-64': isSidebarOpen }"
+        >
+          {% include "partials/navbar/mobile-bottom-bar.njk" %}
+          {% include "partials/navbar/navbar.njk" %}
+          
+          {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

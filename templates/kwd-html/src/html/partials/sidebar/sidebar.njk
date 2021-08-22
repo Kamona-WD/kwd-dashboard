@@ -1,0 +1,45 @@
+<!-- Sidebar overlay -->
+<div
+    x-transition:enter="transition-opacity"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition-opacity"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-show="isSidebarOpen"
+    @click="isSidebarOpen = false"
+    aria-hidden="true"
+    class="fixed inset-0 z-40 bg-black bg-opacity-50 xl:hidden dark:bg-opacity-75"
+></div>
+
+<!-- Sidebar -->
+<aside
+    class="fixed inset-y-0 z-40 flex-shrink-0 h-screen transition-transform transform"
+    :class="{ '-translate-x-full sm:-translate-x-64 rtl:translate-x-full sm:rtl:translate-x-64': !isSidebarOpen, 'translate-x-0 shadow-lg xl:shadow-none dark:shadow-dark-lg xl:dark:shadow-none': isSidebarOpen }"
+>
+    <div class="flex flex-col w-64 h-full bg-white border-r border-gray-300 dark:bg-gray-900 dark:border-gray-700 rtl:border-r-0 rtl:border-l">
+        <!-- Sidebar header -->
+        <div class="flex-shrink-0 hidden px-4 py-2 md:block">
+            <a
+                href="index.html"
+                class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase"
+            >
+                K-WD
+            </a>
+        </div>
+        
+        <!-- Sidebar links -->
+        <nav
+            aria-label="Main"
+            class="flex-1"
+        >
+            
+        </nav>
+
+        <!-- Sidebar footer -->
+        <div class="flex-shrink-0 p-4">
+        
+        </div>
+    </div>
+
+</aside>

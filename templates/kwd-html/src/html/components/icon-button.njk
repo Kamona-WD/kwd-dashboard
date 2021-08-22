@@ -1,0 +1,10 @@
+{% macro iconButton(type = 'button', text = '', alpineExpresion = '', classes) %}
+    <button 
+        type="{{ type }}" 
+        {{ alpineExpresion | safe }}
+        class="{{ classes if classes else '' }} p-2 transition-colors duration-200 rounded-full text-purple-500 bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
+    >
+        <span class="sr-only">{{ text }}</span>
+        {{ caller() }}
+    </button>  
+{% endmacro %}

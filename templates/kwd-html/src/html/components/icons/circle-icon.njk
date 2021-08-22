@@ -1,0 +1,12 @@
+{% from 'components/icons/svg.njk' import svgIcon %}
+
+{% macro circleIcon(classes = '', attrs = '', conditionalClasses = '') %}
+    {% call svgIcon(classes = classes, attrs = attrs, conditionalClasses = conditionalClasses) %}
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+    {% endcall %}
+{% endmacro %}
