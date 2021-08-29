@@ -1,0 +1,93 @@
+<!-- Sidebar overlay -->
+<div
+    x-transition:enter="transition-opacity"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition-opacity"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-show="isSidebarOpen"
+    @click="isSidebarOpen = false"
+    aria-hidden="true"
+    class="fixed inset-0 z-40 bg-black bg-opacity-50 xl:hidden dark:bg-opacity-75"
+></div>
+
+<!-- Sidebar -->
+<aside
+    class="fixed inset-y-0 z-40 flex-shrink-0 h-screen transition-transform transform"
+    :class="{ '-translate-x-full sm:-translate-x-64 rtl:translate-x-full sm:rtl:translate-x-64': !isSidebarOpen, 'translate-x-0 shadow-lg xl:shadow-none dark:shadow-dark-lg xl:dark:shadow-none': isSidebarOpen }"
+>
+    <div class="flex flex-col w-64 h-full bg-white border-r border-gray-300 dark:bg-gray-900 dark:border-gray-700 rtl:border-r-0 rtl:border-l">
+        <!-- Sidebar header -->
+        <div class="flex-shrink-0 hidden px-4 py-2 md:block">
+            <a
+                href="index.html"
+                class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase"
+            >
+                K-WD
+            </a>
+        </div>
+        
+        <!-- Sidebar links -->
+        <nav
+            aria-label="Main"
+            x-data="sidebarNavigation"
+            class="flex flex-col flex-1 p-2 overflow-y-hidden gap-y-2 hover:overflow-y-auto"
+        >
+            <template x-for="(item, i) in navigationSidebarLinks" x-key="i">
+                <div>
+                    <template x-if="item.href">
+                        <a
+                            :href="item.href"
+                            class="flex items-center p-2 transition-colors rounded-md dark:text-gray-200 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+                            :class="item.isActive() ? 'bg-purple-500 text-white' : 'text-gray-500'"
+                        >
+                            <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
+                            <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
+                        </a>
+                    </template>
+                    <template x-if="item.subLinks">
+                        <div x-data="{ isOpen: item.isActive() ? true : false }">
+                            <button
+                                @click="isOpen = !isOpen"
+                                class="flex items-center w-full p-2 text-gray-500 transition-colors rounded-md dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                :class="isOpen ? 'bg-gray-100 dark:bg-gray-800' : ''"
+                            >
+                                <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
+                                <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
+                                <!-- chevron -->
+                                <span aria-hidden="true" class="relative block ml-auto w-7 h-7 rtl:ml-0 rtl:mr-auto">
+                                    <span :class="isOpen ? '-rotate-45' : 'rotate-45'" class="absolute right-[9px] bg-[#909090] mt-[-5px] h-3 w-[2px] top-1/2 transition-all duration-200"></span>
+                                    <span :class="isOpen ? 'rotate-45' : '-rotate-45'" class="absolute left-[9px] bg-[#909090] mt-[-5px] h-3 w-[2px] top-1/2 transition-all duration-200"></span>
+                                </span>
+                            </button>
+                            {% comment %} <div class="overflow-hidden transition-all max-h-0"> {% endcomment %}
+                                <ul x-show="isOpen"
+                                    class="relative px-0 pt-2 pb-0 ml-5 rtl:ml-0 rtl:mr-5 before:w-0 before:block before:absolute before:inset-y-0 before:left-0 rtl:before:left-auto rtl:before:right-0 before:border-l-2 before:border-l-gray-200 dark:before:border-l-gray-600"
+                                >
+                                    <template x-for="(subLink, i) in item.subLinks" x-key="i">
+                                        <li class="relative leading-8 m-0 pl-6 rtl:pl-0 rtl:pr-6 last:before:bg-white last:before:h-auto last:before:top-4 last:before:bottom-0 dark:last:before:bg-gray-900 before:block before:w-4 before:h-0 before:absolute before:left-0 rtl:before:left-auto rtl:before:right-0 before:top-4 before:border-t-2 before:border-t-gray-200 before:-mt-0.5 dark:before:border-t-gray-600">
+                                            <a 
+                                                :href="subLink.href"
+                                                class="transition-colors hover:text-gray-900 dark:hover:text-gray-100"
+                                                :class="subLink.isActive() ? 'text-gray-900 dark:text-gray-200' : 'text-gray-400'"
+                                                x-text="subLink.label"
+                                            >
+                                            </a>
+                                        </li>
+                                    </template>
+                                </ul>
+                            {% comment %} </div> {% endcomment %}
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </nav>
+
+        <!-- Sidebar footer -->
+        <div class="flex-shrink-0 p-4">
+        
+        </div>
+    </div>
+
+</aside>

@@ -1,6 +1,6 @@
 const { resolve, join, basename, relative, dirname } = require('path')
 const { ensureDir, writeFile, pathExists } = require('fs-extra')
-const nunjucks = require('nunjucks')
+const { Liquid } = require('liquidjs')
 const fg = require('fast-glob')
 const chokidar = require('chokidar')
 const normalizePath = require('normalize-path')
@@ -12,7 +12,7 @@ const resolveOutput = ({ file, root, output, allInOutput = false }) => {
     if (allInOutput) {
       inputPath = relative(root, file)
     }
-    let resolvedOutput = join(resolve(output), inputPath).replace('.njk', '.html')
+    let resolvedOutput = join(resolve(output), inputPath).replace('.liquid', '.html')
     return res(resolvedOutput)
   })
 }
@@ -24,11 +24,11 @@ module.exports = async (options) => {
     return `${normalizePath(join(resolve(root), pattern))}`
   })
 
-  const njkFiles = await fg(inputPatterns, {
+  const liquidFiles = await fg(inputPatterns, {
     ignore: ['**/node_modules/**', ...skip],
   })
 
-  if (!njkFiles.length) {
+  if (!liquidFiles.length) {
     console.log(`[${chalk.cyan('html')}]:`)
     console.log(`  There is no files match your patterns ${chalk.yellow(input)} in root ${chalk.yellow(root)}`)
   }
@@ -42,10 +42,14 @@ module.exports = async (options) => {
     console.warn(`  ${chalk.yellow("Data file dosn't exist.")}`)
   }
 
-  nunjucks.configure(resolve(root), { autoescape: true, noCache: true })
+  const engine = new Liquid({
+    root: resolve(root),
+    extname: '.liquid',
+    cache: false,
+  })
 
   const finishedFiles = []
-  for (const file of njkFiles) {
+  for (const file of liquidFiles) {
     const resolvedOutput = await resolveOutput({
       file,
       root,
@@ -54,7 +58,7 @@ module.exports = async (options) => {
     })
 
     try {
-      const html = nunjucks.render(relative(root, file), data)
+      const html = await engine.renderFile(relative(root, file), data)
       await ensureDir(dirname(resolvedOutput))
       await writeFile(resolvedOutput, html, { encoding: 'utf-8' })
       finishedFiles.push(resolvedOutput)
@@ -74,7 +78,7 @@ module.exports = async (options) => {
   if (watch) {
     console.log('Watching html...')
     chokidar
-      .watch(normalizePath(join(resolve(root), '**/*.njk')), {
+      .watch(normalizePath(join(resolve(root), '**/*.liquid')), {
         ignoreInitial: true,
         awaitWriteFinish: {
           stabilityThreshold: 50,
@@ -84,7 +88,7 @@ module.exports = async (options) => {
       .on('all', async (event, file) => {
         console.log(`[${chalk.cyan('html')}][${event}]: ${file}`)
 
-        for (const file of njkFiles) {
+        for (const file of liquidFiles) {
           const resolvedOutput = await resolveOutput({
             file,
             root,
@@ -93,7 +97,7 @@ module.exports = async (options) => {
           })
 
           try {
-            const html = nunjucks.render(relative(root, file), data)
+            const html = await engine.renderFile(relative(root, file), data)
             await ensureDir(dirname(resolvedOutput))
             await writeFile(resolvedOutput, html, { encoding: 'utf-8' })
           } catch (error) {

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const { Command } = require('commander')
 const { version, name } = require('../package.json')
-const buildHtml = require('./scripts/html')
-const buildJS = require('./scripts/js')
-const serve = require('./scripts/serve')
+const buildHtml = require('./html')
+const buildJS = require('./js')
+const serve = require('./serve')
+const vendor = require('./vendor')
 
 const program = new Command(name)
 
@@ -11,14 +12,14 @@ program.version(version)
 
 program
   .command('html')
-  .option('-r, --root <root>', 'Root of `Nunjucks` files', 'src/html')
-  .option('-i, --input <input...>', 'Input patterns', ['**/*.njk'])
+  .option('-r, --root <root>', 'Root of `Liquid` files', 'src/html')
+  .option('-i, --input <input...>', 'Input patterns', ['**/*.liquid'])
   .option('-o, --output <output>', 'Output directory', 'dist')
   .option('-d, --data-path <data>', 'Global data', 'data/data.js')
   .option('-w, --watch', 'Watch files')
   .option('-a, --all-in-output', 'Reserve nested structure', false)
   .option('-s, --skip <skip...>', 'Patterns to skip', ['**/layouts/**', '**/components/**', '**/partials/**'])
-  .description('Compile `Nunjucks` files to html')
+  .description('Compile `Liquid` files to html')
   .action(buildHtml)
 
 program
@@ -38,5 +39,7 @@ program
   .option('-w, --watch', 'Watch files')
   .description('Serve')
   .action(serve)
+
+program.command('vendor').description('Vendor').action(vendor)
 
 program.parse(process.argv)

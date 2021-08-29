@@ -23,15 +23,7 @@ yarn install
 3. Start the development server:
 - html version
 ```sh
-# you need to link kwd-cli
-yarn workspace kwd-cli link
-
-# then
-yarn workspace kwd-html link kwd-cli
-
-# know you can run
 yarn html:dev
-
 # this will run dev command in kwd-html workspace which start:
 # html:watch `watch njk files in src/html`
 # js:watch `watch js files in src/assets/js`
@@ -40,7 +32,6 @@ yarn html:dev
 - vue version
 ```sh
 yarn vue:dev
-
 # this will run dev command in kwd-vue workspace.
 ```
 

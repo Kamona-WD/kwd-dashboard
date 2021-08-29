@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="K-WD - clean and simple Dashboard template." />
+    <meta name="keywords" content="admin, dashboard, template, tailwindcss, alpinejs, vuejs, html, clean" />
+    <meta name="author" content="Ahmed Kamel" />
+    <link rel="icon" href="assets/images/favicon.ico" />
+    <title>K-WD Dashboard Template{% if pageTitle %} | {{ pageTitle }} {% endif pageTitle %}</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/vendor/boxicons/css/boxicons.min.css">
+    <script src="assets/js/vendor/alpine.min.js" defer></script>
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    <div x-data="mainState" :class="{ dark: isDark }" :dir="isRTL ? 'rtl' : 'ltr'" @resize.window="watchScreen">
+      {% render "partials/loading-screen" %}
+      <div
+        class="flex min-h-screen font-sans antialiased text-gray-900 bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
+      >
+        {% render "partials/sidebar/sidebar" %}
+
+        <div class="flex flex-col flex-1" :class="{ 'xl:pl-64 xl:rtl:pl-0 xl:rtl:pr-64': isSidebarOpen }">
+          {% render "partials/navbar/mobile-bottom-bar" %}
+
+          {% render "partials/navbar/navbar" %} 
+          
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    
+    <script src="assets/js/app.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

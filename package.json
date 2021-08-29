@@ -3,8 +3,7 @@
   "description": "Responsive dashboard built with tailwindcss.",
   "private": true,
   "workspaces": [
-    "templates/*",
-    "kwd-cli"
+    "templates/*"
   ],
   "author": {
     "name": "Ahmed Kamel",
