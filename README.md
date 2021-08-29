@@ -25,7 +25,7 @@ yarn install
 ```sh
 yarn html:dev
 # this will run dev command in kwd-html workspace which start:
-# html:watch `watch njk files in src/html`
+# html:watch `watch liquid files in src/html`
 # js:watch `watch js files in src/assets/js`
 # css:watch `watch css files in src/assets/css`
 ```

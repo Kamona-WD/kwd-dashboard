@@ -4,7 +4,6 @@ const { version, name } = require('../package.json')
 const buildHtml = require('./html')
 const buildJS = require('./js')
 const serve = require('./serve')
-const vendor = require('./vendor')
 
 const program = new Command(name)
 
@@ -39,7 +38,5 @@ program
   .option('-w, --watch', 'Watch files')
   .description('Serve')
   .action(serve)
-
-program.command('vendor').description('Vendor').action(vendor)
 
 program.parse(process.argv)
