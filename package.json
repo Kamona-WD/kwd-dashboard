@@ -15,9 +15,17 @@
     "vue:dev": "cd templates/kwd-vue && yarn dev",
     "vue:build": "cd templates/kwd-vue && yarn build",
     "html:dev": "cd templates/kwd-html && yarn dev",
-    "html:build": "cd templates/kwd-html && yarn build"
+    "html:build": "cd templates/kwd-html && yarn build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
+    "husky": "^7.0.0",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.2"
   }
 }
