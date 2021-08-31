@@ -35,7 +35,8 @@
     "js:build": "node scripts/cli js",
     "js:watch": "node scripts/cli js -w",
     "css:build": "tailwind -i src/assets/css/tailwind.css -o dist/assets/css/main.css -m",
-    "css:watch": "tailwind -i src/assets/css/tailwind.css -o dist/assets/css/main.css -w"
+    "css:watch": "tailwind -i src/assets/css/tailwind.css -o dist/assets/css/main.css -w",
+    "preview": "node scripts/cli serve"
   },
   "devDependencies": {
     "alpinejs": "^3.2.4",

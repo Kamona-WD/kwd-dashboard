@@ -2,7 +2,7 @@
 
 Fully responsive dashboard template built with tailwindcss.
 
-[![GitHub license](https://img.shields.io/github/license/Kamona-WD/kwd-dashboard)](https://github.com/Kamona-WD/starter-dashboard-layout/blob/main/License.md)
+[![GitHub license](https://img.shields.io/github/license/Kamona-WD/kwd-dashboard)](https://github.com/Kamona-WD/kwd-dashboard/blob/main/License.md)
 [![GitHub stars](https://img.shields.io/github/stars/Kamona-WD/kwd-dashboard)](https://github.com/Kamona-WD/kwd-dashboard/stargazers)
 
 ##### To get started:
@@ -13,6 +13,9 @@ Fully responsive dashboard template built with tailwindcss.
 git clone https://github.com/Kamona-WD/kwd-dashboard.git
 
 cd kwd-dashboard
+
+# For now you need to switch to `rewrite` branch.
+git checkout rewrite
 ```
 
 2. Install the dependencies:

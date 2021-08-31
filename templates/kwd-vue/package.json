@@ -26,12 +26,16 @@
     "template"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "@headlessui/vue": "^1.4.1",
+    "@vueuse/core": "^6.0.0",
+    "boxicons": "^2.0.9",
+    "vue": "^3.0.5",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^1.1.7",

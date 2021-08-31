@@ -48,7 +48,7 @@
 <!-- Sidebar -->
 <aside
     class="fixed inset-y-0 z-40 flex-shrink-0 h-screen transition-transform transform"
-    :class="{ '-translate-x-full sm:-translate-x-64 rtl:translate-x-full sm:rtl:translate-x-64': !isSidebarOpen, 'translate-x-0 shadow-lg xl:shadow-none dark:shadow-dark-lg xl:dark:shadow-none': isSidebarOpen }"
+    :class="{ '-translate-x-full rtl:translate-x-full': !isSidebarOpen, 'translate-x-0 shadow-2xl xl:shadow-none': isSidebarOpen }"
 >
     <div class="flex flex-col w-64 h-full bg-white border-r border-gray-300 dark:bg-gray-900 dark:border-gray-700 rtl:border-r-0 rtl:border-l">
         <!-- Sidebar header -->
@@ -126,9 +126,7 @@
 </aside>
 
         <div class="flex flex-col flex-1" :class="{ 'xl:pl-64 xl:rtl:pl-0 xl:rtl:pr-64': isSidebarOpen }">
-          
-
-<!-- Mobile bottom navbar -->
+          <!-- Mobile bottom navbar -->
 <div
   class="fixed inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 py-2 transition-transform duration-500 bg-white border-t border-t-gray-300 md:hidden dark:bg-gray-900 dark:border-t-gray-700"
   :class="{ 'translate-y-full': scrollingDown, 'translate-y-0': scrollingUp }"
@@ -144,19 +142,17 @@
 
 <button
   type="button"
-  
+  @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
   class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
 >
-  <span class="sr-only">Open search panel</span>
-  <i class="bx bx-search bx-sm" ></i>
+  <span class="sr-only">Open sub menu</span>
+  <i class="bx bx-dots-vertical-rounded bx-sm" ></i>
 </button>
-
 
 
   <a href="index.html" class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase"> K-WD </a>
 
   <!-- Sidebar button -->
-  
   
 
 
@@ -322,7 +318,7 @@
   x-show="isMobileSubMenuOpen"
   @click.outside="isMobileSubMenuOpen = false"
   aria-label="Secondary"
-  class="fixed z-40 flex items-center justify-between p-2 bg-white rounded-md shadow-lg md:hidden dark:bg-gray-900 top-6 inset-x-4"
+  class="fixed z-40 flex items-center justify-between p-2 bg-white rounded-md shadow-lg md:hidden dark:bg-gray-900 bottom-16 inset-x-4"
 >
   <div class="flex items-center gap-2">
     <!-- Toggle dark mode button -->
@@ -414,6 +410,7 @@
   <div class="p-6">
     <h1 class="text-3xl">K-WD dashboard (html version)</h1>
     <h1 class="text-3xl">WIP</h1>
+    <div class="h-[2000px]"></div>
   </div>
 
         </div>

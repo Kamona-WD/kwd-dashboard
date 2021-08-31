@@ -14,8 +14,10 @@
     "format": "prettier -w .",
     "vue:dev": "cd templates/kwd-vue && yarn dev",
     "vue:build": "cd templates/kwd-vue && yarn build",
+    "vue:preview": "cd templates/kwd-vue && yarn serve",
     "html:dev": "cd templates/kwd-html && yarn dev",
     "html:build": "cd templates/kwd-html && yarn build",
+    "html:preview": "cd templates/kwd-html && yarn preview",
     "prepare": "husky install"
   },
   "lint-staged": {
