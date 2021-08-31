@@ -17,20 +17,20 @@
     "vue:preview": "cd templates/kwd-vue && yarn serve",
     "html:dev": "cd templates/kwd-html && yarn dev",
     "html:build": "cd templates/kwd-html && yarn build",
-    "html:preview": "cd templates/kwd-html && yarn preview",
-    "prepare": "husky install"
+    "html:preview": "cd templates/kwd-html && yarn preview"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "pre-push": "lint-staged"
   },
   "lint-staged": {
-    "**/*.html": [
-      "prettier --write"
-    ],
-    "**/*.{js,jsx}": [
+    "*": [
       "prettier --write"
     ]
   },
   "devDependencies": {
-    "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "yorkie": "^2.0.0"
   }
 }
