@@ -8,7 +8,7 @@
     <meta name="keywords" content="admin, dashboard, template, tailwindcss, alpinejs, vuejs, html, clean" />
     <meta name="author" content="Ahmed Kamel" />
     <link rel="icon" href="assets/images/favicon.ico" />
-    <title>K-WD Dashboard Template | Blank </title>
+    <title>K-WD Dashboard Template | Blank</title>
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,406 +16,580 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/vendor/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/boxicons/css/boxicons.min.css" />
     <script src="assets/js/vendor/alpine.min.js" defer></script>
-    
   </head>
   <body>
     <div x-data="mainState" :class="{ dark: isDark }" :dir="isRTL ? 'rtl' : 'ltr'" @resize.window="watchScreen">
       <div
-    x-ref="loading"
-    class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-purple-500"
->
-    Loading.....
-</div>
+        x-ref="loading"
+        class="fixed inset-0 z-50 flex items-center justify-center text-2xl font-semibold text-white bg-purple-500"
+      >
+        Loading.....
+      </div>
       <div
         class="flex min-h-screen font-sans antialiased text-gray-900 bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
       >
         <!-- Sidebar overlay -->
-<div
-    x-transition:enter="transition-opacity"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition-opacity"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    x-show="isSidebarOpen"
-    @click="isSidebarOpen = false"
-    aria-hidden="true"
-    class="fixed inset-0 z-40 bg-black bg-opacity-50 xl:hidden dark:bg-opacity-75"
-></div>
+        <div
+          x-transition:enter="transition-opacity"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition-opacity"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          x-show="isSidebarOpen"
+          @click="isSidebarOpen = false"
+          aria-hidden="true"
+          class="fixed inset-0 z-40 bg-black bg-opacity-50 xl:hidden dark:bg-opacity-75"
+        ></div>
 
-<!-- Sidebar -->
-<aside
-    class="fixed inset-y-0 z-40 flex-shrink-0 h-screen transition-transform transform"
-    :class="{ '-translate-x-full rtl:translate-x-full': !isSidebarOpen, 'translate-x-0 shadow-2xl xl:shadow-none': isSidebarOpen }"
->
-    <div class="flex flex-col w-64 h-full bg-white border-r border-gray-300 dark:bg-gray-900 dark:border-gray-700 rtl:border-r-0 rtl:border-l">
-        <!-- Sidebar header -->
-        <div class="flex-shrink-0 hidden px-4 py-2 md:block">
-            <a
-                href="index.html"
-                class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase"
-            >
-                K-WD
-            </a>
-        </div>
-        
-        <!-- Sidebar links -->
-        <nav
-            aria-label="Main"
-            x-data="sidebarNavigation"
-            class="flex flex-col flex-1 p-2 overflow-y-hidden gap-y-2 hover:overflow-y-auto"
+        <!-- Sidebar -->
+        <aside
+          class="fixed inset-y-0 z-40 flex-shrink-0 h-screen transition-transform transform"
+          :class="{ '-translate-x-full rtl:translate-x-full': !isSidebarOpen, 'translate-x-0 shadow-2xl xl:shadow-none': isSidebarOpen }"
         >
-            <template x-for="(item, i) in navigationSidebarLinks" x-key="i">
+          <div
+            class="
+              flex flex-col
+              w-64
+              h-full
+              bg-white
+              border-r border-gray-300
+              dark:bg-gray-900 dark:border-gray-700
+              rtl:border-r-0 rtl:border-l
+            "
+          >
+            <!-- Sidebar header -->
+            <div class="flex-shrink-0 hidden px-4 py-2 md:block">
+              <a href="index.html" class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase">
+                K-WD
+              </a>
+            </div>
+
+            <!-- Sidebar links -->
+            <nav
+              aria-label="Main"
+              x-data="sidebarNavigation"
+              class="flex flex-col flex-1 p-2 overflow-y-hidden gap-y-2 hover:overflow-y-auto"
+            >
+              <template x-for="(item, i) in navigationSidebarLinks" x-key="i">
                 <div>
-                    <template x-if="item.href">
-                        <a
-                            :href="item.href"
-                            class="flex items-center p-2 transition-colors rounded-md dark:text-gray-200 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-                            :class="item.isActive() ? 'bg-purple-500 text-white' : 'text-gray-500'"
-                        >
-                            <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
-                            <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
-                        </a>
-                    </template>
-                    <template x-if="item.subLinks">
-                        <div x-data="{ isOpen: item.isActive() ? true : false }">
-                            <button
-                                @click="isOpen = !isOpen"
-                                class="flex items-center w-full p-2 text-gray-500 transition-colors rounded-md dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                                :class="isOpen ? 'bg-gray-100 dark:bg-gray-800' : ''"
+                  <template x-if="item.href">
+                    <a
+                      :href="item.href"
+                      class="
+                        flex
+                        items-center
+                        p-2
+                        transition-colors
+                        rounded-md
+                        dark:text-gray-200
+                        hover:text-gray-600 hover:bg-gray-100
+                        dark:hover:bg-gray-800 dark:hover:text-white
+                      "
+                      :class="item.isActive() ? 'bg-purple-500 text-white' : 'text-gray-500'"
+                    >
+                      <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
+                      <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
+                    </a>
+                  </template>
+                  <template x-if="item.subLinks">
+                    <div x-data="{ isOpen: item.isActive() ? true : false }">
+                      <button
+                        @click="isOpen = !isOpen"
+                        class="
+                          flex
+                          items-center
+                          w-full
+                          p-2
+                          text-gray-500
+                          transition-colors
+                          rounded-md
+                          dark:text-gray-200
+                          hover:bg-gray-100
+                          dark:hover:bg-gray-800
+                        "
+                        :class="isOpen ? 'bg-gray-100 dark:bg-gray-800' : ''"
+                      >
+                        <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
+                        <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
+                        <!-- chevron -->
+                        <span aria-hidden="true" class="relative block ml-auto w-7 h-7 rtl:ml-0 rtl:mr-auto">
+                          <span
+                            :class="isOpen ? '-rotate-45' : 'rotate-45'"
+                            class="
+                              absolute
+                              right-[9px]
+                              bg-[#909090]
+                              mt-[-5px]
+                              h-3
+                              w-[2px]
+                              top-1/2
+                              transition-all
+                              duration-200
+                            "
+                          ></span>
+                          <span
+                            :class="isOpen ? 'rotate-45' : '-rotate-45'"
+                            class="
+                              absolute
+                              left-[9px]
+                              bg-[#909090]
+                              mt-[-5px]
+                              h-3
+                              w-[2px]
+                              top-1/2
+                              transition-all
+                              duration-200
+                            "
+                          ></span>
+                        </span>
+                      </button>
+
+                      <ul
+                        x-show="isOpen"
+                        class="
+                          relative
+                          px-0
+                          pt-2
+                          pb-0
+                          ml-5
+                          rtl:ml-0 rtl:mr-5
+                          before:w-0 before:block before:absolute before:inset-y-0 before:left-0
+                          rtl:before:left-auto rtl:before:right-0
+                          before:border-l-2 before:border-l-gray-200
+                          dark:before:border-l-gray-600
+                        "
+                      >
+                        <template x-for="(subLink, i) in item.subLinks" x-key="i">
+                          <li
+                            class="
+                              relative
+                              leading-8
+                              m-0
+                              pl-6
+                              rtl:pl-0 rtl:pr-6
+                              last:before:bg-white last:before:h-auto last:before:top-4 last:before:bottom-0
+                              dark:last:before:bg-gray-900
+                              before:block before:w-4 before:h-0 before:absolute before:left-0
+                              rtl:before:left-auto rtl:before:right-0
+                              before:top-4 before:border-t-2 before:border-t-gray-200 before:-mt-0.5
+                              dark:before:border-t-gray-600
+                            "
+                          >
+                            <a
+                              :href="subLink.href"
+                              class="transition-colors hover:text-gray-900 dark:hover:text-gray-100"
+                              :class="subLink.isActive() ? 'text-gray-900 dark:text-gray-200' : 'text-gray-400'"
+                              x-text="subLink.label"
                             >
-                                <span aria-hidden="true" class="text-2xl bx" :class="`bx-${item.icon}`"></span>
-                                <span class="ml-2 text-base font-medium rtl:ml-0 rtl:mr-2" x-text="item.label"></span>
-                                <!-- chevron -->
-                                <span aria-hidden="true" class="relative block ml-auto w-7 h-7 rtl:ml-0 rtl:mr-auto">
-                                    <span :class="isOpen ? '-rotate-45' : 'rotate-45'" class="absolute right-[9px] bg-[#909090] mt-[-5px] h-3 w-[2px] top-1/2 transition-all duration-200"></span>
-                                    <span :class="isOpen ? 'rotate-45' : '-rotate-45'" class="absolute left-[9px] bg-[#909090] mt-[-5px] h-3 w-[2px] top-1/2 transition-all duration-200"></span>
-                                </span>
-                            </button>
-                            
-                                <ul x-show="isOpen"
-                                    class="relative px-0 pt-2 pb-0 ml-5 rtl:ml-0 rtl:mr-5 before:w-0 before:block before:absolute before:inset-y-0 before:left-0 rtl:before:left-auto rtl:before:right-0 before:border-l-2 before:border-l-gray-200 dark:before:border-l-gray-600"
-                                >
-                                    <template x-for="(subLink, i) in item.subLinks" x-key="i">
-                                        <li class="relative leading-8 m-0 pl-6 rtl:pl-0 rtl:pr-6 last:before:bg-white last:before:h-auto last:before:top-4 last:before:bottom-0 dark:last:before:bg-gray-900 before:block before:w-4 before:h-0 before:absolute before:left-0 rtl:before:left-auto rtl:before:right-0 before:top-4 before:border-t-2 before:border-t-gray-200 before:-mt-0.5 dark:before:border-t-gray-600">
-                                            <a 
-                                                :href="subLink.href"
-                                                class="transition-colors hover:text-gray-900 dark:hover:text-gray-100"
-                                                :class="subLink.isActive() ? 'text-gray-900 dark:text-gray-200' : 'text-gray-400'"
-                                                x-text="subLink.label"
-                                            >
-                                            </a>
-                                        </li>
-                                    </template>
-                                </ul>
-                            
-                        </div>
-                    </template>
+                            </a>
+                          </li>
+                        </template>
+                      </ul>
+                    </div>
+                  </template>
                 </div>
-            </template>
-        </nav>
+              </template>
+            </nav>
 
-        <!-- Sidebar footer -->
-        <div class="flex-shrink-0 p-4">
-        
-        </div>
-    </div>
-
-</aside>
+            <!-- Sidebar footer -->
+            <div class="flex-shrink-0 p-4"></div>
+          </div>
+        </aside>
 
         <div class="flex flex-col flex-1" :class="{ 'xl:pl-64 xl:rtl:pl-0 xl:rtl:pr-64': isSidebarOpen }">
           <!-- Mobile bottom navbar -->
-<div
-  class="fixed inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 py-2 transition-transform duration-500 bg-white border-t border-t-gray-300 md:hidden dark:bg-gray-900 dark:border-t-gray-700"
-  :class="{ 'translate-y-full': scrollingDown, 'translate-y-0': scrollingUp }"
->
-  <!-- Search button -->
-  
+          <div
+            class="
+              fixed
+              inset-x-0
+              bottom-0
+              z-10
+              flex
+              items-center
+              justify-between
+              px-4
+              py-2
+              transition-transform
+              duration-500
+              bg-white
+              border-t border-t-gray-300
+              md:hidden
+              dark:bg-gray-900 dark:border-t-gray-700
+            "
+            :class="{ 'translate-y-full': scrollingDown, 'translate-y-0': scrollingUp }"
+          >
+            <!-- Search button -->
 
+            <button
+              type="button"
+              @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
+              class="
+                flex
+                items-center
+                justify-center
+                p-2
+                text-purple-500
+                transition-colors
+                duration-200
+                rounded-full
+                bg-purple-50
+                hover:text-purple-700 hover:bg-purple-100
+                dark:bg-gray-800
+                focus:outline-none focus:ring focus:ring-purple-200
+                dark:focus:ring-gray-700
+              "
+            >
+              <span class="sr-only">Open sub menu</span>
+              <i class="bx bx-dots-vertical-rounded bx-sm"></i>
+            </button>
 
+            <a href="index.html" class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase">
+              K-WD
+            </a>
 
+            <!-- Sidebar button -->
 
-
-
-
-<button
-  type="button"
-  @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open sub menu</span>
-  <i class="bx bx-dots-vertical-rounded bx-sm" ></i>
-</button>
-
-
-  <a href="index.html" class="inline-block text-2xl font-bold tracking-wider text-purple-500 uppercase"> K-WD </a>
-
-  <!-- Sidebar button -->
-  
-
-
-
-
-
-
-
-<button
-  type="button"
-  @click="isSidebarOpen = !isSidebarOpen"
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open sidebar</span>
-  <i class="bx bx-menu bx-sm" ></i>
-</button>
-
-
-</div>
-
+            <button
+              type="button"
+              @click="isSidebarOpen = !isSidebarOpen"
+              class="
+                flex
+                items-center
+                justify-center
+                p-2
+                text-purple-500
+                transition-colors
+                duration-200
+                rounded-full
+                bg-purple-50
+                hover:text-purple-700 hover:bg-purple-100
+                dark:bg-gray-800
+                focus:outline-none focus:ring focus:ring-purple-200
+                dark:focus:ring-gray-700
+              "
+            >
+              <span class="sr-only">Open sidebar</span>
+              <i class="bx bx-menu bx-sm"></i>
+            </button>
+          </div>
 
           <header
-  class="
-    hidden
-    sticky
-    top-0
-    z-[5]
-    md:flex
-    items-center
-    justify-between
-    flex-shrink-0
-    h-full
-    px-2
-    transition-transform
-    duration-500
-    bg-white
-    border-b border-b-gray-300
-    dark:border-b-gray-700
-    sm:px-4
-    max-h-14
-    dark:bg-gray-900
-  "
-  :class="{ '-translate-y-full': scrollingDown, '-translate-y-0': scrollingUp }"
->
-  <div class="flex items-center">
-    <!-- Sidebar button -->
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  @click="isSidebarOpen = !isSidebarOpen"
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open sidebar</span>
-  <i class="bx bx-menu bx-sm" ></i>
-</button>
-
-  </div>
-
-  <nav aria-label="Secondary" class="flex items-center gap-2">
-    <!-- Toggle dark mode button -->
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  @click="toggleTheme"
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">toggle dark mode</span>
-  <i class="bx  bx-sm" :class="isDark ? `bx-sun` : `bx-moon`"></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open search panel</span>
-  <i class="bx bx-search bx-sm" ></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open notifications panel</span>
-  <i class="bx bx-bell bx-sm" ></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open settings panel</span>
-  <i class="bx bx-cog bx-sm" ></i>
-</button>
-
-    
-    <button
-      type="button"
-      aria-haspopup="true"
-      class="transition-opacity duration-200 rounded-full hover:opacity-80 dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
-    >
-      <span class="sr-only">User menu</span>
-      <img
-        class="w-10 h-10 rounded-full"
-        src="https://avatars.githubusercontent.com/u/57622665?v=4"
-        alt="Ahmed Kamel"
-      />
-    </button>
-  </nav>
-</header>
-
-<!-- Mobile sub menu -->
-<nav
-  x-transition:enter="transition-all"
-  x-transition:enter-start="opacity-0 -translate-y-full"
-  x-transition:enter-end="opacity-100 translate-y-0"
-  x-transition:leave="transition-all"
-  x-transition:leave-start="opacity-100 translate-y-0"
-  x-transition:leave-end="opacity-0 -translate-y-full"
-  x-show="isMobileSubMenuOpen"
-  @click.outside="isMobileSubMenuOpen = false"
-  aria-label="Secondary"
-  class="fixed z-40 flex items-center justify-between p-2 bg-white rounded-md shadow-lg md:hidden dark:bg-gray-900 bottom-16 inset-x-4"
->
-  <div class="flex items-center gap-2">
-    <!-- Toggle dark mode button -->
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  @click="toggleTheme"
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">toggle dark mode</span>
-  <i class="bx  bx-sm" :class="isDark ? `bx-sun` : `bx-moon`"></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open search panel</span>
-  <i class="bx bx-search bx-sm" ></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open notifications panel</span>
-  <i class="bx bx-bell bx-sm" ></i>
-</button>
-
-
-    
-
-
-
-
-
-
-
-<button
-  type="button"
-  
-  class=" flex items-center justify-center p-2 text-purple-500 transition-colors duration-200 rounded-full  bg-purple-50 hover:text-purple-700 hover:bg-purple-100 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-purple-200 dark:focus:ring-gray-700"
->
-  <span class="sr-only">Open settings panel</span>
-  <i class="bx bx-cog bx-sm" ></i>
-</button>
-
-  </div>
-
-  <button
-    type="button"
-    aria-haspopup="true"
-    class="transition-opacity duration-200 rounded-full hover:opacity-80 dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
-  >
-    <span class="sr-only">User menu</span>
-    <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/57622665?v=4" alt="Ahmed Kamel" />
-  </button>
-</nav>
- 
-          
-          
-  <div class="p-6">
-    <h1 class="text-3xl">Blank</h1>
-  </div>
-
+            class="
+              hidden
+              sticky
+              top-0
+              z-[5]
+              md:flex
+              items-center
+              justify-between
+              flex-shrink-0
+              h-full
+              px-2
+              transition-transform
+              duration-500
+              bg-white
+              border-b border-b-gray-300
+              dark:border-b-gray-700
+              sm:px-4
+              max-h-14
+              dark:bg-gray-900
+            "
+            :class="{ '-translate-y-full': scrollingDown, '-translate-y-0': scrollingUp }"
+          >
+            <div class="flex items-center">
+              <!-- Sidebar button -->
+
+              <button
+                type="button"
+                @click="isSidebarOpen = !isSidebarOpen"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open sidebar</span>
+                <i class="bx bx-menu bx-sm"></i>
+              </button>
+            </div>
+
+            <nav aria-label="Secondary" class="flex items-center gap-2">
+              <!-- Toggle dark mode button -->
+
+              <button
+                type="button"
+                @click="toggleTheme"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">toggle dark mode</span>
+                <i class="bx bx-sm" :class="isDark ? `bx-sun` : `bx-moon`"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open search panel</span>
+                <i class="bx bx-search bx-sm"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open notifications panel</span>
+                <i class="bx bx-bell bx-sm"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open settings panel</span>
+                <i class="bx bx-cog bx-sm"></i>
+              </button>
+
+              <button
+                type="button"
+                aria-haspopup="true"
+                class="
+                  transition-opacity
+                  duration-200
+                  rounded-full
+                  hover:opacity-80
+                  dark:opacity-75 dark:hover:opacity-100
+                  focus:outline-none focus:ring
+                  dark:focus:opacity-100
+                "
+              >
+                <span class="sr-only">User menu</span>
+                <img
+                  class="w-10 h-10 rounded-full"
+                  src="https://avatars.githubusercontent.com/u/57622665?v=4"
+                  alt="Ahmed Kamel"
+                />
+              </button>
+            </nav>
+          </header>
+
+          <!-- Mobile sub menu -->
+          <nav
+            x-transition:enter="transition-all"
+            x-transition:enter-start="opacity-0 -translate-y-full"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition-all"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-full"
+            x-show="isMobileSubMenuOpen"
+            @click.outside="isMobileSubMenuOpen = false"
+            aria-label="Secondary"
+            class="
+              fixed
+              z-40
+              flex
+              items-center
+              justify-between
+              p-2
+              bg-white
+              rounded-md
+              shadow-lg
+              md:hidden
+              dark:bg-gray-900
+              bottom-16
+              inset-x-4
+            "
+          >
+            <div class="flex items-center gap-2">
+              <!-- Toggle dark mode button -->
+
+              <button
+                type="button"
+                @click="toggleTheme"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">toggle dark mode</span>
+                <i class="bx bx-sm" :class="isDark ? `bx-sun` : `bx-moon`"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open search panel</span>
+                <i class="bx bx-search bx-sm"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open notifications panel</span>
+                <i class="bx bx-bell bx-sm"></i>
+              </button>
+
+              <button
+                type="button"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  p-2
+                  text-purple-500
+                  transition-colors
+                  duration-200
+                  rounded-full
+                  bg-purple-50
+                  hover:text-purple-700 hover:bg-purple-100
+                  dark:bg-gray-800
+                  focus:outline-none focus:ring focus:ring-purple-200
+                  dark:focus:ring-gray-700
+                "
+              >
+                <span class="sr-only">Open settings panel</span>
+                <i class="bx bx-cog bx-sm"></i>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              aria-haspopup="true"
+              class="
+                transition-opacity
+                duration-200
+                rounded-full
+                hover:opacity-80
+                dark:opacity-75 dark:hover:opacity-100
+                focus:outline-none focus:ring
+                dark:focus:opacity-100
+              "
+            >
+              <span class="sr-only">User menu</span>
+              <img
+                class="w-10 h-10 rounded-full"
+                src="https://avatars.githubusercontent.com/u/57622665?v=4"
+                alt="Ahmed Kamel"
+              />
+            </button>
+          </nav>
+
+          <div class="p-6">
+            <h1 class="text-3xl">Blank</h1>
+          </div>
         </div>
       </div>
     </div>
-    
+
     <script src="assets/js/app.js"></script>
-    
   </body>
 </html>

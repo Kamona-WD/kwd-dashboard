@@ -21,7 +21,10 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*": [
+    "**/*.html": [
+      "prettier --write"
+    ],
+    "**/*.{js,jsx}": [
       "prettier --write"
     ]
   },
