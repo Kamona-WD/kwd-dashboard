@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['cairo', ...defaultTheme.fontFamily.sans],
+        sans: ['Cairo', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         light: 'var(--light)',
