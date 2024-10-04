@@ -33,10 +33,10 @@ To get started:
 
    ```bash
    # Using npm
-   npm run serve
+   npm run dev
 
    # Using Yarn
-   yarn serve
+   yarn dev
    ```
 
    Now you should be able to see the project running at localhost:8080.
@@ -49,20 +49,11 @@ To build an optimized version of your CSS, simply run:
 
 ```bash
 # Using npm
-npm run prod
+npm run build
 
 # Using Yarn
-yarn prod
+yarn build
 ```
 
 After that's done, check out `./public/build/css/tailwind.css` to see the optimized output.
-
-
----
-
-## Support
-
-<a href="https://www.buymeacoffee.com/ahmedkamel" target="_blank" style="display: inline-block !important;"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-Be careful and donate just if it is within your possibilities, because there is no refund system. And remember that you don't need to donate, it is just a free choice for you. Thank you!
 
