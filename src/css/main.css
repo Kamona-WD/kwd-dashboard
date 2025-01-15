@@ -58,32 +58,31 @@
     --color-violet-lighter: #a78bfa;
     --color-violet-dark: #6d28d9;
     --color-violet-darker: #5b21b6;
-  }
-  
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
-  @layer components {
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
     .toggle:checked + span {
-      @apply top-0 left-6 bg-primary;
+        @apply left-6 top-0 bg-primary;
     }
     .toggle:disabled + span {
-      @apply bg-gray-500 shadow-none;
+        @apply bg-gray-500 shadow-none;
     }
     .toggle:checked:disabled {
-      @apply bg-gray-200;
+        @apply bg-gray-200;
     }
     .toggle:checked:disabled + span {
-      @apply shadow-none bg-primary-lighter;
+        @apply bg-primary-lighter shadow-none;
     }
     .toggle:focus + span {
-      @apply ring ring-primary-lighter;
+        @apply ring ring-primary-lighter;
     }
-  
+
     input:invalid.invalid,
     textarea:invalid.invalid {
-      @apply ring ring-danger-light dark:ring-danger;
+        @apply ring ring-danger-light dark:ring-danger;
     }
-  }
-  
+}

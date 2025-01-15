@@ -18,20 +18,20 @@ export default {
                 },
             ],
         },
-        {
-            title: 'Authentication',
-            url: null,
-            iconName: 'tabler--shield',
-            links: [
-                {
-                    title: 'Login',
-                    url: '/auth/login.html',
-                },
-                {
-                    title: 'Register',
-                    url: '/auth/register.html',
-                },
-            ],
-        },
-    ]
+        // {
+        //     title: 'Authentication',
+        //     url: null,
+        //     iconName: 'tabler--shield',
+        //     links: [
+        //         {
+        //             title: 'Login',
+        //             url: '/auth/login.html',
+        //         },
+        //         {
+        //             title: 'Register',
+        //             url: '/auth/register.html',
+        //         },
+        //     ],
+        // },
+    ],
 }

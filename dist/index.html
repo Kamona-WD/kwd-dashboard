@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -9,7 +9,7 @@
         <meta name="keywords" content="Admin, Dashboard, Template, HTML, CSS, JavaScript, Tailwindcss, Alpinejs" />
         <meta name="author" content="Ahmed Kamel" />
 
-        <title>{{ title }} {{#if pageTitle}} | {{ pageTitle }} {{/if}}</title>
+        <title>K-WD Dashboard</title>
 
         <link
             href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
@@ -22,9 +22,9 @@
             }
         </style>
 
-        <link rel="stylesheet" href="{{ resolve-from-root '../css/main.css' }}" />
-
-        {{> styles}}
+        <script type="module" crossorigin src="/js/index-page-Blz6gfmk.js"></script>
+        <link rel="modulepreload" crossorigin href="/js/main-nEPT5lC7.js" />
+        <link rel="stylesheet" crossorigin href="/css/main.css" />
     </head>
     <body class="font-sans antialiased">
         <div
@@ -32,28 +32,452 @@
             x-init="$refs.loading.classList.add('hidden'); setColors(color);"
             :class="{ 'dark': isDark }"
         >
-            {{> partials/loading-screen }}
-
+            <!-- Loading screen -->
+            <div
+                x-ref="loading"
+                class="fixed inset-0 z-50 flex items-center justify-center bg-primary-darker text-2xl font-semibold text-white"
+            >
+                Loading.....
+            </div>
             <div class="flex min-h-screen bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
-                {{> partials/sidebar activeLink=activeLink group=group }}
+                <!-- Sidebar -->
+                <aside
+                    class="sticky top-0 hidden h-screen w-64 flex-shrink-0 border-r bg-white dark:border-primary-darker dark:bg-darker md:block"
+                >
+                    <div class="flex h-full flex-col">
+                        <!-- Sidebar links -->
+                        <nav
+                            aria-label="Main"
+                            class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto"
+                        >
+                            <a
+                                href="/"
+                                class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
+                            >
+                                <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
+                                <span class="font-semibold"> Dashboard </span>
+                            </a>
+                            <div x-data="{ open:  false  }">
+                                <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                                <a
+                                    href="#"
+                                    @click="$event.preventDefault(); open = !open"
+                                    class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                    :class="{ 'bg-primary-100 dark:bg-primary': open }"
+                                    role="button"
+                                    aria-haspopup="true"
+                                    :aria-expanded="open ? 'true' : 'false'"
+                                >
+                                    <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
+                                    <span class="font-semibold"> Pages </span>
+                                    <span
+                                        aria-hidden="true"
+                                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                        :class="{ 'rotate-180': open }"
+                                    ></span>
+                                </a>
+
+                                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
+                                    <div class="mt-2">
+                                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                        <a
+                                            href="/pages/blank.html"
+                                            role="menuitem"
+                                            class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                        >
+                                            Blank
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <!-- Sidebar footer -->
+                        <div class="flex-shrink-0 space-y-2 px-2 py-4">
+                            <button
+                                @click="openSettingsPanel"
+                                type="button"
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+                            >
+                                <span aria-hidden="true" class="iconify h-4 w-4 tabler--adjustments"></span>
+
+                                <span class="font-semibold">Customize</span>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
 
                 <div class="flex flex-1 flex-col">
-                    {{> partials/navbar }}
+                    <!-- Navbar -->
+                    <div class="sticky top-0 flex-shrink-0 bg-white dark:bg-darker">
+                        <div class="flex items-center justify-between border-b p-2 dark:border-primary-darker">
+                            <!-- Mobile menu button -->
+                            <button
+                                @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
+                                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
+                            >
+                                <span class="sr-only">Open main manu</span>
+
+                                <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
+                            </button>
+
+                            <!-- Brand -->
+                            <a
+                                href="/"
+                                class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                            >
+                                K-WD
+                            </a>
+
+                            <!-- Mobile sub menu button -->
+                            <button
+                                @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
+                                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
+                            >
+                                <span class="sr-only">Open sub manu</span>
+                                <span aria-hidden="true" class="iconify h-8 w-8 tabler--dots-vertical"></span>
+                            </button>
+
+                            <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
+                                <!-- Toggle dark theme button -->
+                                <button
+                                    aria-hidden="true"
+                                    class="relative focus:outline-none"
+                                    x-cloak
+                                    @click="toggleTheme"
+                                >
+                                    <div
+                                        class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
+                                    ></div>
+                                    <div
+                                        class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
+                                        :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                                    >
+                                        <span
+                                            aria-hidden="true"
+                                            x-show="!isDark"
+                                            class="iconify h-4 w-4 tabler--moon"
+                                        ></span>
+                                        <span
+                                            aria-hidden="true"
+                                            x-show="isDark"
+                                            class="iconify h-4 w-4 tabler--sun"
+                                        ></span>
+                                    </div>
+                                </button>
+
+                                <!-- Notification button -->
+                                <button
+                                    @click="openNotificationsPanel"
+                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                >
+                                    <span class="sr-only">Open Notification panel</span>
+                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
+                                </button>
+
+                                <!-- Search button -->
+                                <button
+                                    @click="openSearchPanel"
+                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                >
+                                    <span class="sr-only">Open search panel</span>
+                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
+                                </button>
+
+                                <!-- Settings button -->
+                                <button
+                                    @click="openSettingsPanel"
+                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                >
+                                    <span class="sr-only">Open settings panel</span>
+                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
+                                </button>
+
+                                <!-- User avatar button -->
+                                <div class="relative" x-data="{ open: false }">
+                                    <button
+                                        @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
+                                        type="button"
+                                        aria-haspopup="true"
+                                        :aria-expanded="open ? 'true' : 'false'"
+                                        class="rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
+                                    >
+                                        <span class="sr-only">User menu</span>
+                                        <img
+                                            class="h-10 w-10 rounded-full"
+                                            src="/images/avatar.jpg"
+                                            alt="User avatar"
+                                        />
+                                    </button>
+
+                                    <!-- User dropdown menu -->
+                                    <div
+                                        x-show="open"
+                                        x-ref="userMenu"
+                                        x-transition:enter="transition-all transform ease-out"
+                                        x-transition:enter-start="translate-y-1/2 opacity-0"
+                                        x-transition:enter-end="translate-y-0 opacity-100"
+                                        x-transition:leave="transition-all transform ease-in"
+                                        x-transition:leave-start="translate-y-0 opacity-100"
+                                        x-transition:leave-end="translate-y-1/2 opacity-0"
+                                        @click.away="open = false"
+                                        @keydown.escape="open = false"
+                                        class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                                        tabindex="-1"
+                                        role="menu"
+                                        aria-orientation="vertical"
+                                        aria-label="User menu"
+                                    >
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Your Profile
+                                        </a>
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Settings
+                                        </a>
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Logout
+                                        </a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            <!-- Mobile sub menu -->
+                            <nav
+                                x-transition:enter="transition duration-200 ease-in-out transform sm:duration-500"
+                                x-transition:enter-start="-translate-y-full opacity-0"
+                                x-transition:enter-end="translate-y-0 opacity-100"
+                                x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+                                x-transition:leave-start="translate-y-0 opacity-100"
+                                x-transition:leave-end="-translate-y-full opacity-0"
+                                x-show="isMobileSubMenuOpen"
+                                @click.away="isMobileSubMenuOpen = false"
+                                class="absolute inset-x-4 top-16 flex items-center rounded-md bg-white p-4 shadow-lg dark:bg-darker md:hidden"
+                                aria-label="Secondary"
+                            >
+                                <div class="space-x-2">
+                                    <!-- Toggle dark theme button -->
+                                    <button
+                                        aria-hidden="true"
+                                        class="relative focus:outline-none"
+                                        x-cloak
+                                        @click="toggleTheme"
+                                    >
+                                        <div
+                                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
+                                        ></div>
+                                        <div
+                                            class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
+                                            :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                                        >
+                                            <span
+                                                aria-hidden="true"
+                                                x-show="!isDark"
+                                                class="iconify h-4 w-4 tabler--moon"
+                                            ></span>
+                                            <span
+                                                aria-hidden="true"
+                                                x-show="isDark"
+                                                class="iconify h-4 w-4 tabler--sun"
+                                            ></span>
+                                        </div>
+                                    </button>
+
+                                    <!-- Notification button -->
+                                    <button
+                                        @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open notifications panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
+                                    </button>
+
+                                    <!-- Search button -->
+                                    <button
+                                        @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open search panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
+                                    </button>
+
+                                    <!-- Settings button -->
+                                    <button
+                                        @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open settings panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
+                                    </button>
+                                </div>
+
+                                <!-- User avatar button -->
+                                <div class="relative ml-auto" x-data="{ open: false }">
+                                    <button
+                                        @click="open = !open"
+                                        type="button"
+                                        aria-haspopup="true"
+                                        :aria-expanded="open ? 'true' : 'false'"
+                                        class="block rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
+                                    >
+                                        <span class="sr-only">User menu</span>
+                                        <img
+                                            class="h-10 w-10 rounded-full"
+                                            src="/images/avatar.jpg"
+                                            alt="Ahmed Kamel"
+                                        />
+                                    </button>
+
+                                    <!-- User dropdown menu -->
+                                    <div
+                                        x-show="open"
+                                        x-transition:enter="transition-all transform ease-out"
+                                        x-transition:enter-start="translate-y-1/2 opacity-0"
+                                        x-transition:enter-end="translate-y-0 opacity-100"
+                                        x-transition:leave="transition-all transform ease-in"
+                                        x-transition:leave-start="translate-y-0 opacity-100"
+                                        x-transition:leave-end="translate-y-1/2 opacity-0"
+                                        @click.away="open = false"
+                                        class="absolute right-0 top-12 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-dark"
+                                        role="menu"
+                                        aria-orientation="vertical"
+                                        aria-label="User menu"
+                                    >
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Your Profile
+                                        </a>
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Settings
+                                        </a>
+                                        <a
+                                            href="#"
+                                            role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                        >
+                                            Logout
+                                        </a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <!-- Mobile main manu -->
+                        <div
+                            class="border-b dark:border-primary-darker md:hidden"
+                            x-show="isMobileMainMenuOpen"
+                            @click.away="isMobileMainMenuOpen = false"
+                            x-collapse
+                        >
+                            <nav aria-label="Main" class="space-y-2 px-2 py-4">
+                                <a
+                                    href="/"
+                                    class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
+                                >
+                                    <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
+                                    <span class="font-semibold"> Dashboard </span>
+                                </a>
+                                <div x-data="{ open:  false  }">
+                                    <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                                    <a
+                                        href="#"
+                                        @click="$event.preventDefault(); open = !open"
+                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                        :class="{ 'bg-primary-100 dark:bg-primary': open }"
+                                        role="button"
+                                        aria-haspopup="true"
+                                        :aria-expanded="open ? 'true' : 'false'"
+                                    >
+                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
+                                        <span class="font-semibold"> Pages </span>
+                                        <span
+                                            aria-hidden="true"
+                                            class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                            :class="{ 'rotate-180': open }"
+                                        ></span>
+                                    </a>
+
+                                    <div
+                                        x-show="open"
+                                        x-collapse
+                                        class="space-y-2 px-7"
+                                        role="menu"
+                                        arial-label="Pages"
+                                    >
+                                        <div class="mt-2">
+                                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                            <a
+                                                href="/pages/blank.html"
+                                                role="menuitem"
+                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                            >
+                                                Blank
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
 
                     <!-- Page header -->
                     <header
                         class="flex flex-shrink-0 items-center justify-between border-b px-4 py-4 dark:border-primary-darker lg:py-6"
                     >
-                        {{> header }}
+                        <h2 class="text-2xl font-semibold">Dashboard</h2>
+                        <a
+                            href="https://github.com/Kamona-WD/kwd-dashboard"
+                            target="_blank"
+                            class="inline-flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm text-white transition-all hover:bg-black/80 focus:outline-none focus:ring focus:ring-black focus:ring-offset-1 focus:ring-offset-white dark:hover:bg-black/60 dark:focus:ring-offset-dark"
+                        >
+                            <span aria-hidden="true" class="iconify h-4 w-4 tabler--brand-github"></span>
+                            <span>View on github</span>
+                        </a>
                     </header>
 
                     <!-- Main content -->
                     <main class="flex-1">
                         <!-- Content -->
-                        {{> @partial-block }}
+
+                        <h1 class="sr-only">Dashboard</h1>
                     </main>
 
-                    {{> partials/footer }}
+                    <!-- Footer -->
+                    <footer
+                        class="flex flex-shrink-0 items-center justify-between border-t bg-white p-4 dark:border-primary-darker dark:bg-darker"
+                    >
+                        <div x-data class="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                            &copy;<span x-text="new Date().getFullYear()"></span>
+                            K-WD, All rights reserved
+                        </div>
+
+                        <div>
+                            Made by
+                            <a href="https://github.com/Kamona-WD" target="_blank" class="text-blue-500 hover:underline"
+                                >Ahmed Kamel</a
+                            >
+                        </div>
+                    </footer>
                 </div>
 
                 <!-- Panels -->
@@ -720,13 +1144,5 @@
                 </section>
             </div>
         </div>
-
-        {{> before-script}}
-        <script type="module" src="{{ resolve-from-root '../js/main.js' }}"></script>
-        {{> after-script}}
-
-        <script type="module">
-            window.Alpine && window.Alpine.start()
-        </script>
     </body>
 </html>

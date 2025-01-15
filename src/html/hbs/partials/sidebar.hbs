@@ -5,54 +5,7 @@
     <div class="flex h-full flex-col">
         <!-- Sidebar links -->
         <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto">
-            {{#each navigationLinks}}
-            {{#unless links}}
-            <a
-                href="{{ url }}"
-                class="flex items-center gap-2 rounded-md p-2 text-gray-600 {{#if (eq title ../activeLink)}} bg-primary-100 dark:bg-primary {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
-            >
-                <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
-                <span class="font-semibold"> {{ title }} </span>
-            </a>
-            {{else}}
-            <div x-data="{ open: {{#if (eq ../group title)}} true {{else}} false {{/if}} }">
-                <!-- active classes 'bg-primary-100 dark:bg-primary' -->
-                <a
-                    href="#"
-                    @click="$event.preventDefault(); open = !open"
-                    class="flex items-center gap-2 rounded-md p-2 text-gray-500 {{#if (eq ../group title)}} bg-primary-100 dark:bg-primary {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
-                    :class="{ 'bg-primary-100 dark:bg-primary': open }"
-                    role="button"
-                    aria-haspopup="true"
-                    :aria-expanded="open ? 'true' : 'false'"
-                >
-                    <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
-                    <span class="font-semibold"> {{ title }} </span>
-                    <span
-                        aria-hidden="true"
-                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
-                        :class="{ 'rotate-180': open }"
-                    ></span>
-                </a>
-
-                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="{{ title }}">
-                    <div class="mt-2">
-                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        {{#each links}}
-                        <a
-                            href="{{ url }}"
-                            role="menuitem"
-                            class="block rounded-md p-2 text-sm {{#if (eq ../../activeLink title)}} text-gray-700 dark:text-light {{else}} text-gray-400 dark:text-gray-400 {{/if}} transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
-                        >
-                            {{ title }}
-                        </a>
-                        {{/each}}
-                    </div>
-                </div>
-            </div>
-            {{/unless}}
-            {{/each}}
+            {{> partials/navigation-links }}
         </nav>
 
         <!-- Sidebar footer -->
