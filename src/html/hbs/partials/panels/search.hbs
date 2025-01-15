@@ -1,0 +1,76 @@
+{{#> partials/panels/base title="Search panel" pos="left" show="isSearchPanelOpen" close="isSearchPanelOpen = false" ref="searchPanel" }}
+<!-- Panel content -->
+<div class="flex h-screen flex-col">
+    <!-- Panel header (Search input) -->
+    <div
+        class="relative flex-shrink-0 border-b px-4 py-8 text-gray-400 focus-within:text-gray-700 dark:border-primary-darker dark:focus-within:text-light"
+    >
+        <span class="absolute inset-y-0 inline-flex items-center px-4">
+            <span aria-hidden="true" class="iconify tabler--search h-5 w-5"></span>
+        </span>
+
+        <input
+            x-ref="searchInput"
+            type="text"
+            name="search"
+            placeholder="Search..."
+            class="w-full rounded-full border-gray-400 py-2 pl-10 pr-4 text-base focus:border-primary focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark dark:text-gray-300 dark:focus:ring-offset-dark rtl:pl-4 rtl:pr-10"
+        />
+    </div>
+
+    <!-- Panel content (Search result) -->
+    <div class="h flex-1 space-y-4 overflow-y-hidden px-4 pb-4 hover:overflow-y-auto">
+        <h3 class="py-2 text-sm font-semibold text-gray-600 dark:text-light">History</h3>
+        <a href="#" class="flex space-x-4">
+            <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-lg" src="/images/cover.jpg" alt="Post cover" />
+            </div>
+            <div class="max-w-xs flex-1 overflow-hidden">
+                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Header</h4>
+                <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
+                    Lorem ipsum dolor, sit amet consectetur.
+                </p>
+                <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Post </span>
+            </div>
+        </a>
+        <a href="#" class="flex space-x-4">
+            <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-lg" src="build/images/avatar.jpg" alt="Ahmed Kamel" />
+            </div>
+            <div class="max-w-xs flex-1 overflow-hidden">
+                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h4>
+                <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
+                    Last activity 3h ago.
+                </p>
+                <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Offline </span>
+            </div>
+        </a>
+        <a href="#" class="flex space-x-4">
+            <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-lg" src="build/images/cover-2.jpg" alt="K-WD Dashboard" />
+            </div>
+            <div class="max-w-xs flex-1 overflow-hidden">
+                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">K-WD Dashboard</h4>
+                <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </p>
+                <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Updated 3h ago. </span>
+            </div>
+        </a>
+        <template x-for="i in 10" x-key="i">
+            <a href="#" class="flex space-x-4">
+                <div class="flex-shrink-0">
+                    <img class="h-10 w-10 rounded-lg" src="build/images/cover-3.jpg" alt="K-WD Dashboard" />
+                </div>
+                <div class="max-w-xs flex-1 overflow-hidden">
+                    <h4 class="text-sm font-semibold text-gray-600 dark:text-light">K-WD Dashboard</h4>
+                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    </p>
+                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Updated 3h ago. </span>
+                </div>
+            </a>
+        </template>
+    </div>
+</div>
+{{/partials/panels/base }}
