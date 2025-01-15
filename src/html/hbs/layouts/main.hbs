@@ -32,12 +32,12 @@
             x-init="$refs.loading.classList.add('hidden'); setColors(color);"
             :class="{ 'dark': isDark }"
         >
-            <div class="flex h-screen bg-gray-100 text-gray-900 antialiased dark:bg-dark dark:text-light">
-                {{> partials/loading-screen }}
+            {{> partials/loading-screen }}
 
-                {{> partials/sidebar }}
+            <div class="flex min-h-screen bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
+                {{> partials/sidebar activeLink=activeLink group=group }}
 
-                <div class="h-full flex-1 flex flex-col">
+                <div class="flex-1 flex flex-col">
                     {{> partials/navbar }}
 
                     <!-- Page header -->
