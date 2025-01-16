@@ -39,12 +39,14 @@
             </div>
         </div>
 
+        {{#unless no-script}}
         {{> before-script}}
         <script type="module" src="{{ resolve-from-root '../js/main.js' }}"></script>
         {{> after-script}}
-
         <script type="module">
             window.Alpine && window.Alpine.start()
         </script>
+
+        {{/unless}}
     </body>
 </html>

@@ -13,6 +13,14 @@ export default {
             iconName: 'tabler--circle',
             links: [
                 {
+                    title: '404',
+                    url: '/pages/404.html',
+                },
+                {
+                    title: '500',
+                    url: '/pages/500.html',
+                },
+                {
                     title: 'Blank',
                     url: '/pages/blank.html',
                 },

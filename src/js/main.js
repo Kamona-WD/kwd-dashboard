@@ -24,7 +24,10 @@ Alpine.data('setup', () => {
         return 'cyan'
     }
 
-    const setColors = (color) => {
+    function setColors(color) {
+        // console.log(this)
+        // return;
+
         const root = document.documentElement
         root.style.setProperty('--color-primary', `var(--color-${color})`)
         root.style.setProperty('--color-primary-50', `var(--color-${color}-50)`)
@@ -138,4 +141,4 @@ Alpine.data('setup', () => {
 Alpine.plugin(AlpineCollapse)
 Alpine.plugin(AlpineFocus)
 
-Alpine.start()
+// Alpine.start()
