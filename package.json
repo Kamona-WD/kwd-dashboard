@@ -43,6 +43,7 @@
         "postcss-import": "^16.1.0",
         "prettier": "^3.4.2",
         "prettier-plugin-tailwindcss": "^0.6.9",
+        "tailwind-merge": "^2.6.0",
         "tailwindcss": "^3.4.17",
         "vite": "^6.0.7",
         "vite-plugin-handlebars": "^2.0.0"

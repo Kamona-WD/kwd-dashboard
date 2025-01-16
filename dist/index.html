@@ -32,363 +32,26 @@
             x-init="$refs.loading.classList.add('hidden'); setColors(color);"
             :class="{ 'dark': isDark }"
         >
-            <!-- Loading screen -->
-            <div
-                x-ref="loading"
-                class="fixed inset-0 z-50 flex items-center justify-center bg-primary-darker text-2xl font-semibold text-white"
-            >
-                Loading.....
-            </div>
-            <div class="flex min-h-screen bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
-                <!-- Sidebar -->
-                <aside
-                    class="sticky top-0 hidden h-screen w-64 flex-shrink-0 border-r bg-white dark:border-primary-darker dark:bg-darker md:block"
+            <div class="bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
+                <!-- Loading screen -->
+                <div
+                    x-ref="loading"
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-primary-darker text-2xl font-semibold text-white"
                 >
-                    <div class="flex h-full flex-col">
-                        <!-- Sidebar links -->
-                        <nav
-                            aria-label="Main"
-                            class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto"
-                        >
-                            <a
-                                href="/"
-                                class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
-                            >
-                                <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
-                                <span class="font-semibold"> Dashboard </span>
-                            </a>
-                            <div x-data="{ open:  false  }">
-                                <!-- active classes 'bg-primary-100 dark:bg-primary' -->
-                                <a
-                                    href="#"
-                                    @click="$event.preventDefault(); open = !open"
-                                    class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
-                                    :class="{ 'bg-primary-100 dark:bg-primary': open }"
-                                    role="button"
-                                    aria-haspopup="true"
-                                    :aria-expanded="open ? 'true' : 'false'"
-                                >
-                                    <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
-                                    <span class="font-semibold"> Pages </span>
-                                    <span
-                                        aria-hidden="true"
-                                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
-                                        :class="{ 'rotate-180': open }"
-                                    ></span>
-                                </a>
+                    Loading.....
+                </div>
 
-                                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
-                                    <div class="mt-2">
-                                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                        <a
-                                            href="/pages/blank.html"
-                                            role="menuitem"
-                                            class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
-                                        >
-                                            Blank
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </nav>
-
-                        <!-- Sidebar footer -->
-                        <div class="flex-shrink-0 space-y-2 px-2 py-4">
-                            <button
-                                @click="openSettingsPanel"
-                                type="button"
-                                class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
-                            >
-                                <span aria-hidden="true" class="iconify h-4 w-4 tabler--adjustments"></span>
-
-                                <span class="font-semibold">Customize</span>
-                            </button>
-                        </div>
-                    </div>
-                </aside>
-
-                <div class="flex flex-1 flex-col">
-                    <!-- Navbar -->
-                    <div class="sticky top-0 flex-shrink-0 bg-white dark:bg-darker">
-                        <div class="flex items-center justify-between border-b p-2 dark:border-primary-darker">
-                            <!-- Mobile menu button -->
-                            <button
-                                @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
-                                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-                            >
-                                <span class="sr-only">Open main manu</span>
-
-                                <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
-                            </button>
-
-                            <!-- Brand -->
-                            <a
-                                href="/"
-                                class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
-                            >
-                                K-WD
-                            </a>
-
-                            <!-- Mobile sub menu button -->
-                            <button
-                                @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
-                                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-                            >
-                                <span class="sr-only">Open sub manu</span>
-                                <span aria-hidden="true" class="iconify h-8 w-8 tabler--dots-vertical"></span>
-                            </button>
-
-                            <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
-                                <!-- Toggle dark theme button -->
-                                <button
-                                    aria-hidden="true"
-                                    class="relative focus:outline-none"
-                                    x-cloak
-                                    @click="toggleTheme"
-                                >
-                                    <div
-                                        class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
-                                    ></div>
-                                    <div
-                                        class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
-                                        :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
-                                    >
-                                        <span
-                                            aria-hidden="true"
-                                            x-show="!isDark"
-                                            class="iconify h-4 w-4 tabler--moon"
-                                        ></span>
-                                        <span
-                                            aria-hidden="true"
-                                            x-show="isDark"
-                                            class="iconify h-4 w-4 tabler--sun"
-                                        ></span>
-                                    </div>
-                                </button>
-
-                                <!-- Notification button -->
-                                <button
-                                    @click="openNotificationsPanel"
-                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                >
-                                    <span class="sr-only">Open Notification panel</span>
-                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
-                                </button>
-
-                                <!-- Search button -->
-                                <button
-                                    @click="openSearchPanel"
-                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                >
-                                    <span class="sr-only">Open search panel</span>
-                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
-                                </button>
-
-                                <!-- Settings button -->
-                                <button
-                                    @click="openSettingsPanel"
-                                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                >
-                                    <span class="sr-only">Open settings panel</span>
-                                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
-                                </button>
-
-                                <!-- User avatar button -->
-                                <div class="relative" x-data="{ open: false }">
-                                    <button
-                                        @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
-                                        type="button"
-                                        aria-haspopup="true"
-                                        :aria-expanded="open ? 'true' : 'false'"
-                                        class="rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                                    >
-                                        <span class="sr-only">User menu</span>
-                                        <img
-                                            class="h-10 w-10 rounded-full"
-                                            src="/images/avatar.jpg"
-                                            alt="User avatar"
-                                        />
-                                    </button>
-
-                                    <!-- User dropdown menu -->
-                                    <div
-                                        x-show="open"
-                                        x-ref="userMenu"
-                                        x-transition:enter="transition-all transform ease-out"
-                                        x-transition:enter-start="translate-y-1/2 opacity-0"
-                                        x-transition:enter-end="translate-y-0 opacity-100"
-                                        x-transition:leave="transition-all transform ease-in"
-                                        x-transition:leave-start="translate-y-0 opacity-100"
-                                        x-transition:leave-end="translate-y-1/2 opacity-0"
-                                        @click.away="open = false"
-                                        @keydown.escape="open = false"
-                                        class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
-                                        tabindex="-1"
-                                        role="menu"
-                                        aria-orientation="vertical"
-                                        aria-label="User menu"
-                                    >
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Your Profile
-                                        </a>
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Settings
-                                        </a>
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Logout
-                                        </a>
-                                    </div>
-                                </div>
-                            </nav>
-
-                            <!-- Mobile sub menu -->
+                <div class="flex min-h-screen">
+                    <!-- Sidebar -->
+                    <aside
+                        class="sticky top-0 hidden h-screen w-64 flex-shrink-0 border-r bg-white dark:border-primary-darker dark:bg-darker md:block"
+                    >
+                        <div class="flex h-full flex-col">
+                            <!-- Sidebar links -->
                             <nav
-                                x-transition:enter="transition duration-200 ease-in-out transform sm:duration-500"
-                                x-transition:enter-start="-translate-y-full opacity-0"
-                                x-transition:enter-end="translate-y-0 opacity-100"
-                                x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
-                                x-transition:leave-start="translate-y-0 opacity-100"
-                                x-transition:leave-end="-translate-y-full opacity-0"
-                                x-show="isMobileSubMenuOpen"
-                                @click.away="isMobileSubMenuOpen = false"
-                                class="absolute inset-x-4 top-16 flex items-center rounded-md bg-white p-4 shadow-lg dark:bg-darker md:hidden"
-                                aria-label="Secondary"
+                                aria-label="Main"
+                                class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto"
                             >
-                                <div class="space-x-2">
-                                    <!-- Toggle dark theme button -->
-                                    <button
-                                        aria-hidden="true"
-                                        class="relative focus:outline-none"
-                                        x-cloak
-                                        @click="toggleTheme"
-                                    >
-                                        <div
-                                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
-                                        ></div>
-                                        <div
-                                            class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
-                                            :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
-                                        >
-                                            <span
-                                                aria-hidden="true"
-                                                x-show="!isDark"
-                                                class="iconify h-4 w-4 tabler--moon"
-                                            ></span>
-                                            <span
-                                                aria-hidden="true"
-                                                x-show="isDark"
-                                                class="iconify h-4 w-4 tabler--sun"
-                                            ></span>
-                                        </div>
-                                    </button>
-
-                                    <!-- Notification button -->
-                                    <button
-                                        @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
-                                        <span class="sr-only">Open notifications panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
-                                    </button>
-
-                                    <!-- Search button -->
-                                    <button
-                                        @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
-                                        <span class="sr-only">Open search panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
-                                    </button>
-
-                                    <!-- Settings button -->
-                                    <button
-                                        @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
-                                        <span class="sr-only">Open settings panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
-                                    </button>
-                                </div>
-
-                                <!-- User avatar button -->
-                                <div class="relative ml-auto" x-data="{ open: false }">
-                                    <button
-                                        @click="open = !open"
-                                        type="button"
-                                        aria-haspopup="true"
-                                        :aria-expanded="open ? 'true' : 'false'"
-                                        class="block rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                                    >
-                                        <span class="sr-only">User menu</span>
-                                        <img
-                                            class="h-10 w-10 rounded-full"
-                                            src="/images/avatar.jpg"
-                                            alt="Ahmed Kamel"
-                                        />
-                                    </button>
-
-                                    <!-- User dropdown menu -->
-                                    <div
-                                        x-show="open"
-                                        x-transition:enter="transition-all transform ease-out"
-                                        x-transition:enter-start="translate-y-1/2 opacity-0"
-                                        x-transition:enter-end="translate-y-0 opacity-100"
-                                        x-transition:leave="transition-all transform ease-in"
-                                        x-transition:leave-start="translate-y-0 opacity-100"
-                                        x-transition:leave-end="translate-y-1/2 opacity-0"
-                                        @click.away="open = false"
-                                        class="absolute right-0 top-12 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-dark"
-                                        role="menu"
-                                        aria-orientation="vertical"
-                                        aria-label="User menu"
-                                    >
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Your Profile
-                                        </a>
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Settings
-                                        </a>
-                                        <a
-                                            href="#"
-                                            role="menuitem"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                        >
-                                            Logout
-                                        </a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-
-                        <!-- Mobile main manu -->
-                        <div
-                            class="border-b dark:border-primary-darker md:hidden"
-                            x-show="isMobileMainMenuOpen"
-                            @click.away="isMobileMainMenuOpen = false"
-                            x-collapse
-                        >
-                            <nav aria-label="Main" class="space-y-2 px-2 py-4">
                                 <a
                                     href="/"
                                     class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
@@ -436,712 +99,1191 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div x-data="{ open:  false  }">
+                                    <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                                    <a
+                                        href="#"
+                                        @click="$event.preventDefault(); open = !open"
+                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                        :class="{ 'bg-primary-100 dark:bg-primary': open }"
+                                        role="button"
+                                        aria-haspopup="true"
+                                        :aria-expanded="open ? 'true' : 'false'"
+                                    >
+                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
+                                        <span class="font-semibold"> Authentication </span>
+                                        <span
+                                            aria-hidden="true"
+                                            class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                            :class="{ 'rotate-180': open }"
+                                        ></span>
+                                    </a>
+
+                                    <div
+                                        x-show="open"
+                                        x-collapse
+                                        class="space-y-2 px-7"
+                                        role="menu"
+                                        arial-label="Authentication"
+                                    >
+                                        <div class="mt-2">
+                                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                            <a
+                                                href="/auth/login.html"
+                                                role="menuitem"
+                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                            >
+                                                Login
+                                            </a>
+                                            <a
+                                                href="/auth/register.html"
+                                                role="menuitem"
+                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                            >
+                                                Register
+                                            </a>
+                                            <a
+                                                href="/auth/forgot-password.html"
+                                                role="menuitem"
+                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                            >
+                                                Forgot password
+                                            </a>
+                                            <a
+                                                href="/auth/reset-password.html"
+                                                role="menuitem"
+                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                            >
+                                                Reset password
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </nav>
-                        </div>
-                    </div>
 
-                    <!-- Page header -->
-                    <header
-                        class="flex flex-shrink-0 items-center justify-between border-b px-4 py-4 dark:border-primary-darker lg:py-6"
-                    >
-                        <h2 class="text-2xl font-semibold">Dashboard</h2>
-                        <a
-                            href="https://github.com/Kamona-WD/kwd-dashboard"
-                            target="_blank"
-                            class="inline-flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm text-white transition-all hover:bg-black/80 focus:outline-none focus:ring focus:ring-black focus:ring-offset-1 focus:ring-offset-white dark:hover:bg-black/60 dark:focus:ring-offset-dark"
-                        >
-                            <span aria-hidden="true" class="iconify h-4 w-4 tabler--brand-github"></span>
-                            <span>View on github</span>
-                        </a>
-                    </header>
-
-                    <!-- Main content -->
-                    <main class="flex-1">
-                        <!-- Content -->
-
-                        <h1 class="sr-only">Dashboard</h1>
-                    </main>
-
-                    <!-- Footer -->
-                    <footer
-                        class="flex flex-shrink-0 items-center justify-between border-t bg-white p-4 dark:border-primary-darker dark:bg-darker"
-                    >
-                        <div x-data class="text-sm font-semibold text-gray-600 dark:text-gray-400">
-                            &copy;<span x-text="new Date().getFullYear()"></span>
-                            K-WD, All rights reserved
-                        </div>
-
-                        <div>
-                            Made by
-                            <a href="https://github.com/Kamona-WD" target="_blank" class="text-blue-500 hover:underline"
-                                >Ahmed Kamel</a
-                            >
-                        </div>
-                    </footer>
-                </div>
-
-                <!-- Panels -->
-
-                <!-- Settings Panel -->
-                <!-- Backdrop -->
-                <div
-                    x-transition:enter="transition duration-300 ease-in-out"
-                    x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100"
-                    x-transition:leave="transition duration-300 ease-in-out"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    x-show="isSettingsPanelOpen"
-                    @click="isSettingsPanelOpen = false"
-                    class="fixed inset-0 z-10 bg-primary-darker"
-                    style="opacity: 0.5"
-                    aria-hidden="true"
-                ></div>
-                <!-- Panel -->
-                <section
-                    x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:enter-start="translate-x-full"
-                    x-transition:enter-end="translate-x-0"
-                    x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:leave-start="translate-x-0"
-                    x-transition:leave-end="translate-x-full"
-                    x-ref="settingsPanel"
-                    tabindex="-1"
-                    x-show="isSettingsPanelOpen"
-                    @keydown.escape="isSettingsPanelOpen = false"
-                    class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
-                    aria-labelledby="settinsPanelLabel"
-                >
-                    <div class="absolute left-0 -translate-x-full transform p-2">
-                        <!-- Close button -->
-                        <button
-                            @click="isSettingsPanelOpen = false"
-                            class="rounded-md p-2 text-white focus:outline-none focus:ring"
-                        >
-                            <svg
-                                class="h-5 w-5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Panel content -->
-                    <div class="flex h-screen flex-col">
-                        <!-- Panel header -->
-                        <div
-                            class="flex flex-shrink-0 flex-col items-center justify-center space-y-4 border-b px-4 py-8 dark:border-primary-dark"
-                        >
-                            <span aria-hidden="true" class="text-gray-500 dark:text-primary">
-                                <svg
-                                    class="h-8 w-8"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <!-- Sidebar footer -->
+                            <div class="flex-shrink-0 space-y-2 px-2 py-4">
+                                <button
+                                    @click="openSettingsPanel"
+                                    type="button"
+                                    class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                                    />
-                                </svg>
-                            </span>
-                            <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">
-                                Settings
-                            </h2>
-                        </div>
-                        <!-- Content -->
-                        <div class="flex-1 overflow-hidden hover:overflow-y-auto">
-                            <!-- Theme -->
-                            <div class="space-y-4 p-4 md:p-8">
-                                <h6 class="text-lg font-medium text-gray-400 dark:text-light">Mode</h6>
-                                <div class="flex items-center space-x-8">
-                                    <!-- Light button -->
-                                    <button
-                                        @click="setLightTheme"
-                                        class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                                        :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !isDark, 'text-gray-500 dark:text-primary-light': isDark }"
-                                    >
-                                        <span>
-                                            <svg
-                                                class="h-6 w-6"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span>Light</span>
-                                    </button>
+                                    <span aria-hidden="true" class="iconify h-4 w-4 tabler--adjustments"></span>
 
-                                    <!-- Dark button -->
-                                    <button
-                                        @click="setDarkTheme"
-                                        class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                                        :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': isDark, 'text-gray-500 dark:text-primary-light': !isDark }"
-                                    >
-                                        <span>
-                                            <svg
-                                                class="h-6 w-6"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span>Dark</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Colors -->
-                            <div class="space-y-4 p-4 md:p-8">
-                                <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
-                                <div>
-                                    <button
-                                        @click="setColors('cyan')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-cyan)"
-                                    ></button>
-                                    <button
-                                        @click="setColors('teal')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-teal)"
-                                    ></button>
-                                    <button
-                                        @click="setColors('green')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-green)"
-                                    ></button>
-                                    <button
-                                        @click="setColors('fuchsia')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-fuchsia)"
-                                    ></button>
-                                    <button
-                                        @click="setColors('blue')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-blue)"
-                                    ></button>
-                                    <button
-                                        @click="setColors('violet')"
-                                        class="h-10 w-10 rounded-full"
-                                        style="background-color: var(--color-violet)"
-                                    ></button>
-                                </div>
+                                    <span class="font-semibold">Customize</span>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </aside>
 
-                <!-- Notification panel -->
-                <!-- Backdrop -->
-                <div
-                    x-transition:enter="transition duration-300 ease-in-out"
-                    x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100"
-                    x-transition:leave="transition duration-300 ease-in-out"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    x-show="isNotificationsPanelOpen"
-                    @click="isNotificationsPanelOpen = false"
-                    class="fixed inset-0 z-10 bg-primary-darker"
-                    style="opacity: 0.5"
-                    aria-hidden="true"
-                ></div>
-                <!-- Panel -->
-                <section
-                    x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:enter-start="-translate-x-full"
-                    x-transition:enter-end="translate-x-0"
-                    x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:leave-start="translate-x-0"
-                    x-transition:leave-end="-translate-x-full"
-                    x-ref="notificationsPanel"
-                    x-show="isNotificationsPanelOpen"
-                    @keydown.escape="isNotificationsPanelOpen = false"
-                    tabindex="-1"
-                    aria-labelledby="notificationPanelLabel"
-                    class="fixed inset-y-0 z-20 w-full max-w-xs bg-white focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
-                >
-                    <div class="absolute right-0 translate-x-full transform p-2">
-                        <!-- Close button -->
-                        <button
-                            @click="isNotificationsPanelOpen = false"
-                            class="rounded-md p-2 text-white focus:outline-none focus:ring"
-                        >
-                            <svg
-                                class="h-5 w-5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex h-screen flex-col" x-data="{ activeTabe: 'action' }">
-                        <!-- Panel header -->
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-between border-b px-4 pt-4 dark:border-primary-darker"
-                            >
-                                <h2 id="notificationPanelLabel" class="pb-4 font-semibold">Notifications</h2>
-                                <div class="space-x-2">
-                                    <button
-                                        @click.prevent="activeTabe = 'action'"
-                                        class="translate-y-px transform border-b px-px pb-4 transition-all duration-200 focus:outline-none"
-                                        :class="{'border-primary-dark dark:border-primary': activeTabe == 'action', 'border-transparent': activeTabe != 'action'}"
-                                    >
-                                        Action
-                                    </button>
-                                    <button
-                                        @click.prevent="activeTabe = 'user'"
-                                        class="translate-y-px transform border-b px-px pb-4 transition-all duration-200 focus:outline-none"
-                                        :class="{'border-primary-dark dark:border-primary': activeTabe == 'user', 'border-transparent': activeTabe != 'user'}"
-                                    >
-                                        User
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex flex-1 flex-col">
+                        <!-- Navbar -->
+                        <div class="sticky top-0 flex-shrink-0 bg-white dark:bg-darker">
+                            <div class="flex items-center justify-between border-b p-2 dark:border-primary-darker">
+                                <!-- Mobile menu button -->
+                                <button
+                                    @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
+                                    class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
+                                >
+                                    <span class="sr-only">Open main manu</span>
 
-                        <!-- Panel content (tabs) -->
-                        <div class="flex-1 overflow-y-hidden pt-4 hover:overflow-y-auto">
-                            <!-- Action tab -->
-                            <div class="space-y-4" x-show.transition.in="activeTabe == 'action'">
-                                <a href="#" class="block">
-                                    <div class="flex space-x-4 px-4">
-                                        <div class="relative flex-shrink-0">
+                                    <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
+                                </button>
+
+                                <!-- Brand -->
+                                <a
+                                    href="/"
+                                    class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                                >
+                                    K-WD
+                                </a>
+
+                                <!-- Mobile sub menu button -->
+                                <button
+                                    @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
+                                    class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
+                                >
+                                    <span class="sr-only">Open sub manu</span>
+                                    <span aria-hidden="true" class="iconify h-8 w-8 tabler--dots-vertical"></span>
+                                </button>
+
+                                <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
+                                    <!-- Toggle dark theme button -->
+                                    <button
+                                        aria-hidden="true"
+                                        class="relative focus:outline-none"
+                                        x-cloak
+                                        @click="toggleTheme"
+                                    >
+                                        <div
+                                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
+                                        ></div>
+                                        <div
+                                            class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
+                                            :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                                        >
                                             <span
-                                                class="z-10 inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
-                                            >
-                                                <svg
-                                                    class="h-7 w-7"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                                    />
-                                                </svg>
-                                            </span>
-                                            <div
-                                                class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                            ></div>
+                                                aria-hidden="true"
+                                                x-show="!isDark"
+                                                class="iconify h-4 w-4 tabler--moon"
+                                            ></span>
+                                            <span
+                                                aria-hidden="true"
+                                                x-show="isDark"
+                                                class="iconify h-4 w-4 tabler--sun"
+                                            ></span>
                                         </div>
-                                        <div class="flex-1 overflow-hidden">
-                                            <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                New project "KWD Dashboard" created
-                                            </h5>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                    </button>
+
+                                    <!-- Notification button -->
+                                    <button
+                                        @click="openNotificationsPanel"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open Notification panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
+                                    </button>
+
+                                    <!-- Search button -->
+                                    <button
+                                        @click="openSearchPanel"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open search panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
+                                    </button>
+
+                                    <!-- Settings button -->
+                                    <button
+                                        @click="openSettingsPanel"
+                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                    >
+                                        <span class="sr-only">Open settings panel</span>
+                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
+                                    </button>
+
+                                    <!-- User avatar button -->
+                                    <div class="relative" x-data="{ open: false }">
+                                        <button
+                                            @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
+                                            type="button"
+                                            aria-haspopup="true"
+                                            :aria-expanded="open ? 'true' : 'false'"
+                                            class="rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
+                                        >
+                                            <span class="sr-only">User menu</span>
+                                            <img
+                                                class="h-10 w-10 rounded-full"
+                                                src="/images/avatar.jpg"
+                                                alt="User avatar"
+                                            />
+                                        </button>
+
+                                        <!-- User dropdown menu -->
+                                        <div
+                                            x-show="open"
+                                            x-ref="userMenu"
+                                            x-transition:enter="transition-all transform ease-out"
+                                            x-transition:enter-start="translate-y-1/2 opacity-0"
+                                            x-transition:enter-end="translate-y-0 opacity-100"
+                                            x-transition:leave="transition-all transform ease-in"
+                                            x-transition:leave-start="translate-y-0 opacity-100"
+                                            x-transition:leave-end="translate-y-1/2 opacity-0"
+                                            @click.away="open = false"
+                                            @keydown.escape="open = false"
+                                            class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                                            tabindex="-1"
+                                            role="menu"
+                                            aria-orientation="vertical"
+                                            aria-label="User menu"
+                                        >
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
                                             >
-                                                Looks like there might be a new theme soon
-                                            </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                9h ago
-                                            </span>
+                                                Your Profile
+                                            </a>
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                            >
+                                                Settings
+                                            </a>
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                            >
+                                                Logout
+                                            </a>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="#" class="block">
-                                    <div class="flex space-x-4 px-4">
-                                        <div class="relative flex-shrink-0">
-                                            <span
-                                                class="inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
-                                            >
-                                                <svg
-                                                    class="h-7 w-7"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                                    />
-                                                </svg>
-                                            </span>
+                                </nav>
+
+                                <!-- Mobile sub menu -->
+                                <nav
+                                    x-transition:enter="transition duration-200 ease-in-out transform sm:duration-500"
+                                    x-transition:enter-start="-translate-y-full opacity-0"
+                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                    x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                    x-transition:leave-end="-translate-y-full opacity-0"
+                                    x-show="isMobileSubMenuOpen"
+                                    @click.away="isMobileSubMenuOpen = false"
+                                    class="absolute inset-x-4 top-16 flex items-center rounded-md bg-white p-4 shadow-lg dark:bg-darker md:hidden"
+                                    aria-label="Secondary"
+                                >
+                                    <div class="space-x-2">
+                                        <!-- Toggle dark theme button -->
+                                        <button
+                                            aria-hidden="true"
+                                            class="relative focus:outline-none"
+                                            x-cloak
+                                            @click="toggleTheme"
+                                        >
                                             <div
-                                                class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
                                             ></div>
-                                        </div>
-                                        <div class="flex-1 overflow-hidden">
-                                            <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                KWD Dashboard v0.0.2 was released
-                                            </h5>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                            <div
+                                                class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
+                                                :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
                                             >
-                                                Successful new version was released
-                                            </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                2d ago
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <template x-for="i in 20" x-key="i">
-                                    <a href="#" class="block">
-                                        <div class="flex space-x-4 px-4">
-                                            <div class="relative flex-shrink-0">
                                                 <span
-                                                    class="inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
-                                                >
-                                                    <svg
-                                                        class="h-7 w-7"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke="currentColor"
-                                                    >
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <div
-                                                    class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                                ></div>
+                                                    aria-hidden="true"
+                                                    x-show="!isDark"
+                                                    class="iconify h-4 w-4 tabler--moon"
+                                                ></span>
+                                                <span
+                                                    aria-hidden="true"
+                                                    x-show="isDark"
+                                                    class="iconify h-4 w-4 tabler--sun"
+                                                ></span>
                                             </div>
-                                            <div class="flex-1 overflow-hidden">
-                                                <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                    New project "KWD Dashboard" created
-                                                </h5>
-                                                <p
-                                                    class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                >
-                                                    Looks like there might be a new theme soon
-                                                </p>
-                                                <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                    9h ago
-                                                </span>
-                                            </div>
+                                        </button>
+
+                                        <!-- Notification button -->
+                                        <button
+                                            @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                        >
+                                            <span class="sr-only">Open notifications panel</span>
+                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
+                                        </button>
+
+                                        <!-- Search button -->
+                                        <button
+                                            @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
+                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                        >
+                                            <span class="sr-only">Open search panel</span>
+                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
+                                        </button>
+
+                                        <!-- Settings button -->
+                                        <button
+                                            @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
+                                        >
+                                            <span class="sr-only">Open settings panel</span>
+                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
+                                        </button>
+                                    </div>
+
+                                    <!-- User avatar button -->
+                                    <div class="relative ml-auto" x-data="{ open: false }">
+                                        <button
+                                            @click="open = !open"
+                                            type="button"
+                                            aria-haspopup="true"
+                                            :aria-expanded="open ? 'true' : 'false'"
+                                            class="block rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
+                                        >
+                                            <span class="sr-only">User menu</span>
+                                            <img
+                                                class="h-10 w-10 rounded-full"
+                                                src="/images/avatar.jpg"
+                                                alt="Ahmed Kamel"
+                                            />
+                                        </button>
+
+                                        <!-- User dropdown menu -->
+                                        <div
+                                            x-show="open"
+                                            x-transition:enter="transition-all transform ease-out"
+                                            x-transition:enter-start="translate-y-1/2 opacity-0"
+                                            x-transition:enter-end="translate-y-0 opacity-100"
+                                            x-transition:leave="transition-all transform ease-in"
+                                            x-transition:leave-start="translate-y-0 opacity-100"
+                                            x-transition:leave-end="translate-y-1/2 opacity-0"
+                                            @click.away="open = false"
+                                            class="absolute right-0 top-12 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-dark"
+                                            role="menu"
+                                            aria-orientation="vertical"
+                                            aria-label="User menu"
+                                        >
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                            >
+                                                Your Profile
+                                            </a>
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                            >
+                                                Settings
+                                            </a>
+                                            <a
+                                                href="#"
+                                                role="menuitem"
+                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                            >
+                                                Logout
+                                            </a>
                                         </div>
-                                    </a>
-                                </template>
+                                    </div>
+                                </nav>
                             </div>
 
-                            <!-- User tab -->
-                            <div class="space-y-4" x-show.transition.in="activeTabe == 'user'">
-                                <a href="#" class="block">
-                                    <div class="flex space-x-4 px-4">
-                                        <div class="relative flex-shrink-0">
-                                            <span class="rounded-ful relative z-10 inline-block overflow-visible">
-                                                <img
-                                                    class="h-9 w-9 rounded-full object-cover"
-                                                    src="build/images/avatar.jpg"
-                                                    alt="Ahmed kamel"
-                                                />
-                                            </span>
-                                            <div
-                                                class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                            ></div>
-                                        </div>
-                                        <div class="flex-1 overflow-hidden">
-                                            <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                Ahmed Kamel
-                                            </h5>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
-                                                Shared new project "K-WD Dashboard"
-                                            </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                1d ago
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="block">
-                                    <div class="flex space-x-4 px-4">
-                                        <div class="relative flex-shrink-0">
-                                            <span class="rounded-ful relative z-10 inline-block overflow-visible">
-                                                <img
-                                                    class="h-9 w-9 rounded-full object-cover"
-                                                    src="build/images/avatar-1.jpg"
-                                                    alt="Ahmed kamel"
-                                                />
-                                            </span>
-                                            <div
-                                                class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                            ></div>
-                                        </div>
-                                        <div class="flex-1 overflow-hidden">
-                                            <h5 class="text-sm font-semibold text-gray-600 dark:text-light">John</h5>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
-                                                Commit new changes to K-WD Dashboard project.
-                                            </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                10h ago
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="block">
-                                    <div class="flex space-x-4 px-4">
-                                        <div class="relative flex-shrink-0">
-                                            <span class="rounded-ful relative z-10 inline-block overflow-visible">
-                                                <img
-                                                    class="h-9 w-9 rounded-full object-cover"
-                                                    src="build/images/avatar.jpg"
-                                                    alt="Ahmed kamel"
-                                                />
-                                            </span>
-                                            <div
-                                                class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                            ></div>
-                                        </div>
-                                        <div class="flex-1 overflow-hidden">
-                                            <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                Ahmed Kamel
-                                            </h5>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
-                                                Release new version "K-WD Dashboard"
-                                            </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                20d ago
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <template x-for="i in 10" x-key="i">
-                                    <a href="#" class="block">
-                                        <div class="flex space-x-4 px-4">
-                                            <div class="relative flex-shrink-0">
-                                                <span class="rounded-ful relative z-10 inline-block overflow-visible">
-                                                    <img
-                                                        class="h-9 w-9 rounded-full object-cover"
-                                                        src="build/images/avatar.jpg"
-                                                        alt="Ahmed kamel"
-                                                    />
-                                                </span>
-                                                <div
-                                                    class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
-                                                ></div>
-                                            </div>
-                                            <div class="flex-1 overflow-hidden">
-                                                <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                    Ahmed Kamel
-                                                </h5>
-                                                <p
-                                                    class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                >
-                                                    Release new version "K-WD Dashboard"
-                                                </p>
-                                                <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                    20d ago
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Search panel -->
-                <!-- Backdrop -->
-                <div
-                    x-transition:enter="transition duration-300 ease-in-out"
-                    x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100"
-                    x-transition:leave="transition duration-300 ease-in-out"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    x-show="isSearchPanelOpen"
-                    @click="isSearchPanelOpen = false"
-                    class="fixed inset-0 z-10 bg-primary-darker"
-                    style="opacity: 0.5"
-                    aria-hidden="ture"
-                ></div>
-                <!-- Panel -->
-                <section
-                    x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:enter-start="-translate-x-full"
-                    x-transition:enter-end="translate-x-0"
-                    x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
-                    x-transition:leave-start="translate-x-0"
-                    x-transition:leave-end="-translate-x-full"
-                    x-show="isSearchPanelOpen"
-                    @keydown.escape="isSearchPanelOpen = false"
-                    class="fixed inset-y-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
-                >
-                    <div class="absolute right-0 translate-x-full transform p-2">
-                        <!-- Close button -->
-                        <button
-                            @click="isSearchPanelOpen = false"
-                            class="rounded-md p-2 text-white focus:outline-none focus:ring"
-                        >
-                            <svg
-                                class="h-5 w-5"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+                            <!-- Mobile main manu -->
+                            <div
+                                class="border-b dark:border-primary-darker md:hidden"
+                                x-show="isMobileMainMenuOpen"
+                                @click.away="isMobileMainMenuOpen = false"
+                                x-collapse
                             >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-                    </div>
+                                <nav aria-label="Main" class="space-y-2 px-2 py-4">
+                                    <a
+                                        href="/"
+                                        class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
+                                    >
+                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
+                                        <span class="font-semibold"> Dashboard </span>
+                                    </a>
+                                    <div x-data="{ open:  false  }">
+                                        <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                                        <a
+                                            href="#"
+                                            @click="$event.preventDefault(); open = !open"
+                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                            :class="{ 'bg-primary-100 dark:bg-primary': open }"
+                                            role="button"
+                                            aria-haspopup="true"
+                                            :aria-expanded="open ? 'true' : 'false'"
+                                        >
+                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
+                                            <span class="font-semibold"> Pages </span>
+                                            <span
+                                                aria-hidden="true"
+                                                class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                                :class="{ 'rotate-180': open }"
+                                            ></span>
+                                        </a>
 
-                    <h2 class="sr-only">Search panel</h2>
-                    <!-- Panel content -->
-                    <div class="flex h-screen flex-col">
-                        <!-- Panel header (Search input) -->
-                        <div
-                            class="relative flex-shrink-0 border-b px-4 py-8 text-gray-400 focus-within:text-gray-700 dark:border-primary-darker dark:focus-within:text-light"
+                                        <div
+                                            x-show="open"
+                                            x-collapse
+                                            class="space-y-2 px-7"
+                                            role="menu"
+                                            arial-label="Pages"
+                                        >
+                                            <div class="mt-2">
+                                                <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                                <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                                <a
+                                                    href="/pages/blank.html"
+                                                    role="menuitem"
+                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                >
+                                                    Blank
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div x-data="{ open:  false  }">
+                                        <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                                        <a
+                                            href="#"
+                                            @click="$event.preventDefault(); open = !open"
+                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                            :class="{ 'bg-primary-100 dark:bg-primary': open }"
+                                            role="button"
+                                            aria-haspopup="true"
+                                            :aria-expanded="open ? 'true' : 'false'"
+                                        >
+                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
+                                            <span class="font-semibold"> Authentication </span>
+                                            <span
+                                                aria-hidden="true"
+                                                class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                                :class="{ 'rotate-180': open }"
+                                            ></span>
+                                        </a>
+
+                                        <div
+                                            x-show="open"
+                                            x-collapse
+                                            class="space-y-2 px-7"
+                                            role="menu"
+                                            arial-label="Authentication"
+                                        >
+                                            <div class="mt-2">
+                                                <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                                <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                                <a
+                                                    href="/auth/login.html"
+                                                    role="menuitem"
+                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                >
+                                                    Login
+                                                </a>
+                                                <a
+                                                    href="/auth/register.html"
+                                                    role="menuitem"
+                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                >
+                                                    Register
+                                                </a>
+                                                <a
+                                                    href="/auth/forgot-password.html"
+                                                    role="menuitem"
+                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                >
+                                                    Forgot password
+                                                </a>
+                                                <a
+                                                    href="/auth/reset-password.html"
+                                                    role="menuitem"
+                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                >
+                                                    Reset password
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Page header -->
+                        <header
+                            class="flex flex-shrink-0 items-center justify-between border-b px-4 py-4 dark:border-primary-darker lg:py-6"
                         >
-                            <span class="absolute inset-y-0 inline-flex items-center px-4">
-                                <svg
-                                    class="h-5 w-5"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <h2 class="text-2xl font-semibold">Dashboard</h2>
+                            <a
+                                href="https://github.com/Kamona-WD/kwd-dashboard"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm text-white transition-all hover:bg-black/80 focus:outline-none focus:ring focus:ring-black focus:ring-offset-1 focus:ring-offset-white dark:hover:bg-black/60 dark:focus:ring-offset-dark"
+                            >
+                                <span aria-hidden="true" class="iconify h-4 w-4 tabler--brand-github"></span>
+                                <span>View on github</span>
+                            </a>
+                        </header>
+
+                        <!-- Main content -->
+                        <main class="flex-1">
+                            <!-- Content -->
+
+                            <h1 class="sr-only">Dashboard</h1>
+                        </main>
+
+                        <!-- Footer -->
+                        <footer
+                            class="flex flex-shrink-0 items-center justify-between border-t bg-white p-4 dark:border-primary-darker dark:bg-darker"
+                        >
+                            <div x-data class="text-sm font-semibold text-gray-600 dark:text-gray-400">
+                                &copy;<span x-text="new Date().getFullYear()"></span>
+                                K-WD, All rights reserved
+                            </div>
+
+                            <div>
+                                Made by
+                                <a
+                                    href="https://github.com/Kamona-WD"
+                                    target="_blank"
+                                    class="text-blue-500 hover:underline"
+                                    >Ahmed Kamel</a
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                    />
-                                </svg>
-                            </span>
-                            <input
-                                x-ref="searchInput"
-                                type="text"
-                                class="w-full rounded-full border py-2 pl-10 pr-4 focus:outline-none focus:ring dark:border-transparent dark:bg-dark dark:text-light"
-                                placeholder="Search..."
-                            />
+                            </div>
+                        </footer>
+                    </div>
+
+                    <!-- Panels -->
+
+                    <!-- Settings Panel -->
+                    <!-- Backdrop -->
+                    <div
+                        x-transition:enter="transition duration-300 ease-in-out"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition duration-300 ease-in-out"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        x-show="isSettingsPanelOpen"
+                        @click="isSettingsPanelOpen &#x3D; false"
+                        class="fixed inset-0 z-10 bg-primary-darker opacity-50"
+                        aria-hidden="true"
+                    ></div>
+
+                    <!-- Panel -->
+                    <section
+                        x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:enter-start=" translate-x-full "
+                        x-transition:enter-end="translate-x-0"
+                        x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:leave-start="translate-x-0"
+                        x-transition:leave-end=" translate-x-full "
+                        x-ref="settingsPanel"
+                        tabindex="-1"
+                        x-show="isSettingsPanelOpen"
+                        @keydown.escape="isSettingsPanelOpen &#x3D; false"
+                        class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                    >
+                        <h2 class="sr-only">Settings panel</h2>
+
+                        <div class="absolute left-0 -translate-x-full p-2">
+                            <!-- Close button -->
+                            <button
+                                @click="isSettingsPanelOpen &#x3D; false"
+                                class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
+                            >
+                                <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
+                            </button>
                         </div>
 
-                        <!-- Panel content (Search result) -->
-                        <div class="h flex-1 space-y-4 overflow-y-hidden px-4 pb-4 hover:overflow-y-auto">
-                            <h3 class="py-2 text-sm font-semibold text-gray-600 dark:text-light">History</h3>
-                            <a href="#" class="flex space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-lg" src="build/images/cover.jpg" alt="Post cover" />
+                        <!-- Panel content -->
+                        <div class="flex h-screen flex-col">
+                            <!-- Panel header -->
+                            <div
+                                class="flex flex-shrink-0 flex-col items-center justify-center space-y-4 border-b px-4 py-8 dark:border-primary-dark"
+                            >
+                                <span aria-hidden="true" class="text-gray-500 dark:text-primary">
+                                    <svg
+                                        class="h-8 w-8"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                                        />
+                                    </svg>
+                                </span>
+                                <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">
+                                    Settings
+                                </h2>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="flex-1 overflow-hidden hover:overflow-y-auto">
+                                <!-- Theme -->
+                                <div class="space-y-4 p-4 md:p-8">
+                                    <h6 class="text-lg font-medium text-gray-400 dark:text-light">Mode</h6>
+                                    <div class="flex items-center space-x-8">
+                                        <!-- Light button -->
+                                        <button
+                                            @click="setLightTheme"
+                                            class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
+                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !isDark, 'text-gray-500 dark:text-primary-light': isDark }"
+                                        >
+                                            <span>
+                                                <svg
+                                                    class="h-6 w-6"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span>Light</span>
+                                        </button>
+
+                                        <!-- Dark button -->
+                                        <button
+                                            @click="setDarkTheme"
+                                            class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
+                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': isDark, 'text-gray-500 dark:text-primary-light': !isDark }"
+                                        >
+                                            <span>
+                                                <svg
+                                                    class="h-6 w-6"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span>Dark</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="max-w-xs flex-1 overflow-hidden">
-                                    <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Header</h4>
-                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
-                                        Lorem ipsum dolor, sit amet consectetur.
-                                    </p>
-                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                        Post
+
+                                <!-- Colors -->
+                                <div class="space-y-4 p-4 md:p-8">
+                                    <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
+                                    <div>
+                                        <button
+                                            @click="setColors('cyan')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-cyan)"
+                                        ></button>
+                                        <button
+                                            @click="setColors('teal')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-teal)"
+                                        ></button>
+                                        <button
+                                            @click="setColors('green')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-green)"
+                                        ></button>
+                                        <button
+                                            @click="setColors('fuchsia')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-fuchsia)"
+                                        ></button>
+                                        <button
+                                            @click="setColors('blue')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-blue)"
+                                        ></button>
+                                        <button
+                                            @click="setColors('violet')"
+                                            class="h-10 w-10 rounded-full"
+                                            style="background-color: var(--color-violet)"
+                                        ></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Notification panel -->
+                    <!-- Backdrop -->
+                    <div
+                        x-transition:enter="transition duration-300 ease-in-out"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition duration-300 ease-in-out"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        x-show="isNotificationsPanelOpen"
+                        @click="isNotificationsPanelOpen &#x3D; false"
+                        class="fixed inset-0 z-10 bg-primary-darker opacity-50"
+                        aria-hidden="true"
+                    ></div>
+
+                    <!-- Panel -->
+                    <section
+                        x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:enter-start=" -translate-x-full "
+                        x-transition:enter-end="translate-x-0"
+                        x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:leave-start="translate-x-0"
+                        x-transition:leave-end=" -translate-x-full "
+                        x-ref="notificationsPanel"
+                        tabindex="-1"
+                        x-show="isNotificationsPanelOpen"
+                        @keydown.escape="isNotificationsPanelOpen &#x3D; false"
+                        class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                    >
+                        <h2 class="sr-only">Notifications panel</h2>
+
+                        <div class="absolute right-0 translate-x-full p-2">
+                            <!-- Close button -->
+                            <button
+                                @click="isNotificationsPanelOpen &#x3D; false"
+                                class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
+                            >
+                                <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
+                            </button>
+                        </div>
+
+                        <!-- Panel content -->
+                        <div class="flex h-screen flex-col">
+                            <div class="flex h-screen flex-col" x-data="{ activeTabe: 'action' }">
+                                <!-- Panel header -->
+                                <div class="flex-shrink-0">
+                                    <div
+                                        class="flex items-center justify-between border-b px-4 pt-4 dark:border-primary-darker"
+                                    >
+                                        <h2 id="notificationPanelLabel" class="pb-4 font-semibold">Notifications</h2>
+                                        <div class="space-x-2">
+                                            <button
+                                                @click.prevent="activeTabe = 'action'"
+                                                class="translate-y-px transform border-b px-px pb-4 transition-all duration-200 focus:outline-none"
+                                                :class="{'border-primary-dark dark:border-primary': activeTabe == 'action', 'border-transparent': activeTabe != 'action'}"
+                                            >
+                                                Action
+                                            </button>
+                                            <button
+                                                @click.prevent="activeTabe = 'user'"
+                                                class="translate-y-px transform border-b px-px pb-4 transition-all duration-200 focus:outline-none"
+                                                :class="{'border-primary-dark dark:border-primary': activeTabe == 'user', 'border-transparent': activeTabe != 'user'}"
+                                            >
+                                                User
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel content (tabs) -->
+                                <div class="flex-1 overflow-y-hidden pt-4 hover:overflow-y-auto">
+                                    <!-- Action tab -->
+                                    <div class="space-y-4" x-show.transition.in="activeTabe == 'action'">
+                                        <a href="#" class="block">
+                                            <div class="flex space-x-4 px-4">
+                                                <div class="relative flex-shrink-0">
+                                                    <span
+                                                        class="z-10 inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
+                                                    >
+                                                        <svg
+                                                            class="h-7 w-7"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                                            />
+                                                        </svg>
+                                                    </span>
+                                                    <div
+                                                        class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                    ></div>
+                                                </div>
+                                                <div class="flex-1 overflow-hidden">
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                        New project "KWD Dashboard" created
+                                                    </h5>
+                                                    <p
+                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                    >
+                                                        Looks like there might be a new theme soon
+                                                    </p>
+                                                    <span
+                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                    >
+                                                        9h ago
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="block">
+                                            <div class="flex space-x-4 px-4">
+                                                <div class="relative flex-shrink-0">
+                                                    <span
+                                                        class="inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
+                                                    >
+                                                        <svg
+                                                            class="h-7 w-7"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                                            />
+                                                        </svg>
+                                                    </span>
+                                                    <div
+                                                        class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                    ></div>
+                                                </div>
+                                                <div class="flex-1 overflow-hidden">
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                        KWD Dashboard v0.0.2 was released
+                                                    </h5>
+                                                    <p
+                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                    >
+                                                        Successful new version was released
+                                                    </p>
+                                                    <span
+                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                    >
+                                                        2d ago
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <template x-for="i in 20" x-key="i">
+                                            <a href="#" class="block">
+                                                <div class="flex space-x-4 px-4">
+                                                    <div class="relative flex-shrink-0">
+                                                        <span
+                                                            class="inline-block overflow-visible rounded-full bg-primary-50 p-2 text-primary-light dark:bg-primary-darker"
+                                                        >
+                                                            <svg
+                                                                class="h-7 w-7"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke="currentColor"
+                                                            >
+                                                                <path
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                                                />
+                                                            </svg>
+                                                        </span>
+                                                        <div
+                                                            class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                        ></div>
+                                                    </div>
+                                                    <div class="flex-1 overflow-hidden">
+                                                        <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                            New project "KWD Dashboard" created
+                                                        </h5>
+                                                        <p
+                                                            class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                        >
+                                                            Looks like there might be a new theme soon
+                                                        </p>
+                                                        <span
+                                                            class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                        >
+                                                            9h ago
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </template>
+                                    </div>
+
+                                    <!-- User tab -->
+                                    <div class="space-y-4" x-show.transition.in="activeTabe == 'user'">
+                                        <a href="#" class="block">
+                                            <div class="flex space-x-4 px-4">
+                                                <div class="relative flex-shrink-0">
+                                                    <span
+                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
+                                                    >
+                                                        <img
+                                                            class="h-9 w-9 rounded-full object-cover"
+                                                            src="build/images/avatar.jpg"
+                                                            alt="Ahmed kamel"
+                                                        />
+                                                    </span>
+                                                    <div
+                                                        class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                    ></div>
+                                                </div>
+                                                <div class="flex-1 overflow-hidden">
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                        Ahmed Kamel
+                                                    </h5>
+                                                    <p
+                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                    >
+                                                        Shared new project "K-WD Dashboard"
+                                                    </p>
+                                                    <span
+                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                    >
+                                                        1d ago
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="block">
+                                            <div class="flex space-x-4 px-4">
+                                                <div class="relative flex-shrink-0">
+                                                    <span
+                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
+                                                    >
+                                                        <img
+                                                            class="h-9 w-9 rounded-full object-cover"
+                                                            src="build/images/avatar-1.jpg"
+                                                            alt="Ahmed kamel"
+                                                        />
+                                                    </span>
+                                                    <div
+                                                        class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                    ></div>
+                                                </div>
+                                                <div class="flex-1 overflow-hidden">
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                        John
+                                                    </h5>
+                                                    <p
+                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                    >
+                                                        Commit new changes to K-WD Dashboard project.
+                                                    </p>
+                                                    <span
+                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                    >
+                                                        10h ago
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="block">
+                                            <div class="flex space-x-4 px-4">
+                                                <div class="relative flex-shrink-0">
+                                                    <span
+                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
+                                                    >
+                                                        <img
+                                                            class="h-9 w-9 rounded-full object-cover"
+                                                            src="build/images/avatar.jpg"
+                                                            alt="Ahmed kamel"
+                                                        />
+                                                    </span>
+                                                    <div
+                                                        class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                    ></div>
+                                                </div>
+                                                <div class="flex-1 overflow-hidden">
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                        Ahmed Kamel
+                                                    </h5>
+                                                    <p
+                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                    >
+                                                        Release new version "K-WD Dashboard"
+                                                    </p>
+                                                    <span
+                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                    >
+                                                        20d ago
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <template x-for="i in 10" x-key="i">
+                                            <a href="#" class="block">
+                                                <div class="flex space-x-4 px-4">
+                                                    <div class="relative flex-shrink-0">
+                                                        <span
+                                                            class="rounded-ful relative z-10 inline-block overflow-visible"
+                                                        >
+                                                            <img
+                                                                class="h-9 w-9 rounded-full object-cover"
+                                                                src="build/images/avatar.jpg"
+                                                                alt="Ahmed kamel"
+                                                            />
+                                                        </span>
+                                                        <div
+                                                            class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
+                                                        ></div>
+                                                    </div>
+                                                    <div class="flex-1 overflow-hidden">
+                                                        <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                            Ahmed Kamel
+                                                        </h5>
+                                                        <p
+                                                            class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                        >
+                                                            Release new version "K-WD Dashboard"
+                                                        </p>
+                                                        <span
+                                                            class="text-sm font-normal text-gray-400 dark:text-primary-light"
+                                                        >
+                                                            20d ago
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Search panel -->
+                    <!-- Backdrop -->
+                    <div
+                        x-transition:enter="transition duration-300 ease-in-out"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition duration-300 ease-in-out"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        x-show="isSearchPanelOpen"
+                        @click="isSearchPanelOpen &#x3D; false"
+                        class="fixed inset-0 z-10 bg-primary-darker opacity-50"
+                        aria-hidden="true"
+                    ></div>
+
+                    <!-- Panel -->
+                    <section
+                        x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:enter-start=" -translate-x-full "
+                        x-transition:enter-end="translate-x-0"
+                        x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+                        x-transition:leave-start="translate-x-0"
+                        x-transition:leave-end=" -translate-x-full "
+                        x-ref="searchPanel"
+                        tabindex="-1"
+                        x-show="isSearchPanelOpen"
+                        @keydown.escape="isSearchPanelOpen &#x3D; false"
+                        class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                    >
+                        <h2 class="sr-only">Search panel</h2>
+
+                        <div class="absolute right-0 translate-x-full p-2">
+                            <!-- Close button -->
+                            <button
+                                @click="isSearchPanelOpen &#x3D; false"
+                                class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
+                            >
+                                <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
+                            </button>
+                        </div>
+
+                        <!-- Panel content -->
+                        <div class="flex h-screen flex-col">
+                            <!-- Panel content -->
+                            <div class="flex h-screen flex-col">
+                                <!-- Panel header (Search input) -->
+                                <div
+                                    class="relative flex-shrink-0 border-b px-4 py-8 text-gray-400 focus-within:text-gray-700 dark:border-primary-darker dark:focus-within:text-light"
+                                >
+                                    <span class="absolute inset-y-0 inline-flex items-center px-4">
+                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--search"></span>
                                     </span>
-                                </div>
-                            </a>
-                            <a href="#" class="flex space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-lg" src="build/images/avatar.jpg" alt="Ahmed Kamel" />
-                                </div>
-                                <div class="max-w-xs flex-1 overflow-hidden">
-                                    <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h4>
-                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
-                                        Last activity 3h ago.
-                                    </p>
-                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                        Offline
-                                    </span>
-                                </div>
-                            </a>
-                            <a href="#" class="flex space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img
-                                        class="h-10 w-10 rounded-lg"
-                                        src="build/images/cover-2.jpg"
-                                        alt="K-WD Dashboard"
+
+                                    <input
+                                        x-ref="searchInput"
+                                        type="text"
+                                        name="search"
+                                        placeholder="Search..."
+                                        class="w-full rounded-full border-gray-400 py-2 pl-10 pr-4 text-base focus:border-primary focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark dark:text-gray-300 dark:focus:ring-offset-dark rtl:pl-4 rtl:pr-10"
                                     />
                                 </div>
-                                <div class="max-w-xs flex-1 overflow-hidden">
-                                    <h4 class="text-sm font-semibold text-gray-600 dark:text-light">K-WD Dashboard</h4>
-                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    </p>
-                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                        Updated 3h ago.
-                                    </span>
+
+                                <!-- Panel content (Search result) -->
+                                <div class="h flex-1 space-y-4 overflow-y-hidden px-4 pb-4 hover:overflow-y-auto">
+                                    <h3 class="py-2 text-sm font-semibold text-gray-600 dark:text-light">History</h3>
+                                    <a href="#" class="flex space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img
+                                                class="h-10 w-10 rounded-lg"
+                                                src="/images/cover.jpg"
+                                                alt="Post cover"
+                                            />
+                                        </div>
+                                        <div class="max-w-xs flex-1 overflow-hidden">
+                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Header</h4>
+                                            <p
+                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                            >
+                                                Lorem ipsum dolor, sit amet consectetur.
+                                            </p>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
+                                                Post
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img
+                                                class="h-10 w-10 rounded-lg"
+                                                src="build/images/avatar.jpg"
+                                                alt="Ahmed Kamel"
+                                            />
+                                        </div>
+                                        <div class="max-w-xs flex-1 overflow-hidden">
+                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                Ahmed Kamel
+                                            </h4>
+                                            <p
+                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                            >
+                                                Last activity 3h ago.
+                                            </p>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
+                                                Offline
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img
+                                                class="h-10 w-10 rounded-lg"
+                                                src="build/images/cover-2.jpg"
+                                                alt="K-WD Dashboard"
+                                            />
+                                        </div>
+                                        <div class="max-w-xs flex-1 overflow-hidden">
+                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                K-WD Dashboard
+                                            </h4>
+                                            <p
+                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                            >
+                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                            </p>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
+                                                Updated 3h ago.
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <template x-for="i in 10" x-key="i">
+                                        <a href="#" class="flex space-x-4">
+                                            <div class="flex-shrink-0">
+                                                <img
+                                                    class="h-10 w-10 rounded-lg"
+                                                    src="build/images/cover-3.jpg"
+                                                    alt="K-WD Dashboard"
+                                                />
+                                            </div>
+                                            <div class="max-w-xs flex-1 overflow-hidden">
+                                                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
+                                                    K-WD Dashboard
+                                                </h4>
+                                                <p
+                                                    class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
+                                                >
+                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                </p>
+                                                <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
+                                                    Updated 3h ago.
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </template>
                                 </div>
-                            </a>
-                            <template x-for="i in 10" x-key="i">
-                                <a href="#" class="flex space-x-4">
-                                    <div class="flex-shrink-0">
-                                        <img
-                                            class="h-10 w-10 rounded-lg"
-                                            src="build/images/cover-3.jpg"
-                                            alt="K-WD Dashboard"
-                                        />
-                                    </div>
-                                    <div class="max-w-xs flex-1 overflow-hidden">
-                                        <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                            K-WD Dashboard
-                                        </h4>
-                                        <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        </p>
-                                        <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                            Updated 3h ago.
-                                        </span>
-                                    </div>
-                                </a>
-                            </template>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
     </body>

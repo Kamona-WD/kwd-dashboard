@@ -18,20 +18,28 @@ export default {
                 },
             ],
         },
-        // {
-        //     title: 'Authentication',
-        //     url: null,
-        //     iconName: 'tabler--shield',
-        //     links: [
-        //         {
-        //             title: 'Login',
-        //             url: '/auth/login.html',
-        //         },
-        //         {
-        //             title: 'Register',
-        //             url: '/auth/register.html',
-        //         },
-        //     ],
-        // },
+        {
+            title: 'Authentication',
+            url: null,
+            iconName: 'tabler--shield',
+            links: [
+                {
+                    title: 'Login',
+                    url: '/auth/login.html',
+                },
+                {
+                    title: 'Register',
+                    url: '/auth/register.html',
+                },
+                {
+                    title: 'Forgot password',
+                    url: '/auth/forgot-password.html',
+                },
+                {
+                    title: 'Reset password',
+                    url: '/auth/reset-password.html',
+                },
+            ],
+        },
     ],
 }

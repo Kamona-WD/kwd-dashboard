@@ -28,15 +28,20 @@
 >
     <h2 class="sr-only">{{ title }}</h2>
 
-    <div class="absolute {{#if (eq pos 'left')}} right-0 translate-x-full {{else}} left-0 -translate-x-full {{/if}} p-2">
+    <div
+        class="absolute {{#if (eq pos 'left')}} right-0 translate-x-full {{else}} left-0 -translate-x-full {{/if}} p-2"
+    >
         <!-- Close button -->
-        <button @click="{{ close }}" class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring">
-            <span aria-hidden="true" class="iconify tabler--x h-5 w-5"></span>
+        <button
+            @click="{{ close }}"
+            class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
+        >
+            <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
         </button>
     </div>
 
     <!-- Panel content -->
     <div class="flex h-screen flex-col">
-       {{> @partial-block }}
+        {{> @partial-block }}
     </div>
 </section>

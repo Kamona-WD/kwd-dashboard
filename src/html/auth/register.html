@@ -1,0 +1,99 @@
+{{#> layouts/auth pageTitle='Register'}}
+
+{{#*inline "styles"}}{{/inline}}
+
+<h1 class="sr-only">Register</h1>
+
+<div class="w-full space-y-6 overflow-hidden bg-white px-6 py-4 dark:bg-darker sm:max-w-md sm:rounded-lg">
+    <h2 class="text-center text-xl font-semibold">Register</h2>
+
+    <form action="#">
+        <div class="grid gap-6">
+            <div class="flex items-start gap-4">
+                <div class="flex w-full flex-col gap-2">
+                    <div class="flex w-full items-center justify-between gap-2">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> First Name </label>
+                    </div>
+
+                    {{> partials/form/text-input icon="tabler--user" type="text" name="first_name" placeholder="First Name" }}
+                </div>
+
+                <div class="flex w-full flex-col gap-2">
+                    <div class="flex w-full items-center justify-between gap-2">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Last Name </label>
+                    </div>
+
+                    {{> partials/form/text-input icon="tabler--user" type="text" name="last_name" placeholder="Last Name" }}
+                </div>
+            </div>
+
+            <div class="flex w-full flex-col gap-2">
+                <div class="flex w-full items-center justify-between gap-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Email </label>
+                </div>
+
+                {{> partials/form/text-input icon="tabler--mail" type="email" name="email" placeholder="Email address" }}
+            </div>
+
+            <div class="flex w-full flex-col gap-2">
+                <div class="flex w-full items-center justify-between gap-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Password </label>
+                </div>
+
+                {{> partials/form/text-input icon="tabler--lock" type="Password" name="password" placeholder="Password" }}
+            </div>
+
+            <div class="flex w-full flex-col gap-2">
+                <div class="flex w-full items-center justify-between gap-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Confirm password </label>
+                </div>
+
+                {{> partials/form/text-input icon="tabler--lock" type="Password" name="confirm_password" placeholder="Confirm Password" }}
+            </div>
+
+            <div class="flex items-center justify-between">
+                <!-- Accept toggle -->
+                <label class="flex items-center gap-3">
+                    <div class="relative inline-flex items-center">
+                        <input
+                            type="checkbox"
+                            name="accept_terms"
+                            class="toggle h-4 w-10 appearance-none rounded-full border-none bg-gray-200 shadow-inner outline-none transition checked:bg-primary-light focus:outline-none disabled:bg-gray-200"
+                        />
+                        <span
+                            class="absolute left-0 top-0 h-4 w-4 scale-150 transform rounded-full bg-white shadow-sm transition-all"
+                        ></span>
+                    </div>
+                    <span class="font-normal text-gray-500 dark:text-gray-400">
+                        I accept the
+                        <a href="#" class="text-blue-600 hover:underline">Terms and Conditions</a>
+                    </span>
+                </label>
+            </div>
+
+            {{#btn type="submit" classes="w-full" text="Register" startIcon="tabler--user-plus"}}{{/btn}}
+        </div>
+    </form>
+
+    <!-- Or -->
+    <div class="flex flex-nowrap items-center justify-center space-x-2">
+        <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+        <span>OR</span>
+        <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+    </div>
+
+    <!-- Social login links -->
+    {{#btn href="#" type="submit" variant="black" classes="w-full" text="Register using github" startIcon="tabler--brand-github"
+
+
+    }}{{/btn}}
+
+    <!-- Login link -->
+    <div class="text-gray-600 dark:text-gray-400">
+        Already have an account? <a href="login.html" class="text-blue-600 hover:underline">Login</a>
+    </div>
+</div>
+
+{{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
+
+{{/layouts/auth}}

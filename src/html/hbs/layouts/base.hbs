@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="description" content="Admin dashboard template built with tailwindcss and alpinejs." />
+        <meta name="keywords" content="Admin, Dashboard, Template, HTML, CSS, JavaScript, Tailwindcss, Alpinejs" />
+        <meta name="author" content="Ahmed Kamel" />
+
+        <title>{{ title }} {{#if pageTitle}} | {{ pageTitle }} {{/if}}</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            [x-cloak] {
+                display: none;
+            }
+        </style>
+
+        <link rel="stylesheet" href="{{ resolve-from-root '../css/main.css' }}" />
+
+        {{> styles}}
+    </head>
+    <body class="font-sans antialiased">
+        <div
+            x-data="setup()"
+            x-init="$refs.loading.classList.add('hidden'); setColors(color);"
+            :class="{ 'dark': isDark }"
+        >
+            <div class="bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
+                {{> partials/loading-screen }}
+
+                {{> @partial-block }}
+            </div>
+        </div>
+
+        {{> before-script}}
+        <script type="module" src="{{ resolve-from-root '../js/main.js' }}"></script>
+        {{> after-script}}
+
+        <script type="module">
+            window.Alpine && window.Alpine.start()
+        </script>
+    </body>
+</html>
