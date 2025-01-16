@@ -5,7 +5,7 @@
     class="flex items-center gap-2 rounded-md p-2 text-gray-600 {{#if (eq title ../activeLink)}} bg-primary-100 dark:bg-primary {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
 >
     <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
-    <span class="font-semibold"> {{ title }} </span>
+    <span class="font-medium"> {{ title }} </span>
 </a>
 {{else}}
 <div x-data="{ open: {{#if (eq ../group title)}} true {{else}} false {{/if}} }">
@@ -20,7 +20,7 @@
         :aria-expanded="open ? 'true' : 'false'"
     >
         <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
-        <span class="font-semibold"> {{ title }} </span>
+        <span class="font-medium"> {{ title }} </span>
         <span
             aria-hidden="true"
             class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
@@ -36,7 +36,7 @@
             <a
                 href="{{ url }}"
                 role="menuitem"
-                class="block rounded-md p-2 text-sm {{#if (eq ../../activeLink title)}} text-gray-700 dark:text-light {{else}} text-gray-400 dark:text-gray-400 {{/if}} transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
+                class="block rounded-md p-2 {{#if (eq ../../activeLink title)}} text-gray-700 dark:text-light {{else}} text-gray-400 dark:text-gray-400 {{/if}} transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
             >
                 {{ title }}
             </a>

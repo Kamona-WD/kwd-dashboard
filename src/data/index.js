@@ -10,7 +10,7 @@ export default {
         {
             title: 'Pages',
             url: null,
-            iconName: 'tabler--circle',
+            iconName: 'tabler--file',
             links: [
                 {
                     title: '404',

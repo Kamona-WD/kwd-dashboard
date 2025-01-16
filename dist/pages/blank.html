@@ -11,8 +11,11 @@
 
         <title>K-WD Dashboard | Blank</title>
 
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
 
@@ -57,7 +60,7 @@
                                     class="flex items-center gap-2 rounded-md p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                 >
                                     <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
-                                    <span class="font-semibold"> Dashboard </span>
+                                    <span class="font-medium"> Dashboard </span>
                                 </a>
                                 <div x-data="{ open:  true  }">
                                     <!-- active classes 'bg-primary-100 dark:bg-primary' -->
@@ -70,8 +73,8 @@
                                         aria-haspopup="true"
                                         :aria-expanded="open ? 'true' : 'false'"
                                     >
-                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
-                                        <span class="font-semibold"> Pages </span>
+                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--file"></span>
+                                        <span class="font-medium"> Pages </span>
                                         <span
                                             aria-hidden="true"
                                             class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
@@ -92,21 +95,21 @@
                                             <a
                                                 href="/pages/404.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 404
                                             </a>
                                             <a
                                                 href="/pages/500.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 500
                                             </a>
                                             <a
                                                 href="/pages/blank.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-700 transition-colors duration-200 hover:text-gray-700 dark:text-light dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-700 transition-colors duration-200 hover:text-gray-700 dark:text-light dark:hover:text-light"
                                             >
                                                 Blank
                                             </a>
@@ -125,7 +128,7 @@
                                         :aria-expanded="open ? 'true' : 'false'"
                                     >
                                         <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
-                                        <span class="font-semibold"> Authentication </span>
+                                        <span class="font-medium"> Authentication </span>
                                         <span
                                             aria-hidden="true"
                                             class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
@@ -146,28 +149,28 @@
                                             <a
                                                 href="/auth/login.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 Login
                                             </a>
                                             <a
                                                 href="/auth/register.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 Register
                                             </a>
                                             <a
                                                 href="/auth/forgot-password.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 Forgot password
                                             </a>
                                             <a
                                                 href="/auth/reset-password.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                             >
                                                 Reset password
                                             </a>
@@ -177,15 +180,13 @@
                             </nav>
 
                             <!-- Sidebar footer -->
-                            <div class="flex-shrink-0 space-y-2 px-2 py-4">
+                            <div class="flex-shrink-0 px-2 py-4">
                                 <button
-                                    @click="openSettingsPanel"
                                     type="button"
-                                    class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+                                    class="inline-flex w-full select-none items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 font-medium text-white transition-colors hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-dark"
                                 >
-                                    <span aria-hidden="true" class="iconify h-4 w-4 tabler--adjustments"></span>
-
-                                    <span class="font-semibold">Customize</span>
+                                    <span aria-hidden="true" class="iconify h-6 w-6 tabler--adjustments"></span>
+                                    Customize
                                 </button>
                             </div>
                         </div>
@@ -477,7 +478,7 @@
                                         class="flex items-center gap-2 rounded-md p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                     >
                                         <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
-                                        <span class="font-semibold"> Dashboard </span>
+                                        <span class="font-medium"> Dashboard </span>
                                     </a>
                                     <div x-data="{ open:  true  }">
                                         <!-- active classes 'bg-primary-100 dark:bg-primary' -->
@@ -490,8 +491,8 @@
                                             aria-haspopup="true"
                                             :aria-expanded="open ? 'true' : 'false'"
                                         >
-                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--circle"></span>
-                                            <span class="font-semibold"> Pages </span>
+                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--file"></span>
+                                            <span class="font-medium"> Pages </span>
                                             <span
                                                 aria-hidden="true"
                                                 class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
@@ -512,21 +513,21 @@
                                                 <a
                                                     href="/pages/404.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     404
                                                 </a>
                                                 <a
                                                     href="/pages/500.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     500
                                                 </a>
                                                 <a
                                                     href="/pages/blank.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-700 transition-colors duration-200 hover:text-gray-700 dark:text-light dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-700 transition-colors duration-200 hover:text-gray-700 dark:text-light dark:hover:text-light"
                                                 >
                                                     Blank
                                                 </a>
@@ -545,7 +546,7 @@
                                             :aria-expanded="open ? 'true' : 'false'"
                                         >
                                             <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
-                                            <span class="font-semibold"> Authentication </span>
+                                            <span class="font-medium"> Authentication </span>
                                             <span
                                                 aria-hidden="true"
                                                 class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
@@ -566,28 +567,28 @@
                                                 <a
                                                     href="/auth/login.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     Login
                                                 </a>
                                                 <a
                                                     href="/auth/register.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     Register
                                                 </a>
                                                 <a
                                                     href="/auth/forgot-password.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     Forgot password
                                                 </a>
                                                 <a
                                                     href="/auth/reset-password.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-sm text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
                                                 >
                                                     Reset password
                                                 </a>
@@ -600,7 +601,7 @@
 
                         <!-- Page header -->
                         <header
-                            class="flex flex-shrink-0 items-center justify-between border-b px-4 py-4 dark:border-primary-darker lg:py-6"
+                            class="flex flex-shrink-0 items-center justify-between border-b px-2 py-4 dark:border-primary-darker lg:py-6"
                         >
                             <h2 class="text-2xl font-semibold">Blank</h2>
                             <a

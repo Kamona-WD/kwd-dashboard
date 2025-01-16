@@ -9,16 +9,8 @@
         </nav>
 
         <!-- Sidebar footer -->
-        <div class="flex-shrink-0 space-y-2 px-2 py-4">
-            <button
-                @click="openSettingsPanel"
-                type="button"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
-            >
-                <span aria-hidden="true" class="iconify h-4 w-4 tabler--adjustments"></span>
-
-                <span class="font-semibold">Customize</span>
-            </button>
+        <div class="flex-shrink-0 px-2 py-4">
+            {{#btn text="Customize" startIcon="tabler--adjustments" classes="w-full"}}{{/btn}}
         </div>
     </div>
 </aside>
