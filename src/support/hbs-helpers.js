@@ -7,6 +7,8 @@ export default {
     notEq: function (v1, v2) {
         return v1 != v2
     },
+
+    // Very naive but works.
     btn: function (context) {
         const {
             variant = '',
@@ -66,6 +68,17 @@ export default {
                 ${text}
                 ${context.fn?.()}
                 ${ei}
+            </${tag}>
+        `
+    },
+    'base-card': function (context) {
+        const { tag = 'div', attrs = '', className = '' } = context.hash
+
+        let baseClasses = 'rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker'
+
+        return `
+            <${tag} class="${twMerge(baseClasses, className)}" ${attrs}>
+                ${context.fn?.()}
             </${tag}>
         `
     },

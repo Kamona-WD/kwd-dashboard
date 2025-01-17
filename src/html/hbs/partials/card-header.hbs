@@ -1,11 +1,10 @@
 <!-- Card header -->
-<div class="flex items-center justify-between border-b p-4 dark:border-primary">
+<div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
     <h4 class="text-lg font-semibold text-gray-500 dark:text-light">{{ title }}</h4>
 
     <div class="flex items-center">
         <div class="relative" x-data="{ open: false }">
             {{#btn variant="transparent" srText="Card Actions" icon="tabler--dots" classes="p-1.5" attrs='@click="open = !open"'
-
 
             }}{{/btn}}
 

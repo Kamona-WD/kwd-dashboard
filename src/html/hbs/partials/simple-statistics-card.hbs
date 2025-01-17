@@ -1,35 +1,38 @@
-<!-- {{ ttle }} card -->
-<div class="flex items-center justify-between rounded-md bg-white p-4 dark:bg-darker">
+<!-- {{ title }} card -->
+{{#base-card}}
+<div class="flex items-center justify-between p-4">
     <div>
         <h6 class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light">
-            {{ title }}
+            {{ ../title }}
         </h6>
 
         <span class="text-xl font-semibold">
-            {{ total }}
+            {{ ../total }}
         </span>
 
-        {{#if (eq status "up")}}
+        {{#if (eq ../status "up")}}
         <span
             class="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500 dark:bg-green-500 dark:text-green-100"
         >
-            {{ percentage }}
+            {{ ../../percentage }}
         </span>
-        {{else if (eq status "down")}}
+        {{else if (eq ../status "down")}}
         <span
             class="ml-2 inline-block rounded-md bg-red-100 px-2 py-px text-xs text-red-500 dark:bg-red-500 dark:text-red-100"
         >
-            {{ percentage }}
+            {{ ../../percentage }}
         </span>
         {{else}}
         <span
             class="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-px text-xs text-yellow-500 dark:bg-yellow-500 dark:text-yellow-100"
         >
-            {{ percentage }}
+            {{ ../../percentage }}
         </span>
         {{/if}}
     </div>
+
     <div>
-        <span class="iconify {{ icon }} h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
+        <span class="iconify {{ ../icon }} h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
     </div>
 </div>
+{{/base-card}}
