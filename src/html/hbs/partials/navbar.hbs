@@ -1,30 +1,30 @@
 <!-- Navbar -->
 <div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
     <div class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-4">
             <!-- Sidebar button -->
-            <button
-                @click="isSidebarOpen = !isSidebarOpen"
-                class="hidden items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:inline-flex"
-            >
-                <span class="sr-only">Toggle sidebar</span>
-
-                <span
-                    aria-hidden="true"
-                    class="iconify h-8 w-8 transition-transform tabler--chevron-left"
-                    :class="{ '-rotate-180': !isSidebarOpen }"
-                ></span>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                className="hidden lg:inline-flex p-1.5" 
+                srText="Toggle sidebar" 
+                attrs='@click="isSidebarOpen = !isSidebarOpen"' 
+                icon="tabler--chevron-left" 
+                iconSizeClasses="h-8 w-8" 
+                iconClasses="transition-transform" 
+                iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"' 
+            }}{{/btn}}
 
             <!-- Mobile menu button -->
-            <button
-                @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
-                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:hidden"
-            >
-                <span class="sr-only">Open main manu</span>
-
-                <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                className="lg:hidden inline-flex p-1.5" 
+                srText="Toggle main manu" 
+                attrs='@click="isMobileMainMenuOpen = !isMobileMainMenuOpen"' 
+                icon=true
+                iconSizeClasses="h-8 w-8" 
+                iconClasses="transition-transform" 
+                iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"' 
+            }}{{/btn}}
 
             <!-- Brand -->
             <a
@@ -36,13 +36,14 @@
         </div>
 
         <!-- Mobile sub menu button -->
-        <button
-            @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
-            class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-        >
-            <span class="sr-only">Open sub manu</span>
-            <span aria-hidden="true" class="iconify h-8 w-8 tabler--dots-vertical"></span>
-        </button>
+        {{#btn 
+            variant="primary-light" 
+            className="md:hidden inline-flex p-1.5" 
+            srText="Toggle sub manu" 
+            attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
+            icon="tabler--dots-vertical"
+            iconSizeClasses="h-8 w-8" 
+        }}{{/btn}}
 
         <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
             <!-- Toggle dark theme button -->
@@ -71,86 +72,36 @@
             </button>
 
             <!-- Notification button -->
-            <button
-                @click="openNotificationsPanel"
-                class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-            >
-                <span class="sr-only">Open Notification panel</span>
-                <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                srText="Open notification panel" 
+                attrs='@click="openNotificationsPanel"' 
+                icon="tabler--bell"
+                iconSizeClasses="h-8 w-8" 
+                className="p-1.5"
+            }}{{/btn}}
 
             <!-- Search button -->
-            <button
-                @click="openSearchPanel"
-                class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-            >
-                <span class="sr-only">Open search panel</span>
-                <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                srText="Open search panel" 
+                attrs='@click="openSearchPanel"' 
+                icon="tabler--search"
+                iconSizeClasses="h-8 w-8" 
+                className="p-1.5"
+            }}{{/btn}}
 
             <!-- Settings button -->
-            <button
-                @click="$store.settings.panel.open()"
-                class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-            >
-                <span class="sr-only">Open settings panel</span>
-                <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                srText="Open settings panel" 
+                attrs='@click="$store.settings.panel.open()"' 
+                icon="tabler--settings"
+                iconSizeClasses="h-8 w-8" 
+                className="p-1.5"
+            }}{{/btn}}
 
-            <!-- User avatar button -->
-            <div class="relative" x-data="{ open: false }">
-                <button
-                    @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
-                    type="button"
-                    aria-haspopup="true"
-                    :aria-expanded="open ? 'true' : 'false'"
-                    class="rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                >
-                    <span class="sr-only">User menu</span>
-                    <img class="h-10 w-10 rounded-full" src="/images/avatar.jpg" alt="User avatar" />
-                </button>
-
-                <!-- User dropdown menu -->
-                <div
-                    x-show="open"
-                    x-ref="userMenu"
-                    x-transition:enter="transition-all transform ease-out"
-                    x-transition:enter-start="translate-y-1/2 opacity-0"
-                    x-transition:enter-end="translate-y-0 opacity-100"
-                    x-transition:leave="transition-all transform ease-in"
-                    x-transition:leave-start="translate-y-0 opacity-100"
-                    x-transition:leave-end="translate-y-1/2 opacity-0"
-                    @click.away="open = false"
-                    @keydown.escape="open = false"
-                    class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
-                    tabindex="-1"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-label="User menu"
-                >
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Your Profile
-                    </a>
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Settings
-                    </a>
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Logout
-                    </a>
-                </div>
-            </div>
+            {{> partials/user-menu }}
         </nav>
 
         <!-- Mobile sub menu -->
@@ -195,83 +146,33 @@
                 </button>
 
                 <!-- Notification button -->
-                <button
-                    @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                >
-                    <span class="sr-only">Open notifications panel</span>
-                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
-                </button>
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open notification panel" 
+                    attrs='@click="openNotificationsPanel"' 
+                    icon="tabler--bell"
+                }}{{/btn}}
 
                 <!-- Search button -->
-                <button
-                    @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
-                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                >
-                    <span class="sr-only">Open search panel</span>
-                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
-                </button>
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open search panel" 
+                    attrs='@click="openSearchPanel"' 
+                    icon="tabler--search"
+                }}{{/btn}}
 
                 <!-- Settings button -->
-                <button
-                    @click="$store.settings.panel.open(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                    class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                >
-                    <span class="sr-only">Open settings panel</span>
-                    <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
-                </button>
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open settings panel" 
+                    attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
+                    icon="tabler--settings"
+                }}{{/btn}}
             </div>
 
             <!-- User avatar button -->
-            <div class="relative ml-auto" x-data="{ open: false }">
-                <button
-                    @click="open = !open"
-                    type="button"
-                    aria-haspopup="true"
-                    :aria-expanded="open ? 'true' : 'false'"
-                    class="block rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                >
-                    <span class="sr-only">User menu</span>
-                    <img class="h-10 w-10 rounded-full" src="/images/avatar.jpg" alt="Ahmed Kamel" />
-                </button>
-
-                <!-- User dropdown menu -->
-                <div
-                    x-show="open"
-                    x-transition:enter="transition-all transform ease-out"
-                    x-transition:enter-start="translate-y-1/2 opacity-0"
-                    x-transition:enter-end="translate-y-0 opacity-100"
-                    x-transition:leave="transition-all transform ease-in"
-                    x-transition:leave-start="translate-y-0 opacity-100"
-                    x-transition:leave-end="translate-y-1/2 opacity-0"
-                    @click.away="open = false"
-                    class="absolute right-0 top-12 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-dark"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-label="User menu"
-                >
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Your Profile
-                    </a>
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Settings
-                    </a>
-                    <a
-                        href="#"
-                        role="menuitem"
-                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                    >
-                        Logout
-                    </a>
-                </div>
+            <div class="ml-auto">
+                {{> partials/user-menu }}
             </div>
         </nav>
     </div>

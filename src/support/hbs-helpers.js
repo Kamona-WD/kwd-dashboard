@@ -16,9 +16,11 @@ export default {
             srText = '',
             startIcon = null,
             endIcon = null,
-            classes = '',
+            className = null,
             attrs = '',
+            iconClasses = '',
             iconSizeClasses = 'w-6 h-6',
+            iconAttrs = '',
             text = '',
             type = 'button',
             href = null,
@@ -39,6 +41,10 @@ export default {
                 baseClasses +=
                     ' bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark'
                 break
+            case 'primary-light':
+                    baseClasses +=
+                        ' bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light'
+                    break
 
             default:
                 baseClasses += ' bg-primary text-white hover:bg-primary-dark focus:ring-primary'
@@ -51,7 +57,7 @@ export default {
             baseClasses += ' px-4 py-2'
         }
 
-        const iconSpan = (icon) => `<span aria-hidden="true" class="iconify ${icon} ${iconSizeClasses}"></span>`
+        const iconSpan = (icon) => `<span aria-hidden="true" class="iconify ${icon} ${iconSizeClasses} ${iconClasses}" ${iconAttrs}></span>`
 
         const srt = srText ? `<span class="sr-only">${srText}</span>` : ''
         const i = icon ? iconSpan(icon) : ''
@@ -61,7 +67,7 @@ export default {
         const tag = href ? 'a' : 'button'
 
         return `
-            <${tag} ${href ? 'href="' + href + '"' : ''} ${attrs} type="${type}" class="${twMerge(baseClasses, classes)}">
+            <${tag} ${href ? 'href="' + href + '"' : ''} ${attrs} type="${type}" class="${twMerge(baseClasses, className)}">
                 ${srt}
                 ${i}
                 ${si}

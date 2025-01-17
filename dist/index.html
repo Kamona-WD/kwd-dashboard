@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -9,7 +9,7 @@
         <meta name="keywords" content="Admin, Dashboard, Template, HTML, CSS, JavaScript, Tailwindcss, Alpinejs" />
         <meta name="author" content="Ahmed Kamel" />
 
-        <title>K-WD Dashboard</title>
+        <title>K-WD Dashboard </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,9 +25,10 @@
             }
         </style>
 
-        <script type="module" crossorigin src="/js/index-page-CxzR66qg.js"></script>
-        <link rel="modulepreload" crossorigin href="/js/main-CEliYc14.js" />
-        <link rel="stylesheet" crossorigin href="/css/main.css" />
+
+      <script type="module" crossorigin src="/js/index-page-C7Q-7i2W.js"></script>
+      <link rel="modulepreload" crossorigin href="/js/main-DHt2VL9c.js">
+      <link rel="stylesheet" crossorigin href="/css/main.css">
     </head>
     <body class="font-sans antialiased">
         <div x-data="setup()" :class="{ 'dark': $store.settings.darkMode.value }">
@@ -40,23 +41,21 @@
                     Loading.....
                 </div>
 
+                
                 <div class="flex min-h-screen">
                     <!-- Sidebar -->
                     <aside
                         class="sticky top-0 hidden h-screen flex-shrink-0 border-r bg-white transition-[width] duration-300 dark:border-primary-darker dark:bg-darker lg:block"
-                        :class="{ 'w-64': isSidebarOpen, 'w-0': !isSidebarOpen }"
+                        :class="{ 'w-64': isSidebarOpen, 'w-0 overflow-hidden': !isSidebarOpen }"
                     >
                         <div class="flex h-full flex-col">
                             <!-- Sidebar links -->
-                            <nav
-                                aria-label="Main"
-                                class="flex-1 space-y-2 overflow-y-hidden px-2 py-3 hover:overflow-y-auto"
-                            >
+                            <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-3 hover:overflow-y-auto">
                                 <a
                                     href="/"
-                                    class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
+                                    class="flex items-center gap-2 rounded-md p-2 text-gray-600  bg-primary-100 dark:bg-primary  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                 >
-                                    <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
+                                    <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
                                     <span class="font-medium"> Dashboard </span>
                                 </a>
                                 <div x-data="{ open:  false  }">
@@ -64,13 +63,13 @@
                                     <a
                                         href="#"
                                         @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                         :class="{ 'bg-primary-100 dark:bg-primary': open }"
                                         role="button"
                                         aria-haspopup="true"
                                         :aria-expanded="open ? 'true' : 'false'"
                                     >
-                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--file"></span>
+                                        <span aria-hidden="true" class="iconify tabler--file h-5 w-5"></span>
                                         <span class="font-medium"> Pages </span>
                                         <span
                                             aria-hidden="true"
@@ -78,35 +77,29 @@
                                             :class="{ 'rotate-180': open }"
                                         ></span>
                                     </a>
-
-                                    <div
-                                        x-show="open"
-                                        x-collapse
-                                        class="space-y-2 px-7"
-                                        role="menu"
-                                        arial-label="Pages"
-                                    >
+                                
+                                    <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
                                         <div class="mt-2">
                                             <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                             <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                             <a
                                                 href="/pages/404.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 404
                                             </a>
                                             <a
                                                 href="/pages/500.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 500
                                             </a>
                                             <a
                                                 href="/pages/blank.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 Blank
                                             </a>
@@ -118,13 +111,13 @@
                                     <a
                                         href="#"
                                         @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                        class="flex items-center gap-2 rounded-md p-2 text-gray-500  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                         :class="{ 'bg-primary-100 dark:bg-primary': open }"
                                         role="button"
                                         aria-haspopup="true"
                                         :aria-expanded="open ? 'true' : 'false'"
                                     >
-                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
+                                        <span aria-hidden="true" class="iconify tabler--shield h-5 w-5"></span>
                                         <span class="font-medium"> Authentication </span>
                                         <span
                                             aria-hidden="true"
@@ -132,42 +125,36 @@
                                             :class="{ 'rotate-180': open }"
                                         ></span>
                                     </a>
-
-                                    <div
-                                        x-show="open"
-                                        x-collapse
-                                        class="space-y-2 px-7"
-                                        role="menu"
-                                        arial-label="Authentication"
-                                    >
+                                
+                                    <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Authentication">
                                         <div class="mt-2">
                                             <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                             <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                             <a
                                                 href="/auth/login.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 Login
                                             </a>
                                             <a
                                                 href="/auth/register.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 Register
                                             </a>
                                             <a
                                                 href="/auth/forgot-password.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 Forgot password
                                             </a>
                                             <a
                                                 href="/auth/reset-password.html"
                                                 role="menuitem"
-                                                class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                             >
                                                 Reset password
                                             </a>
@@ -175,51 +162,52 @@
                                     </div>
                                 </div>
                             </nav>
-
+                    
                             <!-- Sidebar footer -->
                             <div class="flex-shrink-0 p-2">
-                                <button
-                                    type="button"
-                                    class="inline-flex w-full select-none items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 font-medium text-white transition-colors hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-dark"
-                                >
-                                    <span aria-hidden="true" class="iconify h-6 w-6 tabler--adjustments"></span>
+                                
+                                <button   type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary text-white hover:bg-primary-dark focus:ring-primary px-4 py-2 w-full">
+                                    
+                                    
+                                    <span aria-hidden="true" class="iconify tabler--adjustments w-6 h-6 " ></span>
                                     Customize
+                                    
+                                    
                                 </button>
+                            
                             </div>
                         </div>
                     </aside>
-
+                
                     <div class="flex flex-1 flex-col">
                         <!-- Navbar -->
                         <div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
-                            <div
-                                class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker"
-                            >
+                            <div class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker">
                                 <div class="flex items-center gap-2">
                                     <!-- Sidebar button -->
-                                    <button
-                                        @click="isSidebarOpen = !isSidebarOpen"
-                                        class="hidden items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:inline-flex"
-                                    >
+                                    
+                                    <button  @click="isSidebarOpen = !isSidebarOpen" type="button" class="items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light hidden lg:inline-flex p-1.5">
                                         <span class="sr-only">Toggle sidebar</span>
-
-                                        <span
-                                            aria-hidden="true"
-                                            class="iconify h-8 w-8 transition-transform tabler--chevron-left"
-                                            :class="{ '-rotate-180': !isSidebarOpen }"
-                                        ></span>
+                                        <span aria-hidden="true" class="iconify tabler--chevron-left h-8 w-8 transition-transform" :class="{ '-rotate-180': !isSidebarOpen }"></span>
+                                        
+                                        
+                                        
+                                        
                                     </button>
-
+                                
+                        
                                     <!-- Mobile menu button -->
-                                    <button
-                                        @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
-                                        class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:hidden"
-                                    >
-                                        <span class="sr-only">Open main manu</span>
-
-                                        <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
+                                    
+                                    <button  @click="isMobileMainMenuOpen = !isMobileMainMenuOpen" type="button" class="items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:hidden inline-flex p-1.5">
+                                        <span class="sr-only">Toggle main manu</span>
+                                        <span aria-hidden="true" class="iconify true h-8 w-8 transition-transform" :class="isMobileMainMenuOpen ? 'tabler--x' : 'tabler--menu-2'"></span>
+                                        
+                                        
+                                        
+                                        
                                     </button>
-
+                                
+                        
                                     <!-- Brand -->
                                     <a
                                         href="/"
@@ -228,16 +216,19 @@
                                         K-WD
                                     </a>
                                 </div>
-
+                        
                                 <!-- Mobile sub menu button -->
-                                <button
-                                    @click="isMobileSubMenuOpen = !isMobileSubMenuOpen"
-                                    class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-                                >
-                                    <span class="sr-only">Open sub manu</span>
-                                    <span aria-hidden="true" class="iconify h-8 w-8 tabler--dots-vertical"></span>
-                                </button>
-
+                                
+                                    <button  @click="isMobileSubMenuOpen = !isMobileSubMenuOpen" type="button" class="items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden inline-flex p-1.5">
+                                        <span class="sr-only">Toggle sub manu</span>
+                                        <span aria-hidden="true" class="iconify tabler--dots-vertical h-8 w-8 " ></span>
+                                        
+                                        
+                                        
+                                        
+                                    </button>
+                                
+                        
                                 <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
                                     <!-- Toggle dark theme button -->
                                     <button
@@ -246,9 +237,7 @@
                                         x-cloak
                                         @click="$store.settings.darkMode.toggle()"
                                     >
-                                        <div
-                                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
-                                        ></div>
+                                        <div class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"></div>
                                         <div
                                             class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
                                             :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
@@ -265,55 +254,59 @@
                                             ></span>
                                         </div>
                                     </button>
-
+                        
                                     <!-- Notification button -->
-                                    <button
-                                        @click="openNotificationsPanel"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
-                                        <span class="sr-only">Open Notification panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
+                                    
+                                    <button  @click="openNotificationsPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1.5">
+                                        <span class="sr-only">Open notification panel</span>
+                                        <span aria-hidden="true" class="iconify tabler--bell h-8 w-8 " ></span>
+                                        
+                                        
+                                        
+                                        
                                     </button>
-
+                                
+                        
                                     <!-- Search button -->
-                                    <button
-                                        @click="openSearchPanel"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
+                                    
+                                    <button  @click="openSearchPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1.5">
                                         <span class="sr-only">Open search panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
+                                        <span aria-hidden="true" class="iconify tabler--search h-8 w-8 " ></span>
+                                        
+                                        
+                                        
+                                        
                                     </button>
-
+                                
+                        
                                     <!-- Settings button -->
-                                    <button
-                                        @click="$store.settings.panel.open()"
-                                        class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                    >
+                                    
+                                    <button  @click="$store.settings.panel.open()" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1.5">
                                         <span class="sr-only">Open settings panel</span>
-                                        <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
+                                        <span aria-hidden="true" class="iconify tabler--settings h-8 w-8 " ></span>
+                                        
+                                        
+                                        
+                                        
                                     </button>
-
-                                    <!-- User avatar button -->
-                                    <div class="relative" x-data="{ open: false }">
-                                        <button
-                                            @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
-                                            type="button"
-                                            aria-haspopup="true"
-                                            :aria-expanded="open ? 'true' : 'false'"
-                                            class="rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                                        >
-                                            <span class="sr-only">User menu</span>
-                                            <img
-                                                class="h-10 w-10 rounded-full"
-                                                src="/images/avatar.jpg"
-                                                alt="User avatar"
-                                            />
-                                        </button>
-
-                                        <!-- User dropdown menu -->
+                                
+                        
+                                    <!-- User menu -->
+                                    <div class="flex items-center justify-center relative" x-data="{ open: false }">
+                                    
+                                                <button  @click="open = !open" aria-haspopup="true" :aria-expanded="open ? 'true' : 'false'" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-0">
+                                                    <span class="sr-only">User menu</span>
+                                                    
+                                                    
+                                                    
+                                                                    <img class="h-10 w-10 rounded-md" src="/images/avatar.jpeg" alt="User image" />
+                                    
+                                                    
+                                                </button>
+                                            
+                                        <!-- User menu content -->
                                         <div
                                             x-show="open"
-                                            x-ref="userMenu"
                                             x-transition:enter="transition-all transform ease-out"
                                             x-transition:enter-start="translate-y-1/2 opacity-0"
                                             x-transition:enter-end="translate-y-0 opacity-100"
@@ -328,31 +321,31 @@
                                             aria-orientation="vertical"
                                             aria-label="User menu"
                                         >
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                            >
-                                                Your Profile
-                                            </a>
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                            >
-                                                Settings
-                                            </a>
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                            >
-                                                Logout
-                                            </a>
+                                                    <a
+                                                        href="#"
+                                                        role="menuitem"
+                                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                    >
+                                                        Your Profile
+                                                    </a>
+                                                    <a
+                                                        href="#"
+                                                        role="menuitem"
+                                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                    >
+                                                        Settings
+                                                    </a>
+                                                    <a
+                                                        href="#"
+                                                        role="menuitem"
+                                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                    >
+                                                        Logout
+                                                    </a>
                                         </div>
                                     </div>
                                 </nav>
-
+                        
                                 <!-- Mobile sub menu -->
                                 <nav
                                     x-transition:enter="transition duration-200 ease-in-out transform sm:duration-500"
@@ -393,93 +386,103 @@
                                                 ></span>
                                             </div>
                                         </button>
-
+                        
                                         <!-- Notification button -->
-                                        <button
-                                            @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                        >
-                                            <span class="sr-only">Open notifications panel</span>
-                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--bell"></span>
-                                        </button>
-
+                                        
+                                    <button  @click="openNotificationsPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
+                                        <span class="sr-only">Open notification panel</span>
+                                        <span aria-hidden="true" class="iconify tabler--bell w-6 h-6 " ></span>
+                                        
+                                        
+                                        
+                                        
+                                    </button>
+                                
+                        
                                         <!-- Search button -->
-                                        <button
-                                            @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
-                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                        >
-                                            <span class="sr-only">Open search panel</span>
-                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--search"></span>
-                                        </button>
-
+                                        
+                                    <button  @click="openSearchPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
+                                        <span class="sr-only">Open search panel</span>
+                                        <span aria-hidden="true" class="iconify tabler--search w-6 h-6 " ></span>
+                                        
+                                        
+                                        
+                                        
+                                    </button>
+                                
+                        
                                         <!-- Settings button -->
-                                        <button
-                                            @click="$store.settings.panel.open(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                                            class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
-                                        >
-                                            <span class="sr-only">Open settings panel</span>
-                                            <span aria-hidden="true" class="iconify h-7 w-7 tabler--settings"></span>
-                                        </button>
+                                        
+                                    <button  @click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
+                                        <span class="sr-only">Open settings panel</span>
+                                        <span aria-hidden="true" class="iconify tabler--settings w-6 h-6 " ></span>
+                                        
+                                        
+                                        
+                                        
+                                    </button>
+                                
                                     </div>
-
+                        
                                     <!-- User avatar button -->
-                                    <div class="relative ml-auto" x-data="{ open: false }">
-                                        <button
-                                            @click="open = !open"
-                                            type="button"
-                                            aria-haspopup="true"
-                                            :aria-expanded="open ? 'true' : 'false'"
-                                            class="block rounded-full transition-opacity duration-200 focus:outline-none focus:ring dark:opacity-75 dark:hover:opacity-100 dark:focus:opacity-100"
-                                        >
-                                            <span class="sr-only">User menu</span>
-                                            <img
-                                                class="h-10 w-10 rounded-full"
-                                                src="/images/avatar.jpg"
-                                                alt="Ahmed Kamel"
-                                            />
-                                        </button>
-
-                                        <!-- User dropdown menu -->
-                                        <div
-                                            x-show="open"
-                                            x-transition:enter="transition-all transform ease-out"
-                                            x-transition:enter-start="translate-y-1/2 opacity-0"
-                                            x-transition:enter-end="translate-y-0 opacity-100"
-                                            x-transition:leave="transition-all transform ease-in"
-                                            x-transition:leave-start="translate-y-0 opacity-100"
-                                            x-transition:leave-end="translate-y-1/2 opacity-0"
-                                            @click.away="open = false"
-                                            class="absolute right-0 top-12 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-dark"
-                                            role="menu"
-                                            aria-orientation="vertical"
-                                            aria-label="User menu"
-                                        >
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                    <div class="ml-auto">
+                                        <!-- User menu -->
+                                        <div class="flex items-center justify-center relative" x-data="{ open: false }">
+                                        
+                                                    <button  @click="open = !open" aria-haspopup="true" :aria-expanded="open ? 'true' : 'false'" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-0">
+                                                        <span class="sr-only">User menu</span>
+                                                        
+                                                        
+                                                        
+                                                                        <img class="h-10 w-10 rounded-md" src="/images/avatar.jpeg" alt="User image" />
+                                        
+                                                        
+                                                    </button>
+                                                
+                                            <!-- User menu content -->
+                                            <div
+                                                x-show="open"
+                                                x-transition:enter="transition-all transform ease-out"
+                                                x-transition:enter-start="translate-y-1/2 opacity-0"
+                                                x-transition:enter-end="translate-y-0 opacity-100"
+                                                x-transition:leave="transition-all transform ease-in"
+                                                x-transition:leave-start="translate-y-0 opacity-100"
+                                                x-transition:leave-end="translate-y-1/2 opacity-0"
+                                                @click.away="open = false"
+                                                @keydown.escape="open = false"
+                                                class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                                                tabindex="-1"
+                                                role="menu"
+                                                aria-orientation="vertical"
+                                                aria-label="User menu"
                                             >
-                                                Your Profile
-                                            </a>
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                            >
-                                                Settings
-                                            </a>
-                                            <a
-                                                href="#"
-                                                role="menuitem"
-                                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                            >
-                                                Logout
-                                            </a>
+                                                        <a
+                                                            href="#"
+                                                            role="menuitem"
+                                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                        >
+                                                            Your Profile
+                                                        </a>
+                                                        <a
+                                                            href="#"
+                                                            role="menuitem"
+                                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                        >
+                                                            Settings
+                                                        </a>
+                                                        <a
+                                                            href="#"
+                                                            role="menuitem"
+                                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                                        >
+                                                            Logout
+                                                        </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </nav>
                             </div>
-
+                        
                             <!-- Mobile main manu -->
                             <div
                                 class="border-b dark:border-primary-darker lg:hidden"
@@ -490,9 +493,9 @@
                                 <nav aria-label="Main" class="space-y-2 px-2 py-4">
                                     <a
                                         href="/"
-                                        class="flex items-center gap-2 rounded-md bg-primary-100 p-2 text-gray-600 transition-colors hover:bg-primary-100 dark:bg-primary dark:text-light dark:hover:bg-primary"
+                                        class="flex items-center gap-2 rounded-md p-2 text-gray-600  bg-primary-100 dark:bg-primary  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                     >
-                                        <span aria-hidden="true" class="iconify h-5 w-5 tabler--home"></span>
+                                        <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
                                         <span class="font-medium"> Dashboard </span>
                                     </a>
                                     <div x-data="{ open:  false  }">
@@ -500,13 +503,13 @@
                                         <a
                                             href="#"
                                             @click="$event.preventDefault(); open = !open"
-                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                             :class="{ 'bg-primary-100 dark:bg-primary': open }"
                                             role="button"
                                             aria-haspopup="true"
                                             :aria-expanded="open ? 'true' : 'false'"
                                         >
-                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--file"></span>
+                                            <span aria-hidden="true" class="iconify tabler--file h-5 w-5"></span>
                                             <span class="font-medium"> Pages </span>
                                             <span
                                                 aria-hidden="true"
@@ -514,35 +517,29 @@
                                                 :class="{ 'rotate-180': open }"
                                             ></span>
                                         </a>
-
-                                        <div
-                                            x-show="open"
-                                            x-collapse
-                                            class="space-y-2 px-7"
-                                            role="menu"
-                                            arial-label="Pages"
-                                        >
+                                    
+                                        <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
                                             <div class="mt-2">
                                                 <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                                 <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                                 <a
                                                     href="/pages/404.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     404
                                                 </a>
                                                 <a
                                                     href="/pages/500.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     500
                                                 </a>
                                                 <a
                                                     href="/pages/blank.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     Blank
                                                 </a>
@@ -554,13 +551,13 @@
                                         <a
                                             href="#"
                                             @click="$event.preventDefault(); open = !open"
-                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500 transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+                                            class="flex items-center gap-2 rounded-md p-2 text-gray-500  transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
                                             :class="{ 'bg-primary-100 dark:bg-primary': open }"
                                             role="button"
                                             aria-haspopup="true"
                                             :aria-expanded="open ? 'true' : 'false'"
                                         >
-                                            <span aria-hidden="true" class="iconify h-5 w-5 tabler--shield"></span>
+                                            <span aria-hidden="true" class="iconify tabler--shield h-5 w-5"></span>
                                             <span class="font-medium"> Authentication </span>
                                             <span
                                                 aria-hidden="true"
@@ -568,42 +565,36 @@
                                                 :class="{ 'rotate-180': open }"
                                             ></span>
                                         </a>
-
-                                        <div
-                                            x-show="open"
-                                            x-collapse
-                                            class="space-y-2 px-7"
-                                            role="menu"
-                                            arial-label="Authentication"
-                                        >
+                                    
+                                        <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Authentication">
                                             <div class="mt-2">
                                                 <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                                 <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                                 <a
                                                     href="/auth/login.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     Login
                                                 </a>
                                                 <a
                                                     href="/auth/register.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     Register
                                                 </a>
                                                 <a
                                                     href="/auth/forgot-password.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     Forgot password
                                                 </a>
                                                 <a
                                                     href="/auth/reset-password.html"
                                                     role="menuitem"
-                                                    class="block rounded-md p-2 text-gray-400 transition-colors duration-200 hover:text-gray-700 dark:text-gray-400 dark:hover:text-light"
+                                                    class="block rounded-md p-2  text-gray-400 dark:text-gray-400  transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
                                                 >
                                                     Reset password
                                                 </a>
@@ -613,182 +604,164 @@
                                 </nav>
                             </div>
                         </div>
-
+                
                         <!-- Page header -->
-                        <header
-                            class="flex flex-shrink-0 items-center justify-between border-b p-4 dark:border-primary-darker"
-                        >
+                        <header class="flex flex-shrink-0 items-center justify-between border-b p-4 dark:border-primary-darker">
                             <h2 class="text-2xl font-semibold">Dashboard</h2>
-
-                            <a
-                                href="https://github.com/Kamona-WD/kwd-dashboard"
-                                type="button"
-                                class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-black px-4 py-2 font-medium text-gray-200 transition-colors hover:bg-gray-900 focus:outline-none focus:ring focus:ring-black focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-dark"
-                            >
-                                <span aria-hidden="true" class="iconify h-6 w-6 tabler--brand-github"></span>
-                                View on github
-                            </a>
+                            
+                            
+                                        <a href="https://github.com/Kamona-WD/kwd-dashboard"  type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-black text-gray-200 hover:bg-gray-900 focus:ring-black px-4 py-2">
+                                            
+                                            
+                                            <span aria-hidden="true" class="iconify tabler--brand-github w-6 h-6 " ></span>
+                                            View on github
+                                            
+                                            
+                                        </a>
+                                    
                         </header>
-
+                
                         <!-- Main content -->
                         <main class="flex-1">
                             <!-- Content -->
-
+                            
+                            
+                            
                             <h1 class="sr-only">Dashboard</h1>
-
+                            
                             <!-- Content -->
-                            <div class="mt-2 grid gap-4 p-4">
+                            <div class="mt-2 p-4 grid gap-4">
                                 <!-- State cards -->
                                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
                                     <!-- Value card -->
-
-                                    <div
-                                        class="rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
-                                        <div class="flex items-center justify-between p-4">
-                                            <div>
-                                                <h6
-                                                    class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light"
-                                                >
-                                                    Value
-                                                </h6>
-
-                                                <span class="text-xl font-semibold"> $30,000 </span>
-
-                                                <span
-                                                    class="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500 dark:bg-green-500 dark:text-green-100"
-                                                >
-                                                    +4.4%
-                                                </span>
-                                            </div>
-
-                                            <div>
-                                                <span
-                                                    class="iconify h-12 w-12 text-gray-300 tabler--currency-dollar dark:text-primary-dark"
-                                                ></span>
-                                            </div>
+                                    
+                                                <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker" >
+                                                    <div class="flex items-center justify-between p-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light">
+                                                Value
+                                            </h6>
+                                    
+                                            <span class="text-xl font-semibold">
+                                                $30,000
+                                            </span>
+                                    
+                                            <span
+                                                class="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500 dark:bg-green-500 dark:text-green-100"
+                                            >
+                                                +4.4%
+                                            </span>
+                                        </div>
+                                    
+                                        <div>
+                                            <span class="iconify tabler--currency-dollar h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
                                         </div>
                                     </div>
-                                    <!-- Users card -->
-
-                                    <div
-                                        class="rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
-                                        <div class="flex items-center justify-between p-4">
-                                            <div>
-                                                <h6
-                                                    class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light"
-                                                >
-                                                    Users
-                                                </h6>
-
-                                                <span class="text-xl font-semibold"> 50,021 </span>
-
-                                                <span
-                                                    class="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-px text-xs text-yellow-500 dark:bg-yellow-500 dark:text-yellow-100"
-                                                >
-                                                    -2.6%
-                                                </span>
-                                            </div>
-
-                                            <div>
-                                                <span
-                                                    class="iconify h-12 w-12 text-gray-300 tabler--users-group dark:text-primary-dark"
-                                                ></span>
-                                            </div>
+                                    
+                                                </div>
+                                                    <!-- Users card -->
+                                    
+                                                <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker" >
+                                                    <div class="flex items-center justify-between p-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light">
+                                                Users
+                                            </h6>
+                                    
+                                            <span class="text-xl font-semibold">
+                                                50,021
+                                            </span>
+                                    
+                                            <span
+                                                class="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-px text-xs text-yellow-500 dark:bg-yellow-500 dark:text-yellow-100"
+                                            >
+                                                -2.6%
+                                            </span>
+                                                </div>
+                                    
+                                        <div>
+                                            <span class="iconify tabler--users-group h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
                                         </div>
                                     </div>
-                                    <!-- Orders card -->
-
-                                    <div
-                                        class="rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
-                                        <div class="flex items-center justify-between p-4">
-                                            <div>
-                                                <h6
-                                                    class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light"
-                                                >
-                                                    Orders
-                                                </h6>
-
-                                                <span class="text-xl font-semibold"> 45,021 </span>
-
-                                                <span
-                                                    class="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-px text-xs text-yellow-500 dark:bg-yellow-500 dark:text-yellow-100"
-                                                >
-                                                    3.1%
-                                                </span>
-                                            </div>
-
-                                            <div>
-                                                <span
-                                                    class="iconify h-12 w-12 text-gray-300 tabler--shopping-cart dark:text-primary-dark"
-                                                ></span>
-                                            </div>
+                                    
+                                                </div>
+                                                    <!-- Orders card -->
+                                    
+                                                <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker" >
+                                                    <div class="flex items-center justify-between p-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light">
+                                                Orders
+                                            </h6>
+                                    
+                                            <span class="text-xl font-semibold">
+                                                45,021
+                                            </span>
+                                    
+                                            <span
+                                                class="ml-2 inline-block rounded-md bg-yellow-100 px-2 py-px text-xs text-yellow-500 dark:bg-yellow-500 dark:text-yellow-100"
+                                            >
+                                                3.1%
+                                            </span>
+                                                </div>
+                                    
+                                        <div>
+                                            <span class="iconify tabler--shopping-cart h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
                                         </div>
                                     </div>
-                                    <!-- Tickets card -->
-
-                                    <div
-                                        class="rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
-                                        <div class="flex items-center justify-between p-4">
-                                            <div>
-                                                <h6
-                                                    class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light"
-                                                >
-                                                    Tickets
-                                                </h6>
-
-                                                <span class="text-xl font-semibold"> 20,516 </span>
-
-                                                <span
-                                                    class="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500 dark:bg-green-500 dark:text-green-100"
-                                                >
-                                                    3.1%
-                                                </span>
-                                            </div>
-
-                                            <div>
-                                                <span
-                                                    class="iconify h-12 w-12 text-gray-300 tabler--ticket dark:text-primary-dark"
-                                                ></span>
-                                            </div>
+                                    
+                                                </div>
+                                                    <!-- Tickets card -->
+                                    
+                                                <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker" >
+                                                    <div class="flex items-center justify-between p-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium uppercase leading-none tracking-wider text-gray-500 dark:text-primary-light">
+                                                Tickets
+                                            </h6>
+                                    
+                                            <span class="text-xl font-semibold">
+                                                20,516
+                                            </span>
+                                    
+                                            <span
+                                                class="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500 dark:bg-green-500 dark:text-green-100"
+                                            >
+                                                3.1%
+                                            </span>
+                                        </div>
+                                    
+                                        <div>
+                                            <span class="iconify tabler--ticket h-12 w-12 text-gray-300 dark:text-primary-dark"></span>
                                         </div>
                                     </div>
-                                </div>
-
+                                    
+                                                </div>
+                                                </div>
+                            
                                 <!-- Charts -->
-                                <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                                     <!-- Bar chart card -->
-
-                                    <div
-                                        class="col-span-2 overflow-hidden rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                        x-data="{ isOn: false }"
-                                    >
+                            
+                                        <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker col-span-2 overflow-hidden" x-data="{ isOn: false }">
+                                                        <!-- Card header -->
                                         <!-- Card header -->
-                                        <!-- Card header -->
-                                        <div
-                                            class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker"
-                                        >
-                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">
-                                                Bar Chart
-                                            </h4>
-
+                                        <div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Bar Chart</h4>
+                                        
                                             <div class="flex items-center">
                                                 <div class="relative" x-data="{ open: false }">
-                                                    <button
-                                                        @click="open = !open"
-                                                        type="button"
-                                                        class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-transparent p-1.5 font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-300 dark:hover:bg-dark dark:focus:ring-offset-dark"
-                                                    >
+                                                    
+                                                    <button  @click="open = !open" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-2">
                                                         <span class="sr-only">Card Actions</span>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            class="iconify h-6 w-6 tabler--dots"
-                                                        ></span>
+                                                        <span aria-hidden="true" class="iconify tabler--dots w-6 h-6 " ></span>
+                                                        
+                                                        
+                                                        
+                                                        
                                                     </button>
-
+                                                
+                                        
                                                     <div
                                                         x-show="open"
                                                         x-transition:enter="transition-all transform ease-out"
@@ -830,42 +803,35 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                            
                                         <!-- Chart -->
-                                        <div x-data="barChart($refs.barChartEl)" class="relative h-72 p-4">
+                                        <div  x-data="barChart($refs.barChartEl)" class="relative h-72 p-4">
                                             <div x-ref="barChartEl"></div>
                                         </div>
-                                    </div>
-
+                            
+                                        </div>
+                                    
                                     <!-- Doughnut chart card -->
-
-                                    <div
-                                        class="overflow-hidden rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                        x-data="{ isOn: false }"
-                                    >
+                            
+                                        <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker overflow-hidden" x-data="{ isOn: false }">
+                                                        <!-- Card header -->
                                         <!-- Card header -->
-                                        <!-- Card header -->
-                                        <div
-                                            class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker"
-                                        >
-                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">
-                                                Doughnut Chart
-                                            </h4>
-
+                                        <div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Doughnut Chart</h4>
+                                        
                                             <div class="flex items-center">
                                                 <div class="relative" x-data="{ open: false }">
-                                                    <button
-                                                        @click="open = !open"
-                                                        type="button"
-                                                        class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-transparent p-1.5 font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-300 dark:hover:bg-dark dark:focus:ring-offset-dark"
-                                                    >
+                                                    
+                                                    <button  @click="open = !open" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-2">
                                                         <span class="sr-only">Card Actions</span>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            class="iconify h-6 w-6 tabler--dots"
-                                                        ></span>
+                                                        <span aria-hidden="true" class="iconify tabler--dots w-6 h-6 " ></span>
+                                                        
+                                                        
+                                                        
+                                                        
                                                     </button>
-
+                                                
+                                        
                                                     <div
                                                         x-show="open"
                                                         x-transition:enter="transition-all transform ease-out"
@@ -907,44 +873,38 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                            
                                         <!-- Chart -->
-                                        <div x-data="doughnutChart($refs.doughnutChartEl)" class="relative h-72 p-4">
+                                        <div  x-data="doughnutChart($refs.doughnutChartEl)" class="relative h-72 p-4">
                                             <div x-ref="doughnutChartEl"></div>
                                         </div>
-                                    </div>
-                                </div>
-
+                            
+                                        </div>
+                                        </div>
+                            
                                 <!-- Two grid columns -->
                                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
                                     <!-- Active users chart -->
-
-                                    <div
-                                        class="col-span-1 overflow-hidden rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
+                            
+                                        <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker col-span-1 overflow-hidden" >
+                                                        <!-- Card header -->
                                         <!-- Card header -->
-                                        <!-- Card header -->
-                                        <div
-                                            class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker"
-                                        >
-                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">
-                                                Active users right now
-                                            </h4>
-
+                                        <div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Active users right now</h4>
+                                        
                                             <div class="flex items-center">
                                                 <div class="relative" x-data="{ open: false }">
-                                                    <button
-                                                        @click="open = !open"
-                                                        type="button"
-                                                        class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-transparent p-1.5 font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-300 dark:hover:bg-dark dark:focus:ring-offset-dark"
-                                                    >
+                                                    
+                                                    <button  @click="open = !open" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-2">
                                                         <span class="sr-only">Card Actions</span>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            class="iconify h-6 w-6 tabler--dots"
-                                                        ></span>
+                                                        <span aria-hidden="true" class="iconify tabler--dots w-6 h-6 " ></span>
+                                                        
+                                                        
+                                                        
+                                                        
                                                     </button>
-
+                                                
+                                        
                                                     <div
                                                         x-show="open"
                                                         x-transition:enter="transition-all transform ease-out"
@@ -986,51 +946,39 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                            
                                         <p class="p-4">
-                                            <span
-                                                class="text-2xl font-medium text-gray-500 dark:text-light"
-                                                id="usersCount"
-                                                >0</span
-                                            >
-                                            <span class="text-sm font-medium text-gray-500 dark:text-primary"
-                                                >Users</span
-                                            >
+                                            <span class="text-2xl font-medium text-gray-500 dark:text-light" id="usersCount">0</span>
+                                            <span class="text-sm font-medium text-gray-500 dark:text-primary">Users</span>
                                         </p>
-
+                            
                                         <!-- Chart -->
                                         <div x-data="activeUsersChart($refs.activeUsersChartEl)" class="relative p-4">
                                             <div x-ref="activeUsersChartEl"></div>
                                         </div>
-                                    </div>
-
+                            
+                                        </div>
+                                    
                                     <!-- Line chart card -->
-
-                                    <div
-                                        class="col-span-2 overflow-hidden rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                    >
-                                        <!-- Card header -->
-                                        <div
-                                            class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker"
-                                        >
-                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">
-                                                Line Chart
-                                            </h4>
-
+                            
+                                        <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker col-span-2 overflow-hidden" >
+                                                        <!-- Card header -->
+                                        <div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+                                            <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Line Chart</h4>
+                                        
                                             <div class="flex items-center">
                                                 <div class="relative" x-data="{ open: false }">
-                                                    <button
-                                                        @click="open = !open"
-                                                        type="button"
-                                                        class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-transparent p-1.5 font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-300 dark:hover:bg-dark dark:focus:ring-offset-dark"
-                                                    >
+                                                    
+                                                    <button  @click="open = !open" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-2">
                                                         <span class="sr-only">Card Actions</span>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            class="iconify h-6 w-6 tabler--dots"
-                                                        ></span>
+                                                        <span aria-hidden="true" class="iconify tabler--dots w-6 h-6 " ></span>
+                                                        
+                                                        
+                                                        
+                                                        
                                                     </button>
-
+                                                
+                                        
                                                     <div
                                                         x-show="open"
                                                         x-transition:enter="transition-all transform ease-out"
@@ -1072,41 +1020,35 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                            
                                         <!-- Chart -->
                                         <div x-data="lineChart($refs.lineChartEl)" class="relative h-72 p-4">
                                             <div x-ref="lineChartEl"></div>
                                         </div>
-                                    </div>
-                                </div>
-
+                            
+                                        </div>
+                                        </div>
+                            
                                 <!-- Customers table -->
-
-                                <div
-                                    class="overflow-hidden rounded-md border border-gray-300 bg-white dark:border-primary-darker dark:bg-darker"
-                                >
-                                    <!-- Card header -->
-                                    <div
-                                        class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker"
-                                    >
-                                        <h4 class="text-lg font-semibold text-gray-500 dark:text-light">
-                                            Latest Customers
-                                        </h4>
-
+                            
+                                        <div class="rounded-md border border-gray-300 bg-white dark:bg-darker dark:border-primary-darker overflow-hidden" >
+                                                    <!-- Card header -->
+                                    <div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+                                        <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Latest Customers</h4>
+                                    
                                         <div class="flex items-center">
                                             <div class="relative" x-data="{ open: false }">
-                                                <button
-                                                    @click="open = !open"
-                                                    type="button"
-                                                    class="inline-flex select-none items-center justify-center gap-2 rounded-md bg-transparent p-1.5 font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:text-gray-300 dark:hover:bg-dark dark:focus:ring-offset-dark"
-                                                >
+                                                
+                                                <button  @click="open = !open" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark p-2">
                                                     <span class="sr-only">Card Actions</span>
-                                                    <span
-                                                        aria-hidden="true"
-                                                        class="iconify h-6 w-6 tabler--dots"
-                                                    ></span>
+                                                    <span aria-hidden="true" class="iconify tabler--dots w-6 h-6 " ></span>
+                                                    
+                                                    
+                                                    
+                                                    
                                                 </button>
-
+                                            
+                                    
                                                 <div
                                                     x-show="open"
                                                     x-transition:enter="transition-all transform ease-out"
@@ -1148,13 +1090,11 @@
                                             </div>
                                         </div>
                                     </div>
-
+                            
                                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                                             <div class="overflow-hidden rounded-e-md border-b dark:border-primary">
-                                                <table
-                                                    class="min-w-full divide-y overflow-x-scroll dark:divide-gray-600"
-                                                >
+                                                <table class="min-w-full divide-y dark:divide-gray-600 overflow-x-scroll">
                                                     <thead class="bg-gray-50 dark:bg-dark">
                                                         <tr class="text-gray-500 dark:text-gray-400">
                                                             <th
@@ -1186,13 +1126,9 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-
-                                                    <tbody
-                                                        class="divide-y bg-white dark:divide-primary-darker dark:bg-darker"
-                                                    >
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                            
+                                                    <tbody class="divide-y bg-white dark:bg-darker dark:divide-primary-darker">
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1206,9 +1142,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Mamie Wiza
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Clovis88&#64;hotmail.com
                                                                         </div>
                                                                     </div>
@@ -1216,30 +1150,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">Egypt</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                Egypt
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1253,9 +1176,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Wayne Hoppe I
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Angus80&#64;hotmail.com
                                                                         </div>
                                                                     </div>
@@ -1263,30 +1184,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">China</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                China
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1300,9 +1210,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Bertha Parker
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Kailee.Ortiz31&#64;hotmail.com
                                                                         </div>
                                                                     </div>
@@ -1310,30 +1218,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">Brazil</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                Brazil
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1347,9 +1244,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Clara Mills
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Marco31&#64;yahoo.com
                                                                         </div>
                                                                     </div>
@@ -1357,32 +1252,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4 text-sm">
                                                                 Argentina
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1396,9 +1278,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Carroll Stracke
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Felicia_Mraz&#64;gmail.com
                                                                         </div>
                                                                     </div>
@@ -1406,32 +1286,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4 text-sm">
                                                                 Indonesia
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1445,9 +1312,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Glenda Stroman
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Shanna_Gutkowski&#64;yahoo.com
                                                                         </div>
                                                                     </div>
@@ -1455,30 +1320,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">Lebanon</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                Lebanon
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1492,9 +1346,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Hannah Berge
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Dakota.Johnston52&#64;hotmail.com
                                                                         </div>
                                                                     </div>
@@ -1502,32 +1354,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4 text-sm">
                                                                 Portugal
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1541,9 +1380,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Roy Runolfsson
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Eduardo60&#64;gmail.com
                                                                         </div>
                                                                     </div>
@@ -1551,32 +1388,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4 text-sm">
                                                                 Indonesia
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1590,9 +1414,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Roberto Collier
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Deangelo.Reichert&#64;hotmail.com
                                                                         </div>
                                                                     </div>
@@ -1600,30 +1422,19 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">Kenya</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                Kenya
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
-                                                        <tr
-                                                            class="transition-colors hover:bg-gray-100 dark:hover:bg-dark"
-                                                        >
+                                                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="flex items-center gap-4">
                                                                     <div class="h-10 w-10 flex-shrink-0">
@@ -1637,9 +1448,7 @@
                                                                         <div class="text-sm font-medium">
                                                                             Pat Fisher
                                                                         </div>
-                                                                        <div
-                                                                            class="text-sm text-gray-600 dark:text-gray-400"
-                                                                        >
+                                                                        <div class="text-sm text-gray-600 dark:text-gray-400">
                                                                             Joshuah38&#64;yahoo.com
                                                                         </div>
                                                                     </div>
@@ -1647,25 +1456,16 @@
                                                             </td>
                                                             <td class="whitespace-nowrap px-6 py-4">
                                                                 <div class="text-sm">Regional Paradigm Technician</div>
-                                                                <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                                    Optimization
-                                                                </div>
+                                                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
                                                             </td>
-                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">Nigeria</td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400"
-                                                            >
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                                                Nigeria
+                                                            </td>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                                 Jan 13 2025
                                                             </td>
-                                                            <td
-                                                                class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-indigo-600 hover:text-indigo-900"
-                                                                >
-                                                                    Edit
-                                                                </a>
+                                                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1673,10 +1473,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                            
+                                        </div>
+                                    </div>
+                            
+                            
+                            
+                            
                         </main>
-
+                
                         <!-- Footer -->
                         <footer
                             class="flex flex-shrink-0 items-center justify-between border-t bg-white p-4 dark:border-primary-darker dark:bg-darker"
@@ -1685,21 +1490,16 @@
                                 &copy;<span x-text="new Date().getFullYear()"></span>
                                 K-WD, All rights reserved
                             </div>
-
+                        
                             <div>
                                 Made by
-                                <a
-                                    href="https://github.com/Kamona-WD"
-                                    target="_blank"
-                                    class="text-blue-500 hover:underline"
-                                    >Ahmed Kamel</a
-                                >
+                                <a href="https://github.com/Kamona-WD" target="_blank" class="text-blue-500 hover:underline">Ahmed Kamel</a>
                             </div>
                         </footer>
                     </div>
-
+                
                     <!-- Panels -->
-
+                
                     <!-- Settings Panel -->
                     <!-- Backdrop -->
                     <div
@@ -1714,7 +1514,7 @@
                         class="fixed inset-0 z-10 bg-primary-darker opacity-50"
                         aria-hidden="true"
                     ></div>
-
+                    
                     <!-- Panel -->
                     <section
                         x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
@@ -1727,12 +1527,14 @@
                         tabindex="-1"
                         x-show="$store.settings.panel.isOpen"
                         @keydown.escape="$store.settings.panel.close()"
-                        class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        class="fixed inset-y-0  right-0  z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
                         x-trap.inert.noscroll.noautofocus="$store.settings.panel.isOpen"
                     >
                         <h2 class="sr-only">Settings panel</h2>
-
-                        <div class="absolute left-0 -translate-x-full p-2">
+                    
+                        <div
+                            class="absolute  left-0 -translate-x-full  p-2"
+                        >
                             <!-- Close button -->
                             <button
                                 @click="$store.settings.panel.close()"
@@ -1741,23 +1543,18 @@
                                 <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
                             </button>
                         </div>
-
+                    
                         <!-- Panel content -->
                         <div class="flex h-screen flex-col">
                             <!-- Panel header -->
                             <div
                                 class="flex flex-shrink-0 flex-col items-center justify-center space-y-4 border-b px-4 py-8 dark:border-primary-dark"
                             >
-                                <span
-                                    aria-hidden="true"
-                                    class="iconify h-8 w-8 text-gray-500 tabler--adjustments dark:text-primary"
-                                ></span>
-
-                                <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">
-                                    Settings
-                                </h2>
+                                <span aria-hidden="true" class="iconify h-8 w-8 text-gray-500 tabler--adjustments dark:text-primary"></span>
+                            
+                                <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">Settings</h2>
                             </div>
-
+                            
                             <!-- Content -->
                             <div class="flex-1 overflow-hidden hover:overflow-y-auto">
                                 <!-- Theme -->
@@ -1771,10 +1568,10 @@
                                             :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !$store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': $store.settings.darkMode.value }"
                                         >
                                             <span aria-hidden="true" class="iconify h-6 w-6 tabler--sun"></span>
-
+                            
                                             <span>Light</span>
                                         </button>
-
+                            
                                         <!-- Dark button -->
                                         <button
                                             @click="$store.settings.darkMode.setValue(true)"
@@ -1782,16 +1579,16 @@
                                             :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': $store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': !$store.settings.darkMode.value }"
                                         >
                                             <span aria-hidden="true" class="iconify h-6 w-6 tabler--moon"></span>
-
+                            
                                             <span>Dark</span>
                                         </button>
                                     </div>
                                 </div>
-
+                            
                                 <!-- Colors -->
                                 <div class="space-y-4 p-4 md:p-8">
                                     <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
-
+                            
                                     <div class="flex items-center gap-2">
                                         <template x-for="c in $store.settings.colors.availableColors">
                                             <button
@@ -1806,7 +1603,7 @@
                             </div>
                         </div>
                     </section>
-
+                
                     <!-- Notification panel -->
                     <!-- Backdrop -->
                     <div
@@ -1821,7 +1618,7 @@
                         class="fixed inset-0 z-10 bg-primary-darker opacity-50"
                         aria-hidden="true"
                     ></div>
-
+                    
                     <!-- Panel -->
                     <section
                         x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
@@ -1834,12 +1631,14 @@
                         tabindex="-1"
                         x-show="isNotificationsPanelOpen"
                         @keydown.escape="isNotificationsPanelOpen &#x3D; false"
-                        class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        class="fixed inset-y-0  left-0  z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
                         x-trap.inert.noscroll.noautofocus="isNotificationsPanelOpen"
                     >
                         <h2 class="sr-only">Notifications panel</h2>
-
-                        <div class="absolute right-0 translate-x-full p-2">
+                    
+                        <div
+                            class="absolute  right-0 translate-x-full  p-2"
+                        >
                             <!-- Close button -->
                             <button
                                 @click="isNotificationsPanelOpen &#x3D; false"
@@ -1848,15 +1647,13 @@
                                 <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
                             </button>
                         </div>
-
+                    
                         <!-- Panel content -->
                         <div class="flex h-screen flex-col">
                             <div class="flex h-screen flex-col" x-data="{ activeTabe: 'action' }">
                                 <!-- Panel header -->
                                 <div class="flex-shrink-0">
-                                    <div
-                                        class="flex items-center justify-between border-b px-4 pt-4 dark:border-primary-darker"
-                                    >
+                                    <div class="flex items-center justify-between border-b px-4 pt-4 dark:border-primary-darker">
                                         <h2 id="notificationPanelLabel" class="pb-4 font-semibold">Notifications</h2>
                                         <div class="space-x-2">
                                             <button
@@ -1876,7 +1673,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            
                                 <!-- Panel content (tabs) -->
                                 <div class="flex-1 overflow-y-hidden pt-4 hover:overflow-y-auto">
                                     <!-- Action tab -->
@@ -1910,16 +1707,10 @@
                                                     <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
                                                         New project "KWD Dashboard" created
                                                     </h5>
-                                                    <p
-                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                    >
+                                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                         Looks like there might be a new theme soon
                                                     </p>
-                                                    <span
-                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                    >
-                                                        9h ago
-                                                    </span>
+                                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 9h ago </span>
                                                 </div>
                                             </div>
                                         </a>
@@ -1952,16 +1743,10 @@
                                                     <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
                                                         KWD Dashboard v0.0.2 was released
                                                     </h5>
-                                                    <p
-                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                    >
+                                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                         Successful new version was released
                                                     </p>
-                                                    <span
-                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                    >
-                                                        2d ago
-                                                    </span>
+                                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 2d ago </span>
                                                 </div>
                                             </div>
                                         </a>
@@ -1995,120 +1780,72 @@
                                                         <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
                                                             New project "KWD Dashboard" created
                                                         </h5>
-                                                        <p
-                                                            class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                        >
+                                                        <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                             Looks like there might be a new theme soon
                                                         </p>
-                                                        <span
-                                                            class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                        >
-                                                            9h ago
-                                                        </span>
+                                                        <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 9h ago </span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </template>
                                     </div>
-
+                            
                                     <!-- User tab -->
                                     <div class="space-y-4" x-show.transition.in="activeTabe == 'user'">
                                         <a href="#" class="block">
                                             <div class="flex space-x-4 px-4">
                                                 <div class="relative flex-shrink-0">
-                                                    <span
-                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
-                                                    >
-                                                        <img
-                                                            class="h-9 w-9 rounded-full object-cover"
-                                                            src="/images/1.png"
-                                                            alt="Ahmed kamel"
-                                                        />
+                                                    <span class="rounded-ful relative z-10 inline-block overflow-visible">
+                                                        <img class="h-9 w-9 rounded-full object-cover" src="/images/1.png" alt="Ahmed kamel" />
                                                     </span>
                                                     <div
                                                         class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
                                                     ></div>
                                                 </div>
                                                 <div class="flex-1 overflow-hidden">
-                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                        Ahmed Kamel
-                                                    </h5>
-                                                    <p
-                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                    >
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h5>
+                                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                         Shared new project "K-WD Dashboard"
                                                     </p>
-                                                    <span
-                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                    >
-                                                        1d ago
-                                                    </span>
+                                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 1d ago </span>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="#" class="block">
                                             <div class="flex space-x-4 px-4">
                                                 <div class="relative flex-shrink-0">
-                                                    <span
-                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
-                                                    >
-                                                        <img
-                                                            class="h-9 w-9 rounded-full object-cover"
-                                                            src="/images/1.png"
-                                                            alt="Ahmed kamel"
-                                                        />
+                                                    <span class="rounded-ful relative z-10 inline-block overflow-visible">
+                                                        <img class="h-9 w-9 rounded-full object-cover" src="/images/1.png" alt="Ahmed kamel" />
                                                     </span>
                                                     <div
                                                         class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
                                                     ></div>
                                                 </div>
                                                 <div class="flex-1 overflow-hidden">
-                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                        John
-                                                    </h5>
-                                                    <p
-                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                    >
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">John</h5>
+                                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                         Commit new changes to K-WD Dashboard project.
                                                     </p>
-                                                    <span
-                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                    >
-                                                        10h ago
-                                                    </span>
+                                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 10h ago </span>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="#" class="block">
                                             <div class="flex space-x-4 px-4">
                                                 <div class="relative flex-shrink-0">
-                                                    <span
-                                                        class="rounded-ful relative z-10 inline-block overflow-visible"
-                                                    >
-                                                        <img
-                                                            class="h-9 w-9 rounded-full object-cover"
-                                                            src="/images/1.png"
-                                                            alt="Ahmed kamel"
-                                                        />
+                                                    <span class="rounded-ful relative z-10 inline-block overflow-visible">
+                                                        <img class="h-9 w-9 rounded-full object-cover" src="/images/1.png" alt="Ahmed kamel" />
                                                     </span>
                                                     <div
                                                         class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
                                                     ></div>
                                                 </div>
                                                 <div class="flex-1 overflow-hidden">
-                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                        Ahmed Kamel
-                                                    </h5>
-                                                    <p
-                                                        class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                    >
+                                                    <h5 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h5>
+                                                    <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                         Release new version "K-WD Dashboard"
                                                     </p>
-                                                    <span
-                                                        class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                    >
-                                                        20d ago
-                                                    </span>
+                                                    <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 20d ago </span>
                                                 </div>
                                             </div>
                                         </a>
@@ -2116,33 +1853,19 @@
                                             <a href="#" class="block">
                                                 <div class="flex space-x-4 px-4">
                                                     <div class="relative flex-shrink-0">
-                                                        <span
-                                                            class="rounded-ful relative z-10 inline-block overflow-visible"
-                                                        >
-                                                            <img
-                                                                class="h-9 w-9 rounded-full object-cover"
-                                                                src="/images/1.png"
-                                                                alt="Ahmed kamel"
-                                                            />
+                                                        <span class="rounded-ful relative z-10 inline-block overflow-visible">
+                                                            <img class="h-9 w-9 rounded-full object-cover" src="/images/1.png" alt="Ahmed kamel" />
                                                         </span>
                                                         <div
                                                             class="absolute left-1/2 -ml-px -mt-3 h-24 bg-primary-50 p-px dark:bg-primary-darker"
                                                         ></div>
                                                     </div>
                                                     <div class="flex-1 overflow-hidden">
-                                                        <h5 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                            Ahmed Kamel
-                                                        </h5>
-                                                        <p
-                                                            class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                        >
+                                                        <h5 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h5>
+                                                        <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                             Release new version "K-WD Dashboard"
                                                         </p>
-                                                        <span
-                                                            class="text-sm font-normal text-gray-400 dark:text-primary-light"
-                                                        >
-                                                            20d ago
-                                                        </span>
+                                                        <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> 20d ago </span>
                                                     </div>
                                                 </div>
                                             </a>
@@ -2152,7 +1875,7 @@
                             </div>
                         </div>
                     </section>
-
+                
                     <!-- Search panel -->
                     <!-- Backdrop -->
                     <div
@@ -2167,7 +1890,7 @@
                         class="fixed inset-0 z-10 bg-primary-darker opacity-50"
                         aria-hidden="true"
                     ></div>
-
+                    
                     <!-- Panel -->
                     <section
                         x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
@@ -2180,12 +1903,14 @@
                         tabindex="-1"
                         x-show="isSearchPanelOpen"
                         @keydown.escape="isSearchPanelOpen &#x3D; false"
-                        class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        class="fixed inset-y-0  left-0  z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
                         x-trap.inert.noscroll.noautofocus="isSearchPanelOpen"
                     >
                         <h2 class="sr-only">Search panel</h2>
-
-                        <div class="absolute right-0 translate-x-full p-2">
+                    
+                        <div
+                            class="absolute  right-0 translate-x-full  p-2"
+                        >
                             <!-- Close button -->
                             <button
                                 @click="isSearchPanelOpen &#x3D; false"
@@ -2194,7 +1919,7 @@
                                 <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
                             </button>
                         </div>
-
+                    
                         <!-- Panel content -->
                         <div class="flex h-screen flex-col">
                             <!-- Panel content -->
@@ -2206,7 +1931,7 @@
                                     <span class="absolute inset-y-0 inline-flex items-center px-4">
                                         <span aria-hidden="true" class="iconify h-5 w-5 tabler--search"></span>
                                     </span>
-
+                            
                                     <input
                                         x-ref="searchInput"
                                         type="text"
@@ -2215,7 +1940,7 @@
                                         class="w-full rounded-full border-gray-400 py-2 pl-10 pr-4 text-base focus:border-primary focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark dark:text-gray-300 dark:focus:ring-offset-dark rtl:pl-4 rtl:pr-10"
                                     />
                                 </div>
-
+                            
                                 <!-- Panel content (Search result) -->
                                 <div class="h flex-1 space-y-4 overflow-y-hidden px-4 pb-4 hover:overflow-y-auto">
                                     <h3 class="py-2 text-sm font-semibold text-gray-600 dark:text-light">History</h3>
@@ -2225,14 +1950,10 @@
                                         </div>
                                         <div class="max-w-xs flex-1 overflow-hidden">
                                             <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Header</h4>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
+                                            <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                 Lorem ipsum dolor, sit amet consectetur.
                                             </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                Post
-                                            </span>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Post </span>
                                         </div>
                                     </a>
                                     <a href="#" class="flex space-x-4">
@@ -2240,62 +1961,36 @@
                                             <img class="h-10 w-10 rounded-lg" src="/images/1.png" alt="Ahmed Kamel" />
                                         </div>
                                         <div class="max-w-xs flex-1 overflow-hidden">
-                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                Ahmed Kamel
-                                            </h4>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
+                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Ahmed Kamel</h4>
+                                            <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                 Last activity 3h ago.
                                             </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                Offline
-                                            </span>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Offline </span>
                                         </div>
                                     </a>
                                     <a href="#" class="flex space-x-4">
                                         <div class="flex-shrink-0">
-                                            <img
-                                                class="h-10 w-10 rounded-lg"
-                                                src="/images/1.png"
-                                                alt="K-WD Dashboard"
-                                            />
+                                            <img class="h-10 w-10 rounded-lg" src="/images/1.png" alt="K-WD Dashboard" />
                                         </div>
                                         <div class="max-w-xs flex-1 overflow-hidden">
-                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                K-WD Dashboard
-                                            </h4>
-                                            <p
-                                                class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                            >
+                                            <h4 class="text-sm font-semibold text-gray-600 dark:text-light">K-WD Dashboard</h4>
+                                            <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                             </p>
-                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                Updated 3h ago.
-                                            </span>
+                                            <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Updated 3h ago. </span>
                                         </div>
                                     </a>
                                     <template x-for="i in 10" x-key="i">
                                         <a href="#" class="flex space-x-4">
                                             <div class="flex-shrink-0">
-                                                <img
-                                                    class="h-10 w-10 rounded-lg"
-                                                    src="/images/1.png"
-                                                    alt="K-WD Dashboard"
-                                                />
+                                                <img class="h-10 w-10 rounded-lg" src="/images/1.png" alt="K-WD Dashboard" />
                                             </div>
                                             <div class="max-w-xs flex-1 overflow-hidden">
-                                                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
-                                                    K-WD Dashboard
-                                                </h4>
-                                                <p
-                                                    class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter"
-                                                >
+                                                <h4 class="text-sm font-semibold text-gray-600 dark:text-light">K-WD Dashboard</h4>
+                                                <p class="truncate text-sm font-normal text-gray-400 dark:text-primary-lighter">
                                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                                 </p>
-                                                <span class="text-sm font-normal text-gray-400 dark:text-primary-light">
-                                                    Updated 3h ago.
-                                                </span>
+                                                <span class="text-sm font-normal text-gray-400 dark:text-primary-light"> Updated 3h ago. </span>
                                             </div>
                                         </a>
                                     </template>
@@ -2304,7 +1999,10 @@
                         </div>
                     </section>
                 </div>
+                
             </div>
         </div>
+
+
     </body>
 </html>
