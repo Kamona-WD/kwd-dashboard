@@ -37,7 +37,7 @@ export default defineConfig({
     publicDir: resolve(__dirname, 'public'),
     resolve: {
         alias: {
-            '@/': resolve(__dirname, 'src'),
+            '@': resolve(__dirname, 'src'),
         },
     },
     optimizeDeps: {

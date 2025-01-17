@@ -30,11 +30,7 @@
         {{> styles}}
     </head>
     <body class="font-sans antialiased">
-        <div
-            x-data="setup()"
-            x-init="$refs.loading.classList.add('hidden'); setColors(color);"
-            :class="{ 'dark': isDark }"
-        >
+        <div x-data="setup()" :class="{ 'dark': $store.settings.darkMode.value }">
             <div class="bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
                 {{> partials/loading-screen }}
 

@@ -35,7 +35,7 @@ export default {
                 break
             case 'transparent':
                 baseClasses +=
-                    ' bg-transparent text-gray-700 focus:ring-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-0'
+                    ' bg-transparent text-gray-700 focus:ring-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark'
                 break
 
             default:

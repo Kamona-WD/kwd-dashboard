@@ -1,18 +1,10 @@
-{{#> partials/panels/base title="Settings panel" pos="right" show="isSettingsPanelOpen" close="isSettingsPanelOpen = false" ref="settingsPanel" }}
+{{#> partials/panels/base title="Settings panel" pos="right" show="$store.settings.panel.isOpen" close="$store.settings.panel.close()" ref="settingsPanel" }}
 <!-- Panel header -->
 <div
     class="flex flex-shrink-0 flex-col items-center justify-center space-y-4 border-b px-4 py-8 dark:border-primary-dark"
 >
-    <span aria-hidden="true" class="text-gray-500 dark:text-primary">
-        <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-            />
-        </svg>
-    </span>
+    <span aria-hidden="true" class="iconify h-8 w-8 text-gray-500 tabler--adjustments dark:text-primary"></span>
+
     <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">Settings</h2>
 </div>
 
@@ -24,51 +16,23 @@
         <div class="flex items-center space-x-8">
             <!-- Light button -->
             <button
-                @click="setLightTheme"
+                @click="$store.settings.darkMode.setValue(false)"
                 class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !isDark, 'text-gray-500 dark:text-primary-light': isDark }"
+                :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !$store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': $store.settings.darkMode.value }"
             >
-                <span>
-                    <svg
-                        class="h-6 w-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                        />
-                    </svg>
-                </span>
+                <span aria-hidden="true" class="iconify h-6 w-6 tabler--sun"></span>
+
                 <span>Light</span>
             </button>
 
             <!-- Dark button -->
             <button
-                @click="setDarkTheme"
+                @click="$store.settings.darkMode.setValue(true)"
                 class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': isDark, 'text-gray-500 dark:text-primary-light': !isDark }"
+                :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': $store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': !$store.settings.darkMode.value }"
             >
-                <span>
-                    <svg
-                        class="h-6 w-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                        />
-                    </svg>
-                </span>
+                <span aria-hidden="true" class="iconify h-6 w-6 tabler--moon"></span>
+
                 <span>Dark</span>
             </button>
         </div>
@@ -77,37 +41,16 @@
     <!-- Colors -->
     <div class="space-y-4 p-4 md:p-8">
         <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
-        <div>
-            <button
-                @click="setColors('cyan')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-cyan)"
-            ></button>
-            <button
-                @click="setColors('teal')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-teal)"
-            ></button>
-            <button
-                @click="setColors('green')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-green)"
-            ></button>
-            <button
-                @click="setColors('fuchsia')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-fuchsia)"
-            ></button>
-            <button
-                @click="setColors('blue')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-blue)"
-            ></button>
-            <button
-                @click="setColors('violet')"
-                class="h-10 w-10 rounded-full"
-                style="background-color: var(--color-violet)"
-            ></button>
+
+        <div class="flex items-center gap-2">
+            <template x-for="c in $store.settings.colors.availableColors">
+                <button
+                    x-key="c"
+                    @click="$store.settings.colors.setColor(c)"
+                    class="h-10 w-10 rounded-full"
+                    :style="{backgroundColor: `var(--color-${c})`}"
+                ></button>
+            </template>
         </div>
     </div>
 </div>

@@ -25,6 +25,7 @@
     x-show="{{ show }}"
     @keydown.escape="{{ close }}"
     class="fixed inset-y-0 {{#if (eq pos 'left')}} left-0 {{else}} right-0 {{/if}} z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+    x-trap.inert.noscroll.noautofocus="{{ show }}"
 >
     <h2 class="sr-only">{{ title }}</h2>
 

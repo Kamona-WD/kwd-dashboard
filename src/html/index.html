@@ -1,16 +1,208 @@
 {{#> layouts/main activeLink='Dashboard'}}
 
-{{#*inline "styles"}}{{/inline}}
+{{#*inline "styles"}}
+<link rel="stylesheet" href="{{ resolve-from-root '../css/demo.css' }}">
+{{/inline}}
 
 {{#*inline "header"}}
 <h2 class="text-2xl font-semibold">Dashboard</h2>
 
 {{#btn href="https://github.com/Kamona-WD/kwd-dashboard" text="View on github" variant="black" startIcon="tabler--brand-github"
+
 }}{{/btn}}
 {{/inline}}
 
 <h1 class="sr-only">Dashboard</h1>
 
-{{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
+<!-- Content -->
+<div class="mt-2 p-4 grid gap-4">
+    <!-- State cards -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
+        {{#each simpleStatistics}}
+        {{> partials/simple-statistics-card }}
+        {{/each}}
+    </div>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Bar chart card -->
+        <div class="overflow-hidden col-span-2 rounded-md bg-white dark:bg-darker" x-data="{ isOn: false }">
+            <!-- Card header -->
+            <div class="flex items-center justify-between border-b p-4 dark:border-primary">
+                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Bar Chart</h4>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-gray-500 dark:text-light">Last year</span>
+                    <button
+                        class="relative focus:outline-none"
+                        x-cloak
+                        @click="isOn = !isOn; $parent.updateBarChart(isOn)"
+                    >
+                        <div
+                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-darker"
+                        ></div>
+                        <div
+                            class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200 ease-in-out"
+                            :class="{ 'translate-x-0  bg-white dark:bg-primary-100': !isOn, 'translate-x-6 bg-primary-light dark:bg-primary': isOn }"
+                        ></div>
+                    </button>
+                </div>
+            </div>
+            <!-- Chart -->
+            <div  x-data="barChart($refs.barChartEl)" class="relative h-72 p-4">
+                <div x-ref="barChartEl"></div>
+            </div>
+        </div>
+
+        <!-- Doughnut chart card -->
+        <div class="overflow-hidden rounded-md bg-white dark:bg-darker" x-data="{ isOn: false }">
+            <!-- Card header -->
+            <div class="flex items-center justify-between border-b p-4 dark:border-primary">
+                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Doughnut Chart</h4>
+                <div class="flex items-center">
+                    <button
+                        class="relative focus:outline-none"
+                        x-cloak
+                        @click="isOn = !isOn; $parent.updateDoughnutChart(isOn)"
+                    >
+                        <div
+                            class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-darker"
+                        ></div>
+                        <div
+                            class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200 ease-in-out"
+                            :class="{ 'translate-x-0  bg-white dark:bg-primary-100': !isOn, 'translate-x-6 bg-primary-light dark:bg-primary': isOn }"
+                        ></div>
+                    </button>
+                </div>
+            </div>
+            <!-- Chart -->
+            <div  x-data="doughnutChart($refs.doughnutChartEl)" class="relative h-72 p-4">
+                <div x-ref="doughnutChartEl"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Two grid columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Active users chart -->
+        <div class="overflow-hidden col-span-1 rounded-md bg-white dark:bg-darker">
+            <!-- Card header -->
+            <div class="border-b p-4 dark:border-primary">
+                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Active users right now</h4>
+            </div>
+            <p class="p-4">
+                <span class="text-2xl font-medium text-gray-500 dark:text-light" id="usersCount">0</span>
+                <span class="text-sm font-medium text-gray-500 dark:text-primary">Users</span>
+            </p>
+
+            <!-- Chart -->
+            <div x-data="activeUsersChart($refs.activeUsersChartEl)" class="relative p-4">
+                <div x-ref="activeUsersChartEl"></div>
+            </div>
+        </div>
+
+        <!-- Line chart card -->
+        <div class="overflow-hidden col-span-2 rounded-md bg-white dark:bg-darker">
+            {{> partials/card-header title="Line Chart"}}
+
+            <!-- Chart -->
+            <div x-data="lineChart($refs.lineChartEl)" class="relative h-72 p-4">
+                <div x-ref="lineChartEl"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customers table -->
+<section class="overflow-hidden rounded-md bg-white dark:bg-darker dark:border dark:border-primary">
+    <div class="flex items-center border-b dark:border-primary justify-between gap-4 p-4">
+        <h2 class="text-xl font-semibold">Latest Customers</h2>
+
+    </div>
+
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <div class="overflow-hidden rounded-e-md border-b dark:border-primary">
+                <table class="min-w-full divide-y dark:divide-gray-600 overflow-x-scroll">
+                    <thead class="bg-gray-50 dark:bg-dark">
+                        <tr class="text-gray-500 dark:text-gray-400">
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                            >
+                                Name
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                            >
+                                Title
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                            >
+                                Country
+                            </th>
+                            <th
+                                scope="col"
+                                class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                            >
+                                Date
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="divide-y bg-white dark:bg-darker dark:divide-primary">
+                        {{#each latestCustomers}}
+                        <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
+                            <td class="whitespace-nowrap px-6 py-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="h-10 w-10 flex-shrink-0">
+                                        <img
+                                            class="h-10 w-10 rounded-md"
+                                            src="/images/1.png"
+                                            alt="User's avatar"
+                                        />
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium">
+                                            {{ name }}
+                                        </div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400">
+                                            {{{ email }}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4">
+                                <div class="text-sm">Regional Paradigm Technician</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Optimization</div>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm">
+                                {{ country }}
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
+                                {{ date }}
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900"> Edit </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+{{#*inline "before-script"}}
+<script type="module" src="{{ resolve-from-root '../js/demo.js' }}"></script>
+{{/inline}}
+
+{{#*inline "after-script"}}{{/inline}}
 
 {{/layouts/main}}

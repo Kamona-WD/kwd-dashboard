@@ -1,6 +1,6 @@
 <!-- Navbar -->
-<div class="sticky top-0 flex-shrink-0 bg-white dark:bg-darker">
-    <div class="flex items-center justify-between border-b p-2 dark:border-primary-darker">
+<div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
+    <div class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker">
         <!-- Mobile menu button -->
         <button
             @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
@@ -27,14 +27,27 @@
 
         <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
             <!-- Toggle dark theme button -->
-            <button aria-hidden="true" class="relative focus:outline-none" x-cloak @click="toggleTheme">
+            <button
+                aria-hidden="true"
+                class="relative focus:outline-none"
+                x-cloak
+                @click="$store.settings.darkMode.toggle()"
+            >
                 <div class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"></div>
                 <div
                     class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
-                    :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                    :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
                 >
-                    <span aria-hidden="true" x-show="!isDark" class="iconify h-4 w-4 tabler--moon"></span>
-                    <span aria-hidden="true" x-show="isDark" class="iconify h-4 w-4 tabler--sun"></span>
+                    <span
+                        aria-hidden="true"
+                        x-show="!$store.settings.darkMode.value"
+                        class="iconify h-4 w-4 tabler--moon"
+                    ></span>
+                    <span
+                        aria-hidden="true"
+                        x-show="$store.settings.darkMode.value"
+                        class="iconify h-4 w-4 tabler--sun"
+                    ></span>
                 </div>
             </button>
 
@@ -58,7 +71,7 @@
 
             <!-- Settings button -->
             <button
-                @click="openSettingsPanel"
+                @click="$store.settings.panel.open()"
                 class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
             >
                 <span class="sr-only">Open settings panel</span>
@@ -136,16 +149,29 @@
         >
             <div class="space-x-2">
                 <!-- Toggle dark theme button -->
-                <button aria-hidden="true" class="relative focus:outline-none" x-cloak @click="toggleTheme">
+                <button
+                    aria-hidden="true"
+                    class="relative focus:outline-none"
+                    x-cloak
+                    @click="$store.settings.darkMode.toggle()"
+                >
                     <div
                         class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
                     ></div>
                     <div
                         class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
-                        :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                        :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
                     >
-                        <span aria-hidden="true" x-show="!isDark" class="iconify h-4 w-4 tabler--moon"></span>
-                        <span aria-hidden="true" x-show="isDark" class="iconify h-4 w-4 tabler--sun"></span>
+                        <span
+                            aria-hidden="true"
+                            x-show="!$store.settings.darkMode.value"
+                            class="iconify h-4 w-4 tabler--moon"
+                        ></span>
+                        <span
+                            aria-hidden="true"
+                            x-show="$store.settings.darkMode.value"
+                            class="iconify h-4 w-4 tabler--sun"
+                        ></span>
                     </div>
                 </button>
 
@@ -169,7 +195,7 @@
 
                 <!-- Settings button -->
                 <button
-                    @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                    @click="$store.settings.panel.open(); $nextTick(() => { isMobileSubMenuOpen = false })"
                     class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
                 >
                     <span class="sr-only">Open settings panel</span>

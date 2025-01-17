@@ -4,99 +4,78 @@ import AlpineFocus from '@alpinejs/focus'
 
 window.Alpine = Alpine
 
-Alpine.data('setup', () => {
-    const getTheme = () => {
-        if (window.localStorage.getItem('dark')) {
-            return JSON.parse(window.localStorage.getItem('dark'))
-        }
+Alpine.store('settings', {
+    panel: {
+        isOpen: false,
 
-        return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-    }
-
-    const setTheme = (value) => {
-        window.localStorage.setItem('dark', value)
-    }
-
-    const getColor = () => {
-        if (window.localStorage.getItem('color')) {
-            return window.localStorage.getItem('color')
-        }
-        return 'cyan'
-    }
-
-    function setColors(color) {
-        // console.log(this)
-        // return;
-
-        const root = document.documentElement
-        root.style.setProperty('--color-primary', `var(--color-${color})`)
-        root.style.setProperty('--color-primary-50', `var(--color-${color}-50)`)
-        root.style.setProperty('--color-primary-100', `var(--color-${color}-100)`)
-        root.style.setProperty('--color-primary-light', `var(--color-${color}-light)`)
-        root.style.setProperty('--color-primary-lighter', `var(--color-${color}-lighter)`)
-        root.style.setProperty('--color-primary-dark', `var(--color-${color}-dark)`)
-        root.style.setProperty('--color-primary-darker', `var(--color-${color}-darker)`)
-        this.selectedColor = color
-        window.localStorage.setItem('color', color)
-        //
-    }
-
-    const updateBarChart = (on) => {
-        const data = {
-            data: randomData(),
-            backgroundColor: 'rgb(207, 250, 254)',
-        }
-        if (on) {
-            barChart.data.datasets.push(data)
-            barChart.update()
-        } else {
-            barChart.data.datasets.splice(1)
-            barChart.update()
-        }
-    }
-
-    const updateDoughnutChart = (on) => {
-        const data = random()
-        const color = 'rgb(207, 250, 254)'
-        if (on) {
-            doughnutChart.data.labels.unshift('Seb')
-            doughnutChart.data.datasets[0].data.unshift(data)
-            doughnutChart.data.datasets[0].backgroundColor.unshift(color)
-            doughnutChart.update()
-        } else {
-            doughnutChart.data.labels.splice(0, 1)
-            doughnutChart.data.datasets[0].data.splice(0, 1)
-            doughnutChart.data.datasets[0].backgroundColor.splice(0, 1)
-            doughnutChart.update()
-        }
-    }
-
-    const updateLineChart = () => {
-        lineChart.data.datasets[0].data.reverse()
-        lineChart.update()
-    }
-
-    return {
-        loading: true,
-        isDark: getTheme(),
-        toggleTheme() {
-            this.isDark = !this.isDark
-            setTheme(this.isDark)
+        open() {
+            this.isOpen = true
         },
-        setLightTheme() {
-            this.isDark = false
-            setTheme(this.isDark)
+
+        close() {
+            this.isOpen = false
         },
-        setDarkTheme() {
-            this.isDark = true
-            setTheme(this.isDark)
+    },
+
+    darkMode: {
+        value: false,
+        setValue(value) {
+            this.value = value
+            window.localStorage.setItem('dark', value)
+            document.dispatchEvent(new CustomEvent('scheme:changed', {}))
         },
-        color: getColor(),
+        getValue() {
+            if (window.localStorage.getItem('dark')) {
+                return JSON.parse(window.localStorage.getItem('dark'))
+            }
+            return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        },
+        toggle() {
+            this.value = !this.value
+            this.setValue(this.value)
+        },
+    },
+
+    colors: {
         selectedColor: 'cyan',
-        setColors,
-        toggleSidbarMenu() {
-            this.isSidebarOpen = !this.isSidebarOpen
+
+        availableColors: ['cyan', 'teal', 'green', 'fuchsia', 'blue', 'violet'],
+
+        getColor() {
+            if (window.localStorage.getItem('color')) {
+                return window.localStorage.getItem('color')
+            }
+            return this.selectedColor
         },
+
+        setColor(color) {
+            const root = document.documentElement
+            root.style.setProperty('--color-primary', `var(--color-${color})`)
+            root.style.setProperty('--color-primary-50', `var(--color-${color}-50)`)
+            root.style.setProperty('--color-primary-100', `var(--color-${color}-100)`)
+            root.style.setProperty('--color-primary-light', `var(--color-${color}-light)`)
+            root.style.setProperty('--color-primary-lighter', `var(--color-${color}-lighter)`)
+            root.style.setProperty('--color-primary-dark', `var(--color-${color}-dark)`)
+            root.style.setProperty('--color-primary-darker', `var(--color-${color}-darker)`)
+            this.selectedColor = color
+            window.localStorage.setItem('color', color)
+
+            document.dispatchEvent(new CustomEvent('colors:changed', {}))
+        },
+    },
+
+    init() {
+        this.darkMode.value = this.darkMode.getValue()
+        this.colors.setColor(this.colors.getColor())
+    },
+})
+
+Alpine.data('setup', () => {
+    return {
+        init() {
+            this.$refs.loading.classList.add('hidden')
+        },
+        loading: true,
         isSettingsPanelOpen: false,
         openSettingsPanel() {
             this.isSettingsPanelOpen = true
@@ -132,13 +111,8 @@ Alpine.data('setup', () => {
                 this.$refs.mobileMainMenu.focus()
             })
         },
-        updateBarChart,
-        updateDoughnutChart,
-        updateLineChart,
     }
 })
 
 Alpine.plugin(AlpineCollapse)
 Alpine.plugin(AlpineFocus)
-
-// Alpine.start()

@@ -25,16 +25,12 @@
             }
         </style>
 
-        <script type="module" crossorigin src="/js/500-page-CZelN75V.js"></script>
-        <link rel="modulepreload" crossorigin href="/js/main-HNFcGRBf.js" />
+        <script type="module" crossorigin src="/js/500-page-C4g-Xm8y.js"></script>
+        <link rel="modulepreload" crossorigin href="/js/main-BOWmm8WK.js" />
         <link rel="stylesheet" crossorigin href="/css/main.css" />
     </head>
     <body class="font-sans antialiased">
-        <div
-            x-data="setup()"
-            x-init="$refs.loading.classList.add('hidden'); setColors(color);"
-            :class="{ 'dark': isDark }"
-        >
+        <div x-data="setup()" :class="{ 'dark': $store.settings.darkMode.value }">
             <div class="bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
                 <!-- Loading screen -->
                 <div

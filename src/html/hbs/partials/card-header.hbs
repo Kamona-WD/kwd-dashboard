@@ -1,0 +1,52 @@
+<!-- Card header -->
+<div class="flex items-center justify-between border-b p-4 dark:border-primary">
+    <h4 class="text-lg font-semibold text-gray-500 dark:text-light">{{ title }}</h4>
+
+    <div class="flex items-center">
+        <div class="relative" x-data="{ open: false }">
+            {{#btn variant="transparent" srText="Card Actions" icon="tabler--dots" classes="p-1.5" attrs='@click="open = !open"'
+
+
+            }}{{/btn}}
+
+            <div
+                x-show="open"
+                x-transition:enter="transition-all transform ease-out"
+                x-transition:enter-start="translate-y-1/2 opacity-0"
+                x-transition:enter-end="translate-y-0 opacity-100"
+                x-transition:leave="transition-all transform ease-in"
+                x-transition:leave-start="translate-y-0 opacity-100"
+                x-transition:leave-end="translate-y-1/2 opacity-0"
+                @click.away="open = false"
+                @keydown.escape="open = false"
+                class="absolute right-0 top-12 z-30 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                tabindex="-1"
+                role="menu"
+                aria-orientation="vertical"
+                aria-label="More action"
+            >
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 1
+                </a>
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 2
+                </a>
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 3
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,16 +25,12 @@
             }
         </style>
 
-        <script type="module" crossorigin src="/js/blank-page-CZelN75V.js"></script>
-        <link rel="modulepreload" crossorigin href="/js/main-HNFcGRBf.js" />
+        <script type="module" crossorigin src="/js/blank-page-C4g-Xm8y.js"></script>
+        <link rel="modulepreload" crossorigin href="/js/main-BOWmm8WK.js" />
         <link rel="stylesheet" crossorigin href="/css/main.css" />
     </head>
     <body class="font-sans antialiased">
-        <div
-            x-data="setup()"
-            x-init="$refs.loading.classList.add('hidden'); setColors(color);"
-            :class="{ 'dark': isDark }"
-        >
+        <div x-data="setup()" :class="{ 'dark': $store.settings.darkMode.value }">
             <div class="bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
                 <!-- Loading screen -->
                 <div
@@ -194,8 +190,10 @@
 
                     <div class="flex flex-1 flex-col">
                         <!-- Navbar -->
-                        <div class="sticky top-0 flex-shrink-0 bg-white dark:bg-darker">
-                            <div class="flex items-center justify-between border-b p-2 dark:border-primary-darker">
+                        <div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
+                            <div
+                                class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker"
+                            >
                                 <!-- Mobile menu button -->
                                 <button
                                     @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
@@ -229,23 +227,23 @@
                                         aria-hidden="true"
                                         class="relative focus:outline-none"
                                         x-cloak
-                                        @click="toggleTheme"
+                                        @click="$store.settings.darkMode.toggle()"
                                     >
                                         <div
                                             class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
                                         ></div>
                                         <div
                                             class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
-                                            :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                                            :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
                                         >
                                             <span
                                                 aria-hidden="true"
-                                                x-show="!isDark"
+                                                x-show="!$store.settings.darkMode.value"
                                                 class="iconify h-4 w-4 tabler--moon"
                                             ></span>
                                             <span
                                                 aria-hidden="true"
-                                                x-show="isDark"
+                                                x-show="$store.settings.darkMode.value"
                                                 class="iconify h-4 w-4 tabler--sun"
                                             ></span>
                                         </div>
@@ -271,7 +269,7 @@
 
                                     <!-- Settings button -->
                                     <button
-                                        @click="openSettingsPanel"
+                                        @click="$store.settings.panel.open()"
                                         class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
                                     >
                                         <span class="sr-only">Open settings panel</span>
@@ -357,23 +355,23 @@
                                             aria-hidden="true"
                                             class="relative focus:outline-none"
                                             x-cloak
-                                            @click="toggleTheme"
+                                            @click="$store.settings.darkMode.toggle()"
                                         >
                                             <div
                                                 class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
                                             ></div>
                                             <div
                                                 class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
-                                                :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                                                :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
                                             >
                                                 <span
                                                     aria-hidden="true"
-                                                    x-show="!isDark"
+                                                    x-show="!$store.settings.darkMode.value"
                                                     class="iconify h-4 w-4 tabler--moon"
                                                 ></span>
                                                 <span
                                                     aria-hidden="true"
-                                                    x-show="isDark"
+                                                    x-show="$store.settings.darkMode.value"
                                                     class="iconify h-4 w-4 tabler--sun"
                                                 ></span>
                                             </div>
@@ -399,7 +397,7 @@
 
                                         <!-- Settings button -->
                                         <button
-                                            @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                                            @click="$store.settings.panel.open(); $nextTick(() => { isMobileSubMenuOpen = false })"
                                             class="inline-flex items-center justify-center rounded-full bg-primary-50 p-2 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:bg-primary-100 focus:outline-none focus:ring-primary-darker dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light dark:focus:bg-primary-dark"
                                         >
                                             <span class="sr-only">Open settings panel</span>
@@ -601,7 +599,7 @@
 
                         <!-- Page header -->
                         <header
-                            class="flex flex-shrink-0 items-center justify-between border-b px-2 py-4 dark:border-primary-darker lg:py-6"
+                            class="flex flex-shrink-0 items-center justify-between border-b p-4 dark:border-primary-darker"
                         >
                             <h2 class="text-2xl font-semibold">Blank</h2>
                             <a
@@ -653,8 +651,8 @@
                         x-transition:leave="transition duration-300 ease-in-out"
                         x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0"
-                        x-show="isSettingsPanelOpen"
-                        @click="isSettingsPanelOpen &#x3D; false"
+                        x-show="$store.settings.panel.isOpen"
+                        @click="$store.settings.panel.close()"
                         class="fixed inset-0 z-10 bg-primary-darker opacity-50"
                         aria-hidden="true"
                     ></div>
@@ -669,16 +667,17 @@
                         x-transition:leave-end=" translate-x-full "
                         x-ref="settingsPanel"
                         tabindex="-1"
-                        x-show="isSettingsPanelOpen"
-                        @keydown.escape="isSettingsPanelOpen &#x3D; false"
+                        x-show="$store.settings.panel.isOpen"
+                        @keydown.escape="$store.settings.panel.close()"
                         class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        x-trap.inert.noscroll.noautofocus="$store.settings.panel.isOpen"
                     >
                         <h2 class="sr-only">Settings panel</h2>
 
                         <div class="absolute left-0 -translate-x-full p-2">
                             <!-- Close button -->
                             <button
-                                @click="isSettingsPanelOpen &#x3D; false"
+                                @click="$store.settings.panel.close()"
                                 class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
                             >
                                 <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
@@ -691,22 +690,11 @@
                             <div
                                 class="flex flex-shrink-0 flex-col items-center justify-center space-y-4 border-b px-4 py-8 dark:border-primary-dark"
                             >
-                                <span aria-hidden="true" class="text-gray-500 dark:text-primary">
-                                    <svg
-                                        class="h-8 w-8"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                                        />
-                                    </svg>
-                                </span>
+                                <span
+                                    aria-hidden="true"
+                                    class="iconify h-8 w-8 text-gray-500 tabler--adjustments dark:text-primary"
+                                ></span>
+
                                 <h2 id="settinsPanelLabel" class="text-xl font-medium text-gray-500 dark:text-light">
                                     Settings
                                 </h2>
@@ -720,51 +708,23 @@
                                     <div class="flex items-center space-x-8">
                                         <!-- Light button -->
                                         <button
-                                            @click="setLightTheme"
+                                            @click="$store.settings.darkMode.setValue(false)"
                                             class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !isDark, 'text-gray-500 dark:text-primary-light': isDark }"
+                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': !$store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': $store.settings.darkMode.value }"
                                         >
-                                            <span>
-                                                <svg
-                                                    class="h-6 w-6"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                                                    />
-                                                </svg>
-                                            </span>
+                                            <span aria-hidden="true" class="iconify h-6 w-6 tabler--sun"></span>
+
                                             <span>Light</span>
                                         </button>
 
                                         <!-- Dark button -->
                                         <button
-                                            @click="setDarkTheme"
+                                            @click="$store.settings.darkMode.setValue(true)"
                                             class="flex items-center justify-center space-x-4 rounded-md border px-4 py-2 transition-colors hover:border-gray-900 hover:text-gray-900 focus:outline-none focus:ring focus:ring-primary-lighter focus:ring-offset-2 dark:border-primary dark:hover:border-primary-light dark:hover:text-primary-100 dark:focus:ring-primary-dark dark:focus:ring-offset-dark"
-                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': isDark, 'text-gray-500 dark:text-primary-light': !isDark }"
+                                            :class="{ 'border-gray-900 text-gray-900 dark:border-primary-light dark:text-primary-100': $store.settings.darkMode.value, 'text-gray-500 dark:text-primary-light': !$store.settings.darkMode.value }"
                                         >
-                                            <span>
-                                                <svg
-                                                    class="h-6 w-6"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                                                    />
-                                                </svg>
-                                            </span>
+                                            <span aria-hidden="true" class="iconify h-6 w-6 tabler--moon"></span>
+
                                             <span>Dark</span>
                                         </button>
                                     </div>
@@ -773,37 +733,16 @@
                                 <!-- Colors -->
                                 <div class="space-y-4 p-4 md:p-8">
                                     <h6 class="text-lg font-medium text-gray-400 dark:text-light">Colors</h6>
-                                    <div>
-                                        <button
-                                            @click="setColors('cyan')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-cyan)"
-                                        ></button>
-                                        <button
-                                            @click="setColors('teal')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-teal)"
-                                        ></button>
-                                        <button
-                                            @click="setColors('green')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-green)"
-                                        ></button>
-                                        <button
-                                            @click="setColors('fuchsia')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-fuchsia)"
-                                        ></button>
-                                        <button
-                                            @click="setColors('blue')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-blue)"
-                                        ></button>
-                                        <button
-                                            @click="setColors('violet')"
-                                            class="h-10 w-10 rounded-full"
-                                            style="background-color: var(--color-violet)"
-                                        ></button>
+
+                                    <div class="flex items-center gap-2">
+                                        <template x-for="c in $store.settings.colors.availableColors">
+                                            <button
+                                                x-key="c"
+                                                @click="$store.settings.colors.setColor(c)"
+                                                class="h-10 w-10 rounded-full"
+                                                :style="{backgroundColor: `var(--color-${c})`}"
+                                            ></button>
+                                        </template>
                                     </div>
                                 </div>
                             </div>
@@ -838,6 +777,7 @@
                         x-show="isNotificationsPanelOpen"
                         @keydown.escape="isNotificationsPanelOpen &#x3D; false"
                         class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        x-trap.inert.noscroll.noautofocus="isNotificationsPanelOpen"
                     >
                         <h2 class="sr-only">Notifications panel</h2>
 
@@ -1023,7 +963,7 @@
                                                     >
                                                         <img
                                                             class="h-9 w-9 rounded-full object-cover"
-                                                            src="build/images/avatar.jpg"
+                                                            src="/images/1.png"
                                                             alt="Ahmed kamel"
                                                         />
                                                     </span>
@@ -1056,7 +996,7 @@
                                                     >
                                                         <img
                                                             class="h-9 w-9 rounded-full object-cover"
-                                                            src="build/images/avatar-1.jpg"
+                                                            src="/images/1.png"
                                                             alt="Ahmed kamel"
                                                         />
                                                     </span>
@@ -1089,7 +1029,7 @@
                                                     >
                                                         <img
                                                             class="h-9 w-9 rounded-full object-cover"
-                                                            src="build/images/avatar.jpg"
+                                                            src="/images/1.png"
                                                             alt="Ahmed kamel"
                                                         />
                                                     </span>
@@ -1123,7 +1063,7 @@
                                                         >
                                                             <img
                                                                 class="h-9 w-9 rounded-full object-cover"
-                                                                src="build/images/avatar.jpg"
+                                                                src="/images/1.png"
                                                                 alt="Ahmed kamel"
                                                             />
                                                         </span>
@@ -1183,6 +1123,7 @@
                         x-show="isSearchPanelOpen"
                         @keydown.escape="isSearchPanelOpen &#x3D; false"
                         class="fixed inset-y-0 left-0 z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+                        x-trap.inert.noscroll.noautofocus="isSearchPanelOpen"
                     >
                         <h2 class="sr-only">Search panel</h2>
 
@@ -1222,11 +1163,7 @@
                                     <h3 class="py-2 text-sm font-semibold text-gray-600 dark:text-light">History</h3>
                                     <a href="#" class="flex space-x-4">
                                         <div class="flex-shrink-0">
-                                            <img
-                                                class="h-10 w-10 rounded-lg"
-                                                src="/images/cover.jpg"
-                                                alt="Post cover"
-                                            />
+                                            <img class="h-10 w-10 rounded-lg" src="/images/1.png" alt="Post cover" />
                                         </div>
                                         <div class="max-w-xs flex-1 overflow-hidden">
                                             <h4 class="text-sm font-semibold text-gray-600 dark:text-light">Header</h4>
@@ -1242,11 +1179,7 @@
                                     </a>
                                     <a href="#" class="flex space-x-4">
                                         <div class="flex-shrink-0">
-                                            <img
-                                                class="h-10 w-10 rounded-lg"
-                                                src="build/images/avatar.jpg"
-                                                alt="Ahmed Kamel"
-                                            />
+                                            <img class="h-10 w-10 rounded-lg" src="/images/1.png" alt="Ahmed Kamel" />
                                         </div>
                                         <div class="max-w-xs flex-1 overflow-hidden">
                                             <h4 class="text-sm font-semibold text-gray-600 dark:text-light">
@@ -1266,7 +1199,7 @@
                                         <div class="flex-shrink-0">
                                             <img
                                                 class="h-10 w-10 rounded-lg"
-                                                src="build/images/cover-2.jpg"
+                                                src="/images/1.png"
                                                 alt="K-WD Dashboard"
                                             />
                                         </div>
@@ -1289,7 +1222,7 @@
                                             <div class="flex-shrink-0">
                                                 <img
                                                     class="h-10 w-10 rounded-lg"
-                                                    src="build/images/cover-3.jpg"
+                                                    src="/images/1.png"
                                                     alt="K-WD Dashboard"
                                                 />
                                             </div>
