@@ -25,8 +25,8 @@
             }
         </style>
 
-        <script type="module" crossorigin src="/js/index-page-BxCQHaY8.js"></script>
-        <link rel="modulepreload" crossorigin href="/js/main-BOWmm8WK.js" />
+        <script type="module" crossorigin src="/js/index-page-CxzR66qg.js"></script>
+        <link rel="modulepreload" crossorigin href="/js/main-CEliYc14.js" />
         <link rel="stylesheet" crossorigin href="/css/main.css" />
     </head>
     <body class="font-sans antialiased">
@@ -43,13 +43,14 @@
                 <div class="flex min-h-screen">
                     <!-- Sidebar -->
                     <aside
-                        class="sticky top-0 hidden h-screen w-64 flex-shrink-0 border-r bg-white dark:border-primary-darker dark:bg-darker md:block"
+                        class="sticky top-0 hidden h-screen flex-shrink-0 border-r bg-white transition-[width] duration-300 dark:border-primary-darker dark:bg-darker lg:block"
+                        :class="{ 'w-64': isSidebarOpen, 'w-0': !isSidebarOpen }"
                     >
                         <div class="flex h-full flex-col">
                             <!-- Sidebar links -->
                             <nav
                                 aria-label="Main"
-                                class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto"
+                                class="flex-1 space-y-2 overflow-y-hidden px-2 py-3 hover:overflow-y-auto"
                             >
                                 <a
                                     href="/"
@@ -176,7 +177,7 @@
                             </nav>
 
                             <!-- Sidebar footer -->
-                            <div class="flex-shrink-0 px-2 py-4">
+                            <div class="flex-shrink-0 p-2">
                                 <button
                                     type="button"
                                     class="inline-flex w-full select-none items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 font-medium text-white transition-colors hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-dark"
@@ -194,23 +195,39 @@
                             <div
                                 class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker"
                             >
-                                <!-- Mobile menu button -->
-                                <button
-                                    @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
-                                    class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-                                >
-                                    <span class="sr-only">Open main manu</span>
+                                <div class="flex items-center gap-2">
+                                    <!-- Sidebar button -->
+                                    <button
+                                        @click="isSidebarOpen = !isSidebarOpen"
+                                        class="hidden items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:inline-flex"
+                                    >
+                                        <span class="sr-only">Toggle sidebar</span>
 
-                                    <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
-                                </button>
+                                        <span
+                                            aria-hidden="true"
+                                            class="iconify h-8 w-8 transition-transform tabler--chevron-left"
+                                            :class="{ '-rotate-180': !isSidebarOpen }"
+                                        ></span>
+                                    </button>
 
-                                <!-- Brand -->
-                                <a
-                                    href="/"
-                                    class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
-                                >
-                                    K-WD
-                                </a>
+                                    <!-- Mobile menu button -->
+                                    <button
+                                        @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
+                                        class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:hidden"
+                                    >
+                                        <span class="sr-only">Open main manu</span>
+
+                                        <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
+                                    </button>
+
+                                    <!-- Brand -->
+                                    <a
+                                        href="/"
+                                        class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                                    >
+                                        K-WD
+                                    </a>
+                                </div>
 
                                 <!-- Mobile sub menu button -->
                                 <button
@@ -465,7 +482,7 @@
 
                             <!-- Mobile main manu -->
                             <div
-                                class="border-b dark:border-primary-darker md:hidden"
+                                class="border-b dark:border-primary-darker lg:hidden"
                                 x-show="isMobileMainMenuOpen"
                                 @click.away="isMobileMainMenuOpen = false"
                                 x-collapse
@@ -622,7 +639,7 @@
                             <!-- Content -->
                             <div class="mt-2 grid gap-4 p-4">
                                 <!-- State cards -->
-                                <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
+                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
                                     <!-- Value card -->
 
                                     <div

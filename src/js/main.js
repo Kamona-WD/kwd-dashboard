@@ -76,6 +76,7 @@ Alpine.data('setup', () => {
             this.$refs.loading.classList.add('hidden')
         },
         loading: true,
+        isSidebarOpen: true,
         isSettingsPanelOpen: false,
         openSettingsPanel() {
             this.isSettingsPanelOpen = true

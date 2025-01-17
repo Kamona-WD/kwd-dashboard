@@ -1,15 +1,16 @@
 <!-- Sidebar -->
 <aside
-    class="sticky top-0 hidden h-screen w-64 flex-shrink-0 border-r bg-white dark:border-primary-darker dark:bg-darker md:block"
+    class="sticky top-0 hidden h-screen flex-shrink-0 border-r bg-white transition-[width] duration-300 dark:border-primary-darker dark:bg-darker lg:block"
+    :class="{ 'w-64': isSidebarOpen, 'w-0': !isSidebarOpen }"
 >
     <div class="flex h-full flex-col">
         <!-- Sidebar links -->
-        <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto">
+        <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-3 hover:overflow-y-auto">
             {{> partials/navigation-links }}
         </nav>
 
         <!-- Sidebar footer -->
-        <div class="flex-shrink-0 px-2 py-4">
+        <div class="flex-shrink-0 p-2">
             {{#btn text="Customize" startIcon="tabler--adjustments" classes="w-full"}}{{/btn}}
         </div>
     </div>

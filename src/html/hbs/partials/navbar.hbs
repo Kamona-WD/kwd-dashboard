@@ -1,20 +1,39 @@
 <!-- Navbar -->
 <div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
     <div class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker">
-        <!-- Mobile menu button -->
-        <button
-            @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
-            class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
-        >
-            <span class="sr-only">Open main manu</span>
+        <div class="flex items-center gap-2">
+            <!-- Sidebar button -->
+            <button
+                @click="isSidebarOpen = !isSidebarOpen"
+                class="hidden items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:inline-flex"
+            >
+                <span class="sr-only">Toggle sidebar</span>
 
-            <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
-        </button>
+                <span
+                    aria-hidden="true"
+                    class="iconify h-8 w-8 transition-transform tabler--chevron-left"
+                    :class="{ '-rotate-180': !isSidebarOpen }"
+                ></span>
+            </button>
 
-        <!-- Brand -->
-        <a href="/" class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light">
-            K-WD
-        </a>
+            <!-- Mobile menu button -->
+            <button
+                @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
+                class="inline-flex items-center justify-center rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light lg:hidden"
+            >
+                <span class="sr-only">Open main manu</span>
+
+                <span aria-hidden="true" class="iconify h-8 w-8 tabler--menu-2"></span>
+            </button>
+
+            <!-- Brand -->
+            <a
+                href="/"
+                class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+            >
+                K-WD
+            </a>
+        </div>
 
         <!-- Mobile sub menu button -->
         <button
@@ -259,7 +278,7 @@
 
     <!-- Mobile main manu -->
     <div
-        class="border-b dark:border-primary-darker md:hidden"
+        class="border-b dark:border-primary-darker lg:hidden"
         x-show="isMobileMainMenuOpen"
         @click.away="isMobileMainMenuOpen = false"
         x-collapse
