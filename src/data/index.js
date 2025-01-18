@@ -13,14 +13,6 @@ export default {
             iconName: 'tabler--file',
             links: [
                 {
-                    title: 'a',
-                    url: '/pages/a.html',
-                },
-                {
-                    title: 'c',
-                    url: '/pages/c.html',
-                },
-                {
                     title: '404',
                     url: '/pages/404.html',
                 },

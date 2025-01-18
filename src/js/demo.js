@@ -58,9 +58,6 @@ document.addEventListener('alpine:init', () => {
                     data: getRandomChartData(12),
                 },
             ],
-            tooltip: {
-                theme: 'dark',
-            },
             grid: {
                 show: false,
             },
