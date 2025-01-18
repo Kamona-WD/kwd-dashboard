@@ -1,4 +1,4 @@
-import esbuild from 'esbuild'
+import { context, build as esBuild } from 'esbuild'
 
 const srcDir = 'src/plugins/tailwindcss'
 const outDir = 'plugins'
@@ -20,11 +20,20 @@ async function build(options) {
     options.define['process.env.NODE_ENV'] = process.argv.includes('--watch') ? `'production'` : `'development'`
 
     try {
-        await esbuild.build({
-            // watch: process.argv.includes("--watch"),
-            external: ['tailwindcss'],
-            ...options,
-        })
+        if(process.argv.includes("--watch")) {
+            let ctx = await context({
+                external: ['tailwindcss'],
+                ...options,
+            })
+
+            await ctx.watch()
+        } else {
+            await esBuild({
+                external: ['tailwindcss'],
+                minify: true,
+                ...options,
+            })
+        }
     } catch (error) {
         process.exit(1)
     }

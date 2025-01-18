@@ -9,6 +9,7 @@
         "email": "ak3849909@gmail.com",
         "url": "https://github.com/Kamona-WD"
     },
+    "homepage": "https://kamona-wd.github.io/kwd-dashboard/",
     "keywords": [
         "dashboard",
         "tailwindcss",
@@ -17,6 +18,13 @@
         "admin",
         "template"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kamona-wd/kwd-dashboard"
+    },
+    "bugs": {
+        "url": "https://github.com/kamona-wd/kwd-dashboard/issues"
+    },
     "main": "plugins/alpinejs/module.cjs.js",
     "module": "plugins/alpinejs/module.esm.js",
     "unpkg": "plugins/alpinejs/cdn.min.js",
