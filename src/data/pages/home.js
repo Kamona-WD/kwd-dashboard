@@ -27,7 +27,7 @@ export default {
             icon: 'tabler--shopping-cart',
             total: '45,021',
             percentage: '3.1%',
-            status: 'default',
+            status: '',
         },
         {
             title: 'Tickets',
