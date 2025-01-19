@@ -11,7 +11,9 @@
                 icon="tabler--chevron-left" 
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
-                iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"' 
+                iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
+
+
             }}{{/btn}}
 
             <!-- Mobile menu button -->
@@ -23,7 +25,9 @@
                 icon=true
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
-                iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"' 
+                iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
+
+
             }}{{/btn}}
 
             <!-- Brand -->
@@ -42,7 +46,9 @@
             srText="Toggle sub manu" 
             attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
             icon="tabler--dots-vertical"
-            iconSizeClasses="h-8 w-8" 
+            iconSizeClasses="h-8 w-8"
+
+
         }}{{/btn}}
 
         <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
@@ -79,6 +85,8 @@
                 icon="tabler--bell"
                 iconSizeClasses="h-8 w-8" 
                 className="p-1.5"
+
+
             }}{{/btn}}
 
             <!-- Search button -->
@@ -89,6 +97,8 @@
                 icon="tabler--search"
                 iconSizeClasses="h-8 w-8" 
                 className="p-1.5"
+
+
             }}{{/btn}}
 
             <!-- Settings button -->
@@ -99,6 +109,8 @@
                 icon="tabler--settings"
                 iconSizeClasses="h-8 w-8" 
                 className="p-1.5"
+
+
             }}{{/btn}}
 
             {{> partials/user-menu }}
@@ -151,6 +163,8 @@
                     srText="Open notification panel" 
                     attrs='@click="openNotificationsPanel"' 
                     icon="tabler--bell"
+
+
                 }}{{/btn}}
 
                 <!-- Search button -->
@@ -159,6 +173,8 @@
                     srText="Open search panel" 
                     attrs='@click="openSearchPanel"' 
                     icon="tabler--search"
+
+
                 }}{{/btn}}
 
                 <!-- Settings button -->
@@ -167,6 +183,8 @@
                     srText="Open settings panel" 
                     attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
                     icon="tabler--settings"
+
+
                 }}{{/btn}}
             </div>
 

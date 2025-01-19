@@ -2,20 +2,20 @@ export default function (Alpine) {
     Alpine.store('settings', {
         panel: {
             isOpen: false,
-    
+
             open(cp) {
                 this.isOpen = true
-                
-                if(typeof cp == 'function') {
+
+                if (typeof cp == 'function') {
                     cp()
                 }
             },
-    
+
             close() {
                 this.isOpen = false
             },
         },
-    
+
         darkMode: {
             value: false,
             setValue(value) {
@@ -34,19 +34,19 @@ export default function (Alpine) {
                 this.setValue(this.value)
             },
         },
-    
+
         colors: {
             selectedColor: 'cyan',
-    
+
             availableColors: ['cyan', 'teal', 'green', 'fuchsia', 'blue', 'violet'],
-    
+
             getColor() {
                 if (window.localStorage.getItem('color')) {
                     return window.localStorage.getItem('color')
                 }
                 return this.selectedColor
             },
-    
+
             setColor(color) {
                 const root = document.documentElement
                 root.style.setProperty('--color-primary', `var(--color-${color})`)
@@ -58,26 +58,26 @@ export default function (Alpine) {
                 root.style.setProperty('--color-primary-darker', `var(--color-${color}-darker)`)
                 this.selectedColor = color
                 window.localStorage.setItem('color', color)
-    
+
                 document.dispatchEvent(new CustomEvent('colors:changed', {}))
             },
         },
-    
+
         init() {
             // Alpine.nextTick(() => {
             //     this.darkMode.setValue(this.darkMode.getValue())
             // })
-    
+
             this.darkMode.setValue(this.darkMode.getValue())
             this.colors.setColor(this.colors.getColor())
         },
     })
-    
+
     Alpine.data('setup', () => {
         return {
             init() {
                 this.$refs.loading.classList.add('hidden')
-    
+
                 // this.$nextTick(() => {
                 //     Alpine.store('settings').darkMode.setValue(Alpine.store('settings').darkMode.getValue())
                 // })
@@ -89,7 +89,7 @@ export default function (Alpine) {
                 this.isNotificationsPanelOpen = true
                 this.$nextTick(() => {
                     this.$refs.notificationsPanel.focus()
-                    if(this.isMobileSubMenuOpen) this.isMobileSubMenuOpen = false
+                    if (this.isMobileSubMenuOpen) this.isMobileSubMenuOpen = false
                 })
             },
             isSearchPanelOpen: false,
@@ -97,7 +97,7 @@ export default function (Alpine) {
                 this.isSearchPanelOpen = true
                 this.$nextTick(() => {
                     this.$refs.searchInput.focus()
-                    if(this.isMobileSubMenuOpen) this.isMobileSubMenuOpen = false
+                    if (this.isMobileSubMenuOpen) this.isMobileSubMenuOpen = false
                 })
             },
             isMobileSubMenuOpen: false,

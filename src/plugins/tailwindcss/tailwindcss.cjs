@@ -137,16 +137,16 @@ module.exports = plugin.withOptions(
     },
 
     function (options = {}) {
-        const { 
+        const {
             lightColor = opts.colors.light,
             darkColor = opts.colors.dark,
             darkerColor = opts.colors.darker,
-            primaryColors = opts.colors.primary, 
-            secondaryColors = opts.colors.secondary, 
-            successColors = opts.colors.success, 
-            warningColors = opts.colors.warning, 
-            dangerColors = opts.colors.danger, 
-            infoColors = opts.colors.info, 
+            primaryColors = opts.colors.primary,
+            secondaryColors = opts.colors.secondary,
+            successColors = opts.colors.success,
+            warningColors = opts.colors.warning,
+            dangerColors = opts.colors.danger,
+            infoColors = opts.colors.info,
         } = options
 
         return {
@@ -162,7 +162,7 @@ module.exports = plugin.withOptions(
                         warning: warningColors,
                         danger: dangerColors,
                         info: infoColors,
-                    }
+                    },
                 },
             },
         }

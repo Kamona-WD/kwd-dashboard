@@ -2,19 +2,19 @@
 {{#unless links}}
 <a
     href="{{ url }}"
-    class="flex items-center gap-2 rounded-md p-2 text-gray-600 {{#if (eq title ../activeLink)}} bg-primary-100 dark:bg-primary {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+    class="flex items-center gap-2 rounded-md p-2 text-gray-600 {{#if (eq title ../activeLink)}} bg-primary text-white {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
 >
     <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
     <span class="font-medium"> {{ title }} </span>
 </a>
 {{else}}
 <div x-data="{ open: {{#if (eq ../group title)}} true {{else}} false {{/if}} }">
-    <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+    <!-- active classes 'bg-primary text-white' -->
     <a
         href="#"
         @click="$event.preventDefault(); open = !open"
-        class="flex items-center gap-2 rounded-md p-2 text-gray-500 {{#if (eq ../group title)}} bg-primary-100 dark:bg-primary {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
-        :class="{ 'bg-primary-100 dark:bg-primary': open }"
+        class="flex items-center gap-2 rounded-md p-2 text-gray-500 {{#if (eq ../group title)}} bg-primary text-white {{/if}} transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary"
+        :class="{ 'bg-primary text-white': open }"
         role="button"
         aria-haspopup="true"
         :aria-expanded="open ? 'true' : 'false'"

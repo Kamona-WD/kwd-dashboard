@@ -1,4 +1,4 @@
-{{#> layouts/main activeLink='Dashboard'}}
+{{#> layouts/main activeLink='Dashboard' breadcrumb=pages.home.breadcrumb}}
 
 {{#*inline "styles"}}
 <link rel="stylesheet" href="{{ resolve-from-root '../css/demo.css' }}">
@@ -16,7 +16,7 @@
 <div class="mt-2 p-4 grid gap-4">
     <!-- State cards -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {{#each simpleStatistics}}
+        {{#each pages.home.simpleStatistics}}
         {{> partials/simple-statistics-card }}
         {{/each}}
     </div>
@@ -82,8 +82,8 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden rounded-e-md border-b dark:border-primary">
-                    <table class="min-w-full divide-y dark:divide-gray-600 overflow-x-scroll">
-                        <thead class="bg-gray-50 dark:bg-dark">
+                    <table class="min-w-full overflow-x-scroll">
+                        <thead class="border-b dark:border-b-primary-darker bg-gray-50 dark:bg-gray-900/50">
                             <tr class="text-gray-500 dark:text-gray-400">
                                 <th
                                     scope="col"
@@ -116,7 +116,7 @@
                         </thead>
 
                         <tbody class="divide-y bg-white dark:bg-darker dark:divide-primary-darker">
-                            {{#each ../latestCustomers}}
+                            {{#each ../pages.home.latestCustomers}}
                             <tr class="transition-colors hover:bg-gray-100 dark:hover:bg-dark">
                                 <td class="whitespace-nowrap px-6 py-4">
                                     <div class="flex items-center gap-4">

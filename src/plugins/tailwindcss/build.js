@@ -20,7 +20,7 @@ async function build(options) {
     options.define['process.env.NODE_ENV'] = process.argv.includes('--watch') ? `'production'` : `'development'`
 
     try {
-        if(process.argv.includes("--watch")) {
+        if (process.argv.includes('--watch')) {
             let ctx = await context({
                 external: ['tailwindcss'],
                 ...options,

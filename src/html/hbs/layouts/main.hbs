@@ -6,10 +6,51 @@
     <div class="flex flex-1 flex-col">
         {{> partials/navbar }}
 
-        <!-- Page header -->
-        <header class="flex flex-shrink-0 items-center justify-between border-b p-4 dark:border-primary-darker">
-            {{> header }}
-        </header>
+        <div class="p-4 flex-shrink-0 border-b dark:border-b-primary-darker">
+            {{#if breadcrumb}}
+                <!-- Breadcrumb -->
+                <nav class="flex" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center gap-x-1 md:gap-x-2">
+                        {{#each breadcrumb}}
+                            <li class="inline-flex items-center gap-2" {{#if @last}} aria-current="page" {{/if}}>
+                                {{#if url}}
+                                    <a
+                                        href="{{url}}"
+                                        class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                                    >
+                                        {{#if icon}}
+                                            <span class="iconify {{icon}} w-4 h-4"></span>
+                                        {{/if}}
+
+                                        <span>{{title}}</span>
+                                    </a>
+
+                                    {{#unless @last}}
+                                        <span
+                                            class="iconify tabler--chevron-right w-5 h-5 text-gray-400 rtl:rotate-180"
+                                        ></span>
+                                    {{/unless}}
+                                {{else}}
+                                    <span
+                                        class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                                    >
+                                        {{#if icon}}
+                                            <span class="iconify {{icon}} w-4 h-4"></span>
+                                        {{/if}}
+
+                                        <span>{{title}}</span>
+                                    </span>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    </ol>
+                </nav>
+            {{/if}}
+            <!-- Page header -->
+            <header class="flex items-center justify-between">
+                {{> header }}
+            </header>
+        </div>
 
         <!-- Main content -->
         <main class="flex-1">

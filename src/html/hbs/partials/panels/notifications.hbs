@@ -1,4 +1,10 @@
-{{#> partials/panels/base title="Notifications panel" pos="left" show="isNotificationsPanelOpen" close="isNotificationsPanelOpen = false" ref="notificationsPanel" }}
+{{#> partials/panels/base 
+    title="Notifications panel" 
+    pos="left" 
+    show="isNotificationsPanelOpen" 
+    close="isNotificationsPanelOpen = false" 
+    ref="notificationsPanel"
+}}
 <div class="flex h-screen flex-col" x-data="{ activeTabe: 'action' }">
     <!-- Panel header -->
     <div class="flex-shrink-0">
