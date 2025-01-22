@@ -81,7 +81,7 @@ export default function (Alpine) {
     Alpine.data('setup', () => {
         return {
             init() {
-                this.$refs.loading.classList.add('hidden')
+                this.$refs.loading?.classList.add('hidden')
 
                 // this.$nextTick(() => {
                 //     Alpine.store('settings').darkMode.setValue(Alpine.store('settings').darkMode.getValue())
