@@ -5,7 +5,7 @@
         <div class="flex flex-col items-center justify-center gap-24">
             <div class="flex-shrink-0">
                 <a
-                    href="/"
+                    href="{{ baseUrl '/' }}"
                     class="inline-block text-3xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
                 >
                     K-WD
@@ -23,14 +23,14 @@
 
 <!-- Toggle dark mode button -->
 <div class="fixed right-5 top-5">
-    <button
-        @click="$store.settings.darkMode.toggle()"
-        class="flex items-center justify-center rounded-full bg-primary p-2 shadow-md transition-colors duration-200 hover:bg-primary-darker focus:outline-none focus:ring focus:ring-primary"
-    >
-        <span class="sr-only">Toggle dark mode</span>
+    {{#btn
+        srText="Toggle dark mode"
+        className="p-2 shadow-md"
+        attrs='@click="$store.settings.darkMode.toggle()"'
+    }}
         <span aria-hidden="true" class="iconify hidden h-8 w-8 text-white tabler--sun dark:block"></span>
         <span aria-hidden="true" class="iconify h-8 w-8 text-white tabler--moon dark:hidden"></span>
-    </button>
+    {{/btn}}
 </div>
 
 {{/layouts/base}}

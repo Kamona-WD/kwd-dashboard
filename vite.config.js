@@ -4,6 +4,7 @@ import { glob } from 'glob'
 import handlebarsPlugin from 'vite-plugin-handlebars'
 import hbsHelpers from './src/support/hbs-helpers'
 import data from './src/data'
+import { baseUrl } from './src/support'
 
 
 const root = 'src/html'
@@ -34,6 +35,7 @@ export default defineConfig({
         }),
     ],
     root,
+    base: baseUrl,
     publicDir: resolve(__dirname, 'public'),
     resolve: {
         alias: {

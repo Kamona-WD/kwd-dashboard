@@ -35,7 +35,7 @@
             <!-- Brand -->
             <div class="flex-shrink-0">
                 <a
-                    href="/"
+                    href="{{ baseUrl '/' }}"
                     class="inline-block text-xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
                 >
                     K-WD
@@ -218,7 +218,7 @@
                     <div class="h-full flex-1 bg-gray-100 dark:bg-dark"></div>
                     <div class="h-full w-16 bg-gray-200 dark:bg-dark"></div>
                 </div>
-                <a href="/" class="text-blue-500 hover:underline">Back to default dashboard</a>
+                <a href="{{ baseUrl '/' }}" class="text-blue-500 hover:underline">Back to default dashboard</a>
             </section>
 
             <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6">
@@ -315,9 +315,9 @@
                                         nesciunt doloremque ullam
                                     </p>
                                 </div>
-                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light"
-                                    >1h ago</span
-                                >
+                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light">
+                                    1h ago
+                                </span>
                             </a>
                             <a href="#" class="group flex items-start space-x-2">
                                 <img

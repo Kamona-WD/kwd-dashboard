@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge'
+import { baseUrl } from '.'
 
 export default {
     eq: function (v1, v2) {
@@ -6,6 +7,15 @@ export default {
     },
     notEq: function (v1, v2) {
         return v1 != v2
+    },
+    baseUrl: function(url = '') {
+        if(url == '#') return '#'
+
+        if (url == '/') {
+            url = ''
+        }
+
+        return `${baseUrl}${url}`
     },
 
     // Very naive but works.

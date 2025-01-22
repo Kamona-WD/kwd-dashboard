@@ -9,3 +9,5 @@ export const getScheme = () => {
 
     return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 }
+
+export const baseUrl = '/kwd-dashboard/'

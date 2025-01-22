@@ -15,7 +15,7 @@
                             <li class="inline-flex items-center gap-2" {{#if @last}} aria-current="page" {{/if}}>
                                 {{#if url}}
                                     <a
-                                        href="{{url}}"
+                                        href="{{ baseUrl url }}"
                                         class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                                     >
                                         {{#if icon}}
