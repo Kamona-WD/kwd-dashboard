@@ -1,0 +1,173 @@
+{{#> layouts/base pageTitle='Mini + One Column Sidebar'}}
+
+{{#*inline "styles"}}{{/inline}}
+
+<div class="flex h-screen bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
+    <!-- Sidebar -->
+    <!-- Backdrop -->
+    <div
+        x-show="isSidebarOpen"
+        @click="isSidebarOpen = false"
+        class="fixed inset-0 z-10 bg-primary-darker lg:hidden"
+        style="opacity: 0.5"
+        aria-hidden="true"
+    ></div>
+
+    <!-- Sidebar content -->
+    <aside
+        x-show="isSidebarOpen"
+        x-transition:enter="transition-all transform duration-300 ease-in-out"
+        x-transition:enter-start="-translate-x-full opacity-0"
+        x-transition:enter-end="translate-x-0 opacity-100"
+        x-transition:leave="transition-all transform duration-300 ease-in-out"
+        x-transition:leave-start="translate-x-0 opacity-100"
+        x-transition:leave-end="-translate-x-full opacity-0"
+        x-ref="sidebar"
+        @keydown.escape="window.innerWidth <= 1024 ? isSidebarOpen = false : ''"
+        tabindex="-1"
+        class="fixed inset-y-0 z-10 flex flex-shrink-0 overflow-hidden border-r bg-white focus:outline-none dark:border-primary-darker dark:bg-darker lg:static"
+        x-resize.document="() => { if (window.innerWidth <= 1024) { isSidebarOpen = false } else if (window.innerWidth >= 1024) { isSidebarOpen = true } }"
+    >
+        <!-- Mini column -->
+        <div class="flex h-full flex-shrink-0 flex-col border-r px-2 py-4 dark:border-primary-darker">
+            <!-- Brand -->
+            <div class="flex-shrink-0">
+                <a
+                    href="/"
+                    class="inline-block text-xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                >
+                    K-WD
+                </a>
+            </div>
+            <div class="flex flex-1 flex-col items-center justify-center space-y-4">
+                <!-- Notification button -->
+                {{#btn
+                    variant="primary-light" 
+                    srText="Open Notification panel" 
+                    icon="tabler--bell" 
+                    iconSizeClasses="h-7 w-7"
+                    attrs='@click="openNotificationsPanel"'
+
+
+
+                }}{{/btn}}
+
+                <!-- Search button -->
+                {{#btn
+                    variant="primary-light" 
+                    srText="Open search panel" 
+                    icon="tabler--search" 
+                    iconSizeClasses="h-7 w-7"
+                    attrs='@click="openSearchPanel"'
+
+
+
+                }}{{/btn}}
+
+                <!-- Settings button -->
+                {{#btn
+                    variant="primary-light" 
+                    srText="Open settings panel" 
+                    icon="tabler--settings" 
+                    iconSizeClasses="h-7 w-7"
+                    attrs='@click="$store.settings.panel.open()"'
+
+
+
+                }}{{/btn}}
+            </div>
+
+            <!-- Mini column footer -->
+            <div class="flex flex-shrink-0 items-center justify-center">
+                <!-- User avatar button -->
+                <div x-dropdown>
+                    {{#btn
+                        variant="transparent" 
+                        srText="User menu" 
+                        className="p-0"
+                        attrs="x-dropdown:trigger"
+                    }}
+                    <img class="h-10 w-10 rounded-md" src="/images/avatar.jpeg" alt="Ahmed Kamel" />
+                    {{/btn}}
+
+                    <!-- User dropdown menu -->
+                    <div
+                        x-dropdown:menu
+                        class="mb-4 w-56 min-w-max origin-bottom-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                    >
+                        <a
+                            href="#"
+                            role="menuitem"
+                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                        >
+                            Your Profile
+                        </a>
+                        <a
+                            href="#"
+                            role="menuitem"
+                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                        >
+                            Settings
+                        </a>
+                        <a
+                            href="#"
+                            role="menuitem"
+                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                        >
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar links -->
+        <nav aria-label="Main" class="w-64 flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto">
+            {{> partials/navigation-links group='Layouts' activeLink='Mini & Column sidebar' }}
+        </nav>
+    </aside>
+
+    <!-- Sidebar button -->
+    <div class="fixed right-10 top-5 flex items-center space-x-4 lg:hidden">
+        {{#btn
+            variant="primary-light" 
+            srText="Toggle main manu" 
+            attrs='@click="isSidebarOpen = true; $nextTick(() => { $refs.sidebar.focus() })"'
+            className="p-1"
+        }}
+        <span x-show="!isSidebarOpen" aria-hidden="true" class="iconify h-8 w-8 tabler--menu-3"></span>
+        <span x-show="isSidebarOpen" aria-hidden="true" class="iconify h-8 w-8 tabler--x"></span>
+        {{/btn}}
+    </div>
+
+    <!-- Main content -->
+    <main class="flex-1">
+        <div
+            class="flex h-full min-h-screen flex-1 flex-col items-center justify-center overflow-y-auto overflow-x-hidden p-4"
+        >
+            <h1 class="mb-4 text-center text-2xl font-semibold md:text-3xl">Mini + One Columns Sidebar</h1>
+            <div class="space-y-4">
+                <div class="relative flex h-72 w-80 space-x-1 bg-white p-1 shadow-md dark:bg-darker">
+                    <div class="h-full w-6 bg-gray-200 dark:bg-dark"></div>
+                    <div class="h-full w-16 bg-gray-200 dark:bg-dark"></div>
+                    <div class="h-full flex-1 bg-gray-100 dark:bg-dark"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Panels -->
+
+<!-- Settings Panel -->
+{{> partials/panels/settings }}
+
+<!-- Notification panel -->
+{{> partials/panels/notifications }}
+
+<!-- Search panel -->
+{{> partials/panels/search }}
+
+{{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
+
+{{/layouts/base}}
