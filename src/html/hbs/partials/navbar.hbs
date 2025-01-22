@@ -12,11 +12,6 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
-
-
-
-
-
             }}{{/btn}}
 
             <!-- Mobile menu button -->
@@ -29,11 +24,6 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
-
-
-
-
-
             }}{{/btn}}
 
             <!-- Brand -->
@@ -53,36 +43,19 @@
             attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
             icon="tabler--dots-vertical"
             iconSizeClasses="h-8 w-8"
-
-
-
         }}{{/btn}}
 
         <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
             <!-- Toggle dark theme button -->
-            <button
-                aria-hidden="true"
-                class="relative focus:outline-none"
-                x-cloak
-                @click="$store.settings.darkMode.toggle()"
-            >
-                <div class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"></div>
-                <div
-                    class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-150"
-                    :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
-                >
-                    <span
-                        aria-hidden="true"
-                        x-show="!$store.settings.darkMode.value"
-                        class="iconify h-4 w-4 tabler--moon"
-                    ></span>
-                    <span
-                        aria-hidden="true"
-                        x-show="$store.settings.darkMode.value"
-                        class="iconify h-4 w-4 tabler--sun"
-                    ></span>
-                </div>
-            </button>
+            {{#btn 
+                variant="primary-light" 
+                srText="Toggle dark mode" 
+                attrs='@click="$store.settings.darkMode.toggle()"' 
+                className="p-2"
+            }}
+                <span x-show="!$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--moon w-6 h-6"></span>
+                <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--sun w-6 h-6"></span>
+            {{/btn}}
 
             <!-- Notification button -->
             {{#btn 
@@ -90,13 +63,6 @@
                 srText="Open notification panel" 
                 attrs='@click="openNotificationsPanel"' 
                 icon="tabler--bell"
-                iconSizeClasses="h-8 w-8" 
-                className="p-1.5"
-
-
-
-
-
             }}{{/btn}}
 
             <!-- Search button -->
@@ -105,13 +71,6 @@
                 srText="Open search panel" 
                 attrs='@click="openSearchPanel"' 
                 icon="tabler--search"
-                iconSizeClasses="h-8 w-8" 
-                className="p-1.5"
-
-
-
-
-
             }}{{/btn}}
 
             <!-- Settings button -->
@@ -120,13 +79,6 @@
                 srText="Open settings panel" 
                 attrs='@click="$store.settings.panel.open()"' 
                 icon="tabler--settings"
-                iconSizeClasses="h-8 w-8" 
-                className="p-1.5"
-
-
-
-
-
             }}{{/btn}}
 
             {{> partials/user-menu }}
@@ -147,31 +99,16 @@
         >
             <div class="space-x-2">
                 <!-- Toggle dark theme button -->
-                <button
-                    aria-hidden="true"
-                    class="relative focus:outline-none"
-                    x-cloak
-                    @click="$store.settings.darkMode.toggle()"
-                >
-                    <div
-                        class="h-6 w-12 rounded-full bg-primary-100 outline-none transition dark:bg-primary-lighter"
-                    ></div>
-                    <div
-                        class="absolute left-0 top-0 inline-flex h-6 w-6 scale-110 transform items-center justify-center rounded-full shadow-sm transition-all duration-200"
-                        :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !$store.settings.darkMode.value, 'translate-x-6 text-primary-100 bg-primary-darker': $store.settings.darkMode.value }"
-                    >
-                        <span
-                            aria-hidden="true"
-                            x-show="!$store.settings.darkMode.value"
-                            class="iconify h-4 w-4 tabler--moon"
-                        ></span>
-                        <span
-                            aria-hidden="true"
-                            x-show="$store.settings.darkMode.value"
-                            class="iconify h-4 w-4 tabler--sun"
-                        ></span>
-                    </div>
-                </button>
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Toggle dark mode" 
+                    attrs='@click="$store.settings.darkMode.toggle()"' 
+                    className="p-2"
+                }}
+                    <span x-show="!$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--moon w-6 h-6"></span>
+                    <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--sun w-6 h-6"></span>
+                {{/btn}}
+                
 
                 <!-- Notification button -->
                 {{#btn 
@@ -179,9 +116,6 @@
                     srText="Open notification panel" 
                     attrs='@click="openNotificationsPanel"' 
                     icon="tabler--bell"
-
-
-
                 }}{{/btn}}
 
                 <!-- Search button -->
@@ -190,9 +124,6 @@
                     srText="Open search panel" 
                     attrs='@click="openSearchPanel"' 
                     icon="tabler--search"
-
-
-
                 }}{{/btn}}
 
                 <!-- Settings button -->
@@ -201,9 +132,6 @@
                     srText="Open settings panel" 
                     attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
                     icon="tabler--settings"
-
-
-
                 }}{{/btn}}
             </div>
 

@@ -88,7 +88,20 @@ function handleTrigger(Alpine, el) {
   });
 }
 function handleMenu(Alpine, el, modifiers) {
-  let positions = ["top", "top-start", "top-end", "right", "right-start", "right-end", "bottom", "bottom-start", "bottom-end", "left", "left-start", "left-end"];
+  let positions = [
+    "top",
+    "top-start",
+    "top-end",
+    "right",
+    "right-start",
+    "right-end",
+    "bottom",
+    "bottom-start",
+    "bottom-end",
+    "left",
+    "left-start",
+    "left-end"
+  ];
   let placement = positions.find((i) => modifiers.includes(i));
   let defaultClasses = "";
   let transitionClasses = {
@@ -179,10 +192,14 @@ function layout_default(Alpine) {
       this.colors.setColor(this.colors.getColor());
     }
   });
+  Alpine.store("panels", {
+    search: {},
+    notifications: {}
+  });
   Alpine.data("setup", () => {
     return {
       init() {
-        this.$refs.loading.classList.add("hidden");
+        this.$refs.loading?.classList.add("hidden");
       },
       loading: true,
       isSidebarOpen: true,
