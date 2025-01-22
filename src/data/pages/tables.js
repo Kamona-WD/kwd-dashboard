@@ -1,4 +1,22 @@
 export default {
+    breadcrumb: [
+        {
+            title: 'Home',
+            icon: 'tabler--home-filled',
+            url: '/',
+        },
+        {
+            title: 'Components',
+            icon: 'tabler--grid',
+            url: '#',
+        },
+        {
+            title: 'Tables',
+            icon: null,
+            url: null,
+        },
+    ],
+
     users: [
         {
             name: 'Shari Greenfelder',

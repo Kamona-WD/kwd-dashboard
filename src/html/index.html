@@ -5,9 +5,7 @@
 {{/inline}}
 
 {{#*inline "header"}}
-<h2 class="text-2xl font-semibold">Dashboard</h2>
-
-{{#btn href="https://github.com/Kamona-WD/kwd-dashboard" text="View on github" variant="black" startIcon="tabler--brand-github"}}{{/btn}}
+{{> partials/page-header title='Dashboard'}}
 {{/inline}}
 
 <h1 class="sr-only">Dashboard</h1>
@@ -81,31 +79,31 @@
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <div class="overflow-hidden rounded-e-md border-b dark:border-primary">
+                <div class="overflow-hidden rounded-e-md">
                     <table class="min-w-full overflow-x-scroll">
                         <thead class="border-b dark:border-b-primary-darker bg-gray-50 dark:bg-gray-900/50">
                             <tr class="text-gray-500 dark:text-gray-400">
                                 <th
                                     scope="col"
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                                    class="px-6 py-3 text-start text-xs font-medium"
                                 >
                                     Name
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                                    class="px-6 py-3 text-start text-xs font-medium"
                                 >
                                     Title
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                                    class="px-6 py-3 text-start text-xs font-medium"
                                 >
                                     Country
                                 </th>
                                 <th
                                     scope="col"
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase tracking-wider"
+                                    class="px-6 py-3 text-start text-xs font-medium"
                                 >
                                     Date
                                 </th>

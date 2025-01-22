@@ -9,14 +9,14 @@ export default {
 
     simpleStatistics: [
         {
-            title: 'Value',
+            title: 'Sales',
             icon: 'tabler--currency-dollar',
-            total: '$30,000',
+            total: '$300,000',
             percentage: '+4.4%',
             status: 'up',
         },
         {
-            title: 'Users',
+            title: 'Customers',
             icon: 'tabler--users-group',
             total: '50,021',
             percentage: '-2.6%',

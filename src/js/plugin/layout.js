@@ -73,6 +73,11 @@ export default function (Alpine) {
         },
     })
 
+    Alpine.store('panels', {
+        search: {},
+        notifications: {},
+    })
+
     Alpine.data('setup', () => {
         return {
             init() {

@@ -10,6 +10,10 @@ export default [
         iconName: 'tabler--grid',
         links: [
             {
+                title: 'Form elements',
+                url: '/components/form-elements.html',
+            },
+            {
                 title: 'Tables',
                 url: '/components/tables.html',
             },
@@ -31,6 +35,25 @@ export default [
             {
                 title: 'Blank',
                 url: '/pages/blank.html',
+            },
+        ],
+    },
+    {
+        title: 'Layouts',
+        url: null,
+        iconName: 'tabler--grid-pattern',
+        links: [
+            {
+                title: 'Two columns sidebar',
+                url: '/layouts/two-columns-sidebar.html',
+            },
+            {
+                title: 'Mini & Column sidebar',
+                url: '/layouts/mini-plus-one-column-sidebar.html',
+            },
+            {
+                title: 'Mini sidebar',
+                url: '/layouts/mini-sidebar.html',
             },
         ],
     },

@@ -24,6 +24,22 @@ document.addEventListener('alpine:init', () => {
         },
     }
 
+    const onInit = (chart) => {
+        document.addEventListener('scheme:changed', () => {
+            chart.updateOptions({
+                theme: {
+                    mode: getScheme() ? 'dark' : 'light',
+                },
+            })
+        })
+
+        document.addEventListener('colors:changed', () => {
+            chart.updateOptions({
+                colors: [getCssColor('primary-light'), getCssColor('violet-light')],
+            })
+        })
+    }
+
     Alpine.data('barChart', (el) => {
         let c = new ApexCharts(el, {
             ...baseChartOptions,
@@ -87,13 +103,7 @@ document.addEventListener('alpine:init', () => {
 
         return {
             init() {
-                document.addEventListener('scheme:changed', () => {
-                    c.updateOptions({
-                        theme: {
-                            mode: getScheme() ? 'dark' : 'light',
-                        },
-                    })
-                })
+                onInit(c)
             },
         }
     })
@@ -156,13 +166,7 @@ document.addEventListener('alpine:init', () => {
 
         return {
             init() {
-                document.addEventListener('scheme:changed', () => {
-                    c.updateOptions({
-                        theme: {
-                            mode: getScheme() ? 'dark' : 'light',
-                        },
-                    })
-                })
+                onInit(c)
             },
         }
     })
@@ -194,10 +198,6 @@ document.addEventListener('alpine:init', () => {
             },
             grid: {
                 show: false,
-                padding: {
-                    left: 0,
-                    right: 0,
-                },
             },
             dataLabels: {
                 enabled: false,
@@ -220,13 +220,7 @@ document.addEventListener('alpine:init', () => {
 
         return {
             init() {
-                document.addEventListener('scheme:changed', () => {
-                    c.updateOptions({
-                        theme: {
-                            mode: getScheme() ? 'dark' : 'light',
-                        },
-                    })
-                })
+                onInit(c)
             },
         }
     })
@@ -270,12 +264,6 @@ document.addEventListener('alpine:init', () => {
                     data: activeUsersCount,
                 },
             ],
-            // tooltip: {
-            //     theme: 'dark',
-            // },
-            // grid: {
-            //     strokeDashArray: 4,
-            // },
             xaxis: {
                 labels: {
                     padding: 0,
@@ -346,6 +334,8 @@ document.addEventListener('alpine:init', () => {
                 //   setInterval(() => {
                 //     fakeUsersCount()
                 //   }, 1000)
+
+                onInit(c)
             },
         }
     })

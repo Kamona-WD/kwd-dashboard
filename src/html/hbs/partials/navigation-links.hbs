@@ -2,7 +2,7 @@
 {{#unless links}}
 <a
     href="{{ url }}"
-    class="flex items-center gap-2 rounded-md p-2 text-gray-600 {{#if (eq title ../activeLink)}} bg-primary text-white {{/if}} transition-colors hover:bg-primary-100 dark:text-light dark:hover:bg-primary"
+    class="flex items-center gap-2 rounded-md p-2 {{#if (eq title ../activeLink)}} bg-primary text-white {{else}} text-gray-600 {{/if}} transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
 >
     <span aria-hidden="true" class="iconify {{ iconName }} h-5 w-5"></span>
     <span class="font-medium"> {{ title }} </span>
@@ -13,7 +13,7 @@
     <a
         href="#"
         @click="$event.preventDefault(); open = !open"
-        class="flex items-center gap-2 rounded-md p-2 text-gray-500 {{#if (eq ../group title)}} bg-primary text-white {{/if}} transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary"
+        class="flex items-center gap-2 rounded-md p-2 {{#if (eq ../group title)}} bg-primary text-white {{else}} text-gray-600 {{/if}} transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
         :class="{ 'bg-primary text-white': open }"
         role="button"
         aria-haspopup="true"
@@ -36,7 +36,7 @@
             <a
                 href="{{ url }}"
                 role="menuitem"
-                class="block rounded-md p-2 {{#if (eq ../../activeLink title)}} text-gray-700 dark:text-light {{else}} text-gray-400 dark:text-gray-400 {{/if}} transition-colors duration-200 hover:text-gray-700 dark:hover:text-light"
+                class="block p-2 {{#if (eq ../../activeLink title)}} text-gray-700 dark:text-light hover:text-gray-600 dark:hover:text-gray-400 {{else}} text-gray-500 dark:text-gray-400 {{/if}} transition-colors duration-200"
             >
                 {{ title }}
             </a>

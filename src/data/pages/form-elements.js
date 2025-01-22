@@ -6,12 +6,12 @@ export default {
             url: '/',
         },
         {
-            title: 'Pages',
-            icon: 'tabler--file',
+            title: 'Components',
+            icon: 'tabler--grid',
             url: '#',
         },
         {
-            title: 'Blank',
+            title: 'Form Elements',
             icon: null,
             url: null,
         },

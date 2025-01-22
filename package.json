@@ -1,7 +1,7 @@
 {
     "name": "kwd-dashboard",
     "version": "0.0.1",
-    "description": "Responsive dashboard built with tailwindcss alpinejs",
+    "description": "Responsive dashboard template built with tailwindcss alpinejs",
     "license": "MIT",
     "type": "module",
     "author": {
@@ -53,6 +53,7 @@
         "p": "prettier --write"
     },
     "devDependencies": {
+        "@alpinejs/anchor": "^3.14.8",
         "@alpinejs/collapse": "^3.14.8",
         "@alpinejs/focus": "^3.14.8",
         "@alpinejs/persist": "^3.14.8",

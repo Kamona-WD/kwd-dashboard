@@ -44,7 +44,15 @@
             <a href="/auth/forgot-password.html" class="text-blue-600 hover:underline">Forgot Password?</a>
         </div>
 
-        {{#btn type="submit" classes="w-full" text="Log in" startIcon="tabler--login"}}{{/btn}}
+        {{#btn 
+            type="submit" 
+            text="Log in" 
+            startIcon="tabler--login"
+            className="w-full"
+
+
+
+        }}{{/btn}}
     </div>
 </form>
 
@@ -56,7 +64,12 @@
 </div>
 
 <!-- Social login links -->
-{{#btn href="#" type="submit" variant="black" classes="w-full" text="Login with github" startIcon="tabler--brand-github"
+{{#btn 
+    href="#" 
+    variant="black" 
+    className="w-full" 
+    text="Login with github" 
+    startIcon="tabler--brand-github"
 
 
 

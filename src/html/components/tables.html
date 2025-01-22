@@ -1,145 +1,15 @@
-{{#> layouts/main activeLink='Tables' group='Components' pageTitle='Tables'}}
+{{#> layouts/main activeLink='Tables' group='Components' pageTitle='Tables' breadcrumb=pages.tables.breadcrumb}}
 
 {{#*inline "styles"}}{{/inline}}
 
 {{#*inline "header"}}
-<h2 class="text-2xl font-semibold">Tables</h2>
-
-<a
-    href="https://github.com/Kamona-WD/kwd-dashboard"
-    target="_blank"
-    class="inline-flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm text-white transition-all hover:bg-black/80 focus:outline-none focus:ring focus:ring-black focus:ring-offset-1 focus:ring-offset-white dark:hover:bg-black/60 dark:focus:ring-offset-dark"
->
-    <span aria-hidden="true" class="iconify h-4 w-4 tabler--brand-github"></span>
-    <span>View on github</span>
-</a>
+{{> partials/page-header title='Tables'}}
 {{/inline}}
 
 <h1 class="sr-only">Tables</h1>
 
 <!-- Content -->
-<div class="mt-2 grid gap-8 p-4">
-    <section class="space-y-3">
-        <h2 class="text-xl font-semibold">Default</h2>
-
-        {{#base-card className="relative overflow-x-auto sm:rounded-lg"}}
-        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-            <thead class="border-b bg-gray-50 dark:border-b-primary-darker dark:bg-gray-900/50">
-                <tr>
-                    <th scope="col" class="px-6 py-3">Name</th>
-                    <th scope="col" class="px-6 py-3">Compony</th>
-                    <th scope="col" class="px-6 py-3">Country</th>
-                    <th scope="col" class="px-6 py-3">City</th>
-                    <th scope="col" class="px-6 py-3">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each ../tablesData.users}}
-                <tr class="border-b bg-white dark:border-b-primary-darker dark:bg-darker">
-                    <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
-                        {{ name }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ company }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ country }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ city }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/base-card}}
-    </section>
-
-    <section class="space-y-3">
-        <h2 class="text-xl font-semibold">Striped rows</h2>
-
-        {{#base-card className="relative overflow-x-auto sm:rounded-lg"}}
-        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-            <thead class="border-b bg-gray-50 dark:border-b-primary-darker dark:bg-gray-900/50">
-                <tr>
-                    <th scope="col" class="px-6 py-3">Name</th>
-                    <th scope="col" class="px-6 py-3">Compony</th>
-                    <th scope="col" class="px-6 py-3">Country</th>
-                    <th scope="col" class="px-6 py-3">City</th>
-                    <th scope="col" class="px-6 py-3">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each ../tablesData.users}}
-                <tr
-                    class="border-b odd:bg-white even:bg-gray-50 dark:border-primary-darker odd:dark:bg-dark even:dark:bg-darker"
-                >
-                    <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
-                        {{ name }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ company }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ country }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ city }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/base-card}}
-    </section>
-
-    <section class="space-y-3">
-        <h2 class="text-xl font-semibold">Striped columns</h2>
-
-        {{#base-card className="relative overflow-x-auto sm:rounded-lg"}}
-        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-            <thead class="border-b dark:border-b-primary-darker">
-                <tr>
-                    <th scope="col" class="bg-gray-50 px-6 py-3 dark:bg-dark">Name</th>
-                    <th scope="col" class="bg-white px-6 py-3 dark:bg-darker">Company</th>
-                    <th scope="col" class="bg-gray-50 px-6 py-3 dark:bg-dark">Country</th>
-                    <th scope="col" class="bg-white px-6 py-3 dark:bg-darker">City</th>
-                    <th scope="col" class="bg-gray-50 px-6 py-3 dark:bg-dark">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each ../tablesData.users}}
-                <tr class="border-b dark:border-b-primary-darker">
-                    <th
-                        class="whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900 dark:bg-dark dark:text-white"
-                    >
-                        {{ name }}
-                    </th>
-                    <td class="bg-white px-6 py-4 dark:bg-darker">
-                        {{ company }}
-                    </td>
-                    <td class="bg-gray-50 px-6 py-4 dark:bg-dark">
-                        {{ country }}
-                    </td>
-                    <td class="bg-white px-6 py-4 dark:bg-darker">
-                        {{ city }}
-                    </td>
-                    <td class="bg-gray-50 px-6 py-4 dark:bg-dark">
-                        <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Edit</a>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/base-card}}
-    </section>
-</div>
+<div class="mt-2 gap-8 p-4"></div>
 
 {{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
 

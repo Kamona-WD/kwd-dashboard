@@ -14,6 +14,9 @@
                 iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
 
 
+
+
+
             }}{{/btn}}
 
             <!-- Mobile menu button -->
@@ -26,6 +29,9 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
+
+
+
 
 
             }}{{/btn}}
@@ -47,6 +53,7 @@
             attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
             icon="tabler--dots-vertical"
             iconSizeClasses="h-8 w-8"
+
 
 
         }}{{/btn}}
@@ -87,6 +94,9 @@
                 className="p-1.5"
 
 
+
+
+
             }}{{/btn}}
 
             <!-- Search button -->
@@ -99,6 +109,9 @@
                 className="p-1.5"
 
 
+
+
+
             }}{{/btn}}
 
             <!-- Settings button -->
@@ -109,6 +122,9 @@
                 icon="tabler--settings"
                 iconSizeClasses="h-8 w-8" 
                 className="p-1.5"
+
+
+
 
 
             }}{{/btn}}
@@ -165,6 +181,7 @@
                     icon="tabler--bell"
 
 
+
                 }}{{/btn}}
 
                 <!-- Search button -->
@@ -175,6 +192,7 @@
                     icon="tabler--search"
 
 
+
                 }}{{/btn}}
 
                 <!-- Settings button -->
@@ -183,6 +201,7 @@
                     srText="Open settings panel" 
                     attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
                     icon="tabler--settings"
+
 
 
                 }}{{/btn}}

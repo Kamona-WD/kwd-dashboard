@@ -1,8 +1,9 @@
 import pkg from '../../package.json'
 import home from './pages/home'
 import blank from './pages/blank'
+import tables from './pages/tables'
+import formElements from './pages/form-elements'
 import navigationLinks from './navigationLinks'
-import tablesData from './tables'
 
 export default {
     title: 'K-WD Dashboard',
@@ -14,7 +15,7 @@ export default {
     pages: {
         home,
         blank,
+        tables,
+        formElements,
     },
-
-    tablesData,
 }

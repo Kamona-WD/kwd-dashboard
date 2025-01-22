@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
+"@alpinejs/anchor@^3.14.8":
+  version "3.14.8"
+  resolved "https://registry.yarnpkg.com/@alpinejs/anchor/-/anchor-3.14.8.tgz#29a397ca1c848a759504e3d0371510e013832c7c"
+  integrity sha512-TWdjgfdZkHQ9VxK5B5FW2R+2xcYG6lccqud3cxC5WFM9sUiSDvIuM96lHG2JhSanb9FZ23P4lfaUwFoH8ODeEw==
+
 "@alpinejs/collapse@^3.14.8":
   version "3.14.8"
   resolved "https://registry.yarnpkg.com/@alpinejs/collapse/-/collapse-3.14.8.tgz#abe44d6f3bc0ece246f7985b81db7880558d8293"
