@@ -16,7 +16,7 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 document.addEventListener('alpine:init', () => {
     const baseChartOptions = {
         theme: {
-            mode: Alpine.store('settings.darkMode.value') ? 'dark' : 'light',
+            mode: getScheme() ? 'dark' : 'light',
         },
         colors: [getCssColor('primary-light'), getCssColor('violet-light')],
         chart: {
