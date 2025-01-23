@@ -13,6 +13,7 @@
                 iconClasses="transition-transform" 
                 iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
 
+
             }}{{/btn}}
 
             <!-- Mobile menu button -->
@@ -25,6 +26,7 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
+
 
             }}{{/btn}}
 
@@ -45,6 +47,7 @@
             attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
             icon="tabler--dots-vertical"
             iconSizeClasses="h-8 w-8"
+
 
         }}{{/btn}}
 
@@ -71,6 +74,7 @@
                 attrs='@click="openNotificationsPanel"' 
                 icon="tabler--bell"
 
+
             }}{{/btn}}
 
             <!-- Search button -->
@@ -80,6 +84,7 @@
                 attrs='@click="openSearchPanel"' 
                 icon="tabler--search"
 
+
             }}{{/btn}}
 
             <!-- Settings button -->
@@ -88,6 +93,7 @@
                 srText="Open settings panel" 
                 attrs='@click="$store.settings.panel.open()"' 
                 icon="tabler--settings"
+
 
             }}{{/btn}}
 
@@ -134,6 +140,7 @@
                     attrs='@click="openNotificationsPanel"' 
                     icon="tabler--bell"
 
+
                 }}{{/btn}}
 
                 <!-- Search button -->
@@ -143,6 +150,7 @@
                     attrs='@click="openSearchPanel"' 
                     icon="tabler--search"
 
+
                 }}{{/btn}}
 
                 <!-- Settings button -->
@@ -151,6 +159,7 @@
                     srText="Open settings panel" 
                     attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
                     icon="tabler--settings"
+
 
                 }}{{/btn}}
             </div>
