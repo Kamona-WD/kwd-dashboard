@@ -29,7 +29,7 @@
     "module": "plugins/alpinejs/module.esm.js",
     "unpkg": "plugins/alpinejs/cdn.min.js",
     "files": [
-        "plugins/**/*.js"
+        "plugins/**/*"
     ],
     "exports": {
         "./alpinejs": {

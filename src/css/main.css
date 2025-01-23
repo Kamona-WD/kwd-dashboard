@@ -1,28 +1,3 @@
-/* @import './vars'; */
 @import 'tailwindcss/base';
-/* @import 'perfect-scrollbar/css/perfect-scrollbar.css'; */
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-@layer components {
-    .toggle:checked + span {
-        @apply left-6 top-0 bg-primary;
-    }
-    .toggle:disabled + span {
-        @apply bg-gray-500 shadow-none;
-    }
-    .toggle:checked:disabled {
-        @apply bg-gray-200;
-    }
-    .toggle:checked:disabled + span {
-        @apply bg-primary-lighter shadow-none;
-    }
-    .toggle:focus + span {
-        @apply ring ring-primary-lighter;
-    }
-
-    input:invalid.invalid,
-    textarea:invalid.invalid {
-        @apply ring ring-danger-light dark:ring-danger;
-    }
-}

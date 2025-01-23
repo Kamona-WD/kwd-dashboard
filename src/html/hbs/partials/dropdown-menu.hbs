@@ -1,9 +1,9 @@
 <!-- {{ label }} -->
-<div class="relative flex items-center justify-center" x-data="{ open: false }">
+<div x-dropdown class="flex items-center justify-center">
     {{#btn 
         variant=variant
         srText=srText 
-        attrs='@click="open = !open" aria-haspopup="true" :aria-expanded="open ? \'true\' : \'false\'"' 
+        attrs='x-dropdown:trigger' 
         className=triggerClasses
     }}
     {{> trigger }}
@@ -11,20 +11,8 @@
 
     <!-- {{ label }} content -->
     <div
-        x-show="open"
-        x-transition:enter="transition-all transform ease-out"
-        x-transition:enter-start="translate-y-1/2 opacity-0"
-        x-transition:enter-end="translate-y-0 opacity-100"
-        x-transition:leave="transition-all transform ease-in"
-        x-transition:leave-start="translate-y-0 opacity-100"
-        x-transition:leave-end="translate-y-1/2 opacity-0"
-        @click.away="open = false"
-        @keydown.escape="open = false"
-        class="absolute right-0 top-12 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
-        tabindex="-1"
-        role="menu"
-        aria-orientation="vertical"
-        aria-label="{{ label }}"
+        x-dropdown:menu.bottom-end
+        class="origin-top-right w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
     >
         {{> content }}
     </div>
