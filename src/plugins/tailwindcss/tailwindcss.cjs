@@ -8,13 +8,13 @@ const opts = {
         '--darker': '#12263f',
 
         //
-        '--color-primary': 'var(--color-cyan)',
-        '--color-primary-50': 'var(--color-cyan-50)',
-        '--color-primary-100': 'var(--color-cyan-100)',
-        '--color-primary-light': 'var(--color-cyan-light)',
-        '--color-primary-lighter': 'var(--color-cyan-lighter)',
-        '--color-primary-dark': 'var(--color-cyan-dark)',
-        '--color-primary-darker': 'var(--color-cyan-darker)',
+        '--color-primary': 'var(--color-fuchsia)',
+        '--color-primary-50': 'var(--color-fuchsia-50)',
+        '--color-primary-100': 'var(--color-fuchsia-100)',
+        '--color-primary-light': 'var(--color-fuchsia-light)',
+        '--color-primary-lighter': 'var(--color-fuchsia-lighter)',
+        '--color-primary-dark': 'var(--color-fuchsia-dark)',
+        '--color-primary-darker': 'var(--color-fuchsia-darker)',
         //
         '--color-green': '#16a34a',
         '--color-green-50': '#f0fdf4',

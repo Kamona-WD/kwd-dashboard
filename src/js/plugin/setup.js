@@ -36,7 +36,7 @@ export default function (Alpine) {
         },
 
         colors: {
-            selectedColor: 'cyan',
+            selectedColor: 'fuchsia',
 
             availableColors: ['cyan', 'teal', 'green', 'fuchsia', 'blue', 'violet'],
 
@@ -82,10 +82,6 @@ export default function (Alpine) {
         return {
             init() {
                 this.$refs.loading?.classList.add('hidden')
-
-                // this.$nextTick(() => {
-                //     Alpine.store('settings').darkMode.setValue(Alpine.store('settings').darkMode.getValue())
-                // })
             },
             loading: true,
             isSidebarOpen: true,
