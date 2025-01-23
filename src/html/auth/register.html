@@ -1,0 +1,109 @@
+{{#> layouts/auth pageTitle='Register'}}
+
+{{#*inline "styles"}}{{/inline}}
+
+<h1 class="sr-only">Register</h1>
+
+{{#> partials/auth-card }}
+<h2 class="text-center text-xl font-semibold">Register</h2>
+
+<form action="#">
+    <div class="grid gap-6">
+        <div class="flex items-start gap-4">
+            <div class="flex w-full flex-col gap-2">
+                <div class="flex w-full items-center justify-between gap-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> First Name </label>
+                </div>
+
+                {{> partials/form/text-input icon="tabler--user" type="text" name="first_name" placeholder="First Name" }}
+            </div>
+
+            <div class="flex w-full flex-col gap-2">
+                <div class="flex w-full items-center justify-between gap-2">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Last Name </label>
+                </div>
+
+                {{> partials/form/text-input icon="tabler--user" type="text" name="last_name" placeholder="Last Name" }}
+            </div>
+        </div>
+
+        <div class="flex w-full flex-col gap-2">
+            <div class="flex w-full items-center justify-between gap-2">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Email </label>
+            </div>
+
+            {{> partials/form/text-input icon="tabler--mail" type="email" name="email" placeholder="Email address" }}
+        </div>
+
+        <div class="flex w-full flex-col gap-2">
+            <div class="flex w-full items-center justify-between gap-2">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Password </label>
+            </div>
+
+            {{> partials/form/text-input icon="tabler--lock" type="Password" name="password" placeholder="Password" }}
+        </div>
+
+        <div class="flex w-full flex-col gap-2">
+            <div class="flex w-full items-center justify-between gap-2">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Confirm password </label>
+            </div>
+
+            {{> partials/form/text-input icon="tabler--lock" type="Password" name="confirm_password" placeholder="Confirm Password" }}
+        </div>
+
+        <div class="flex items-center justify-between">
+            <!-- Accept terms -->
+            <label class="flex items-center gap-3">
+                {{> partials/form/checkbox name="accept_terms" }}
+
+                <span class="font-normal text-gray-500 dark:text-gray-400">
+                    I accept the
+                    <a href="#" class="text-blue-600 hover:underline">Terms and Conditions</a>
+                </span>
+            </label>
+        </div>
+
+        {{#btn 
+            type="submit" 
+            className="w-full" 
+            text="Register" 
+            startIcon="tabler--user-plus"
+
+
+
+
+
+        }}{{/btn}}
+    </div>
+</form>
+
+<!-- Or -->
+<div class="flex flex-nowrap items-center justify-center gap-2">
+    <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+    <span>OR</span>
+    <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+</div>
+
+<!-- Social login links -->
+{{#btn 
+    href="#" 
+    variant="black" 
+    className="w-full" 
+    text="Register using github" 
+    startIcon="tabler--brand-github"
+
+
+
+
+
+}}{{/btn}}
+
+<!-- Login link -->
+<div class="text-gray-600 dark:text-gray-400">
+    Already have an account? <a href="{{ baseUrl 'auth/login.html' }}" class="text-blue-600 hover:underline">Login</a>
+</div>
+{{/ partials/auth-card }}
+
+{{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
+
+{{/layouts/auth}}

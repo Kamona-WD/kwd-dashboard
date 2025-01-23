@@ -1,0 +1,17 @@
+<!-- Sidebar -->
+<aside
+    class="sticky top-0 hidden h-screen flex-shrink-0 border-r bg-white transition-[width] duration-300 dark:border-primary-darker dark:bg-darker lg:block"
+    :class="{ 'w-64': isSidebarOpen, 'w-0 overflow-hidden': !isSidebarOpen }"
+>
+    <div class="flex h-full flex-col overflow-x-hidden">
+        <!-- Sidebar links -->
+        <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-3 hover:overflow-y-auto">
+            {{> partials/navigation-links }}
+        </nav>
+
+        <!-- Sidebar footer -->
+        <div class="flex-shrink-0 p-2">
+            {{#btn text="Customize" startIcon="tabler--adjustments" className="w-full"}}{{/btn}}
+        </div>
+    </div>
+</aside>

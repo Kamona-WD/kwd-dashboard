@@ -1,0 +1,19 @@
+<!-- {{ label }} -->
+<div x-dropdown class="flex items-center justify-center">
+    {{#btn 
+        variant=variant
+        srText=srText 
+        attrs='x-dropdown:trigger' 
+        className=triggerClasses
+    }}
+    {{> trigger }}
+    {{/btn}}
+
+    <!-- {{ label }} content -->
+    <div
+        x-dropdown:menu.bottom-end
+        class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+    >
+        {{> content }}
+    </div>
+</div>

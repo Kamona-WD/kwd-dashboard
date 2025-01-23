@@ -1,0 +1,49 @@
+<!-- Card header -->
+<div class="flex items-center justify-between border-b border-b-gray-300 px-4 py-2 dark:border-b-primary-darker">
+    <h4 class="text-lg font-semibold text-gray-500 dark:text-light">{{ title }}</h4>
+
+    <div class="flex items-center">
+        <div x-dropdown>
+            {{#btn 
+                variant="transparent" 
+                srText="Card Actions" 
+                icon="tabler--dots" 
+                className="p-1.5" 
+                attrs='x-dropdown:trigger'
+
+
+
+
+
+
+            }}{{/btn}}
+
+            <div
+                x-dropdown:menu.bottom-end
+                class="z-30 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+            >
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 1
+                </a>
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 2
+                </a>
+                <a
+                    href="#"
+                    role="menuitem"
+                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                >
+                    Action 3
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

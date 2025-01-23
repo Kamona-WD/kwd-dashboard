@@ -1,0 +1,23 @@
+{
+    "semi": false,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 4,
+    "bracketSameLine": false,
+    "endOfLine": "auto",
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.html",
+                "*.hbs"
+            ],
+            "options": {
+                "parser": "angular"
+            }
+        }
+    ]
+}

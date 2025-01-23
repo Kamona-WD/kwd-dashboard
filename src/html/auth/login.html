@@ -1,0 +1,81 @@
+{{#> layouts/auth pageTitle='Login'}}
+
+{{#*inline "styles"}}{{/inline}}
+
+<h1 class="sr-only">Login</h1>
+
+{{#> partials/auth-card}}
+<h2 class="text-center text-xl font-semibold">Login</h2>
+
+<form action="#">
+    <div class="grid gap-6">
+        <div class="flex w-full flex-col gap-2">
+            <div class="flex w-full items-center justify-between gap-2">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Email </label>
+            </div>
+
+            {{> partials/form/text-input icon="tabler--mail" type="email" name="email" placeholder="Email address" }}
+        </div>
+
+        <div class="flex w-full flex-col gap-2">
+            <div class="flex w-full items-center justify-between gap-2">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300"> Password </label>
+            </div>
+
+            {{> partials/form/text-input icon="tabler--mail" type="email" name="email" placeholder="Email address" }}
+        </div>
+
+        <div class="flex items-center justify-between">
+            <!-- Remember me -->
+            {{> partials/form/checkbox name="remembr_me" label="Remember me" }}
+
+            <a href="{{ baseUrl 'auth/forgot-password.html' }}" class="text-blue-600 hover:underline">
+                Forgot Password?
+            </a>
+        </div>
+
+        {{#btn 
+            type="submit" 
+            text="Log in" 
+            startIcon="tabler--login"
+            className="w-full"
+
+
+
+
+
+        }}{{/btn}}
+    </div>
+</form>
+
+<!-- Or -->
+<div class="flex flex-nowrap items-center justify-center gap-2">
+    <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+    <span>OR</span>
+    <span class="h-px w-20 bg-gray-400 dark:bg-gray-600"></span>
+</div>
+
+<!-- Social login links -->
+{{#btn 
+    href="#" 
+    variant="black" 
+    className="w-full" 
+    text="Login with github" 
+    startIcon="tabler--brand-github"
+
+
+
+
+
+}}{{/btn}}
+
+<!-- Register link -->
+<div class="text-gray-600 dark:text-gray-400">
+    Don't have an account yet?
+    <a href="{{ baseUrl 'auth/register.html' }}" class="text-blue-600 hover:underline">Register</a>
+</div>
+{{/ partials/auth-card}}
+
+{{#*inline "before-script"}}{{/inline}} {{#*inline "after-script"}}{{/inline}}
+
+{{/layouts/auth}}

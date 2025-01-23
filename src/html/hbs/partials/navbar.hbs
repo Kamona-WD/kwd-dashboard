@@ -1,0 +1,185 @@
+<!-- Navbar -->
+<div class="sticky top-0 z-10 flex-shrink-0 bg-white dark:bg-darker">
+    <div class="flex items-center justify-between border-b px-4 py-2 dark:border-primary-darker">
+        <div class="flex items-center gap-4">
+            <!-- Sidebar button -->
+            {{#btn 
+                variant="primary-light" 
+                className="hidden lg:inline-flex p-1.5" 
+                srText="Toggle sidebar" 
+                attrs='@click="isSidebarOpen = !isSidebarOpen"' 
+                icon="tabler--chevron-left" 
+                iconSizeClasses="h-8 w-8" 
+                iconClasses="transition-transform" 
+                iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
+
+
+            }}{{/btn}}
+
+            <!-- Mobile menu button -->
+            {{#btn 
+                variant="primary-light" 
+                className="lg:hidden inline-flex p-1.5" 
+                srText="Toggle main manu" 
+                attrs='@click="isMobileMainMenuOpen = !isMobileMainMenuOpen"' 
+                icon=true
+                iconSizeClasses="h-8 w-8" 
+                iconClasses="transition-transform" 
+                iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
+
+
+            }}{{/btn}}
+
+            <!-- Brand -->
+            <a
+                href="{{ baseUrl '/' }}"
+                class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+            >
+                K-WD
+            </a>
+        </div>
+
+        <!-- Mobile sub menu button -->
+        {{#btn 
+            variant="primary-light" 
+            className="md:hidden inline-flex p-1.5" 
+            srText="Toggle sub manu" 
+            attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
+            icon="tabler--dots-vertical"
+            iconSizeClasses="h-8 w-8"
+
+
+        }}{{/btn}}
+
+        <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
+            <!-- Toggle dark theme button -->
+            {{#btn 
+                variant="primary-light" 
+                srText="Toggle dark mode" 
+                attrs='@click="$store.settings.darkMode.toggle()"' 
+                className="p-2"
+            }}
+            <span
+                x-show="!$store.settings.darkMode.value"
+                aria-hidden="true"
+                class="iconify h-6 w-6 tabler--moon"
+            ></span>
+            <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify h-6 w-6 tabler--sun"></span>
+            {{/btn}}
+
+            <!-- Notification button -->
+            {{#btn 
+                variant="primary-light" 
+                srText="Open notification panel" 
+                attrs='@click="openNotificationsPanel"' 
+                icon="tabler--bell"
+
+
+            }}{{/btn}}
+
+            <!-- Search button -->
+            {{#btn 
+                variant="primary-light" 
+                srText="Open search panel" 
+                attrs='@click="openSearchPanel"' 
+                icon="tabler--search"
+
+
+            }}{{/btn}}
+
+            <!-- Settings button -->
+            {{#btn 
+                variant="primary-light" 
+                srText="Open settings panel" 
+                attrs='@click="$store.settings.panel.open()"' 
+                icon="tabler--settings"
+
+
+            }}{{/btn}}
+
+            {{> partials/user-menu }}
+        </nav>
+
+        <!-- Mobile sub menu -->
+        <nav
+            x-transition:enter="transition duration-200 ease-in-out transform sm:duration-500"
+            x-transition:enter-start="-translate-y-full opacity-0"
+            x-transition:enter-end="translate-y-0 opacity-100"
+            x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+            x-transition:leave-start="translate-y-0 opacity-100"
+            x-transition:leave-end="-translate-y-full opacity-0"
+            x-show="isMobileSubMenuOpen"
+            @click.away="isMobileSubMenuOpen = false"
+            class="absolute inset-x-4 top-16 flex items-center rounded-md bg-white p-4 shadow-lg dark:bg-darker md:hidden"
+            aria-label="Secondary"
+        >
+            <div class="space-x-2">
+                <!-- Toggle dark theme button -->
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Toggle dark mode" 
+                    attrs='@click="$store.settings.darkMode.toggle()"' 
+                    className="p-2"
+                }}
+                <span
+                    x-show="!$store.settings.darkMode.value"
+                    aria-hidden="true"
+                    class="iconify h-6 w-6 tabler--moon"
+                ></span>
+                <span
+                    x-show="$store.settings.darkMode.value"
+                    aria-hidden="true"
+                    class="iconify h-6 w-6 tabler--sun"
+                ></span>
+                {{/btn}}
+
+                <!-- Notification button -->
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open notification panel" 
+                    attrs='@click="openNotificationsPanel"' 
+                    icon="tabler--bell"
+
+
+                }}{{/btn}}
+
+                <!-- Search button -->
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open search panel" 
+                    attrs='@click="openSearchPanel"' 
+                    icon="tabler--search"
+
+
+                }}{{/btn}}
+
+                <!-- Settings button -->
+                {{#btn 
+                    variant="primary-light" 
+                    srText="Open settings panel" 
+                    attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
+                    icon="tabler--settings"
+
+
+                }}{{/btn}}
+            </div>
+
+            <!-- User avatar button -->
+            <div class="ml-auto">
+                {{> partials/user-menu }}
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile main manu -->
+    <div
+        class="border-b dark:border-primary-darker lg:hidden"
+        x-show="isMobileMainMenuOpen"
+        @click.away="isMobileMainMenuOpen = false"
+        x-collapse
+    >
+        <nav aria-label="Main" class="space-y-2 px-2 py-4">
+            {{> partials/navigation-links }}
+        </nav>
+    </div>
+</div>

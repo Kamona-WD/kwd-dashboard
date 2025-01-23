@@ -1,0 +1,29 @@
+{{#> partials/dropdown-menu label="User menu" variant="transparent" triggerClasses="p-0" srText="User menu" }}
+{{#*inline "trigger"}}
+<img class="h-10 w-10 rounded-md" src="/images/avatar.jpeg" alt="User image" />
+{{/inline}}
+
+{{#*inline "content"}}
+<a
+    href="#"
+    role="menuitem"
+    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+>
+    Your Profile
+</a>
+<a
+    href="#"
+    role="menuitem"
+    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+>
+    Settings
+</a>
+<a
+    href="#"
+    role="menuitem"
+    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+>
+    Logout
+</a>
+{{/inline}}
+{{/ partials/dropdown-menu }}

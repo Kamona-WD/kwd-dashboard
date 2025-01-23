@@ -1,0 +1,48 @@
+<!-- Backdrop -->
+<div
+    x-transition:enter="transition duration-300 ease-in-out"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition duration-300 ease-in-out"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-show="{{ show }}"
+    @click="{{ close }}"
+    class="fixed inset-0 z-10 bg-primary-darker opacity-50"
+    aria-hidden="true"
+></div>
+
+<!-- Panel -->
+<section
+    x-transition:enter="transition duration-300 ease-in-out transform sm:duration-500"
+    x-transition:enter-start="{{#if (eq pos 'left')}} -translate-x-full {{else}} translate-x-full {{/if}}"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition duration-300 ease-in-out transform sm:duration-500"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="{{#if (eq pos 'left')}} -translate-x-full {{else}} translate-x-full {{/if}}"
+    x-ref="{{ ref }}"
+    tabindex="-1"
+    x-show="{{ show }}"
+    @keydown.escape="{{ close }}"
+    class="fixed inset-y-0 {{#if (eq pos 'left')}} left-0 {{else}} right-0 {{/if}} z-20 w-full max-w-xs bg-white shadow-xl focus:outline-none dark:bg-darker dark:text-light sm:max-w-md"
+    x-trap.inert.noscroll.noautofocus="{{ show }}"
+>
+    <h2 class="sr-only">{{ title }}</h2>
+
+    <div
+        class="absolute {{#if (eq pos 'left')}} right-0 translate-x-full {{else}} left-0 -translate-x-full {{/if}} p-2"
+    >
+        <!-- Close button -->
+        <button
+            @click="{{ close }}"
+            class="inline-flex items-center justify-center rounded-md p-2 text-white focus:outline-none focus:ring"
+        >
+            <span aria-hidden="true" class="iconify h-5 w-5 tabler--x"></span>
+        </button>
+    </div>
+
+    <!-- Panel content -->
+    <div class="flex h-screen flex-col">
+        {{> @partial-block }}
+    </div>
+</section>

@@ -1,0 +1,467 @@
+{{#> layouts/base pageTitle='Mini Column Sidebar'}}
+
+{{#*inline "styles"}}{{/inline}}
+
+<div
+    x-data="layout()"
+    @resize.window="watchScreen()"
+    class="flex h-screen bg-gray-100 text-gray-900 antialiased dark:bg-dark dark:text-light"
+>
+    <!-- Sidebar first column -->
+    <!-- Backdrop -->
+    <div
+        x-show="isSidebarOpen"
+        @click="isSidebarOpen = false"
+        class="fixed inset-0 z-10 bg-primary-darker md:hidden"
+        style="opacity: 0.5"
+        aria-hidden="true"
+    ></div>
+
+    <aside
+        x-show="isSidebarOpen"
+        x-transition:enter="transition-all transform duration-300 ease-in-out"
+        x-transition:enter-start="-translate-x-full opacity-0"
+        x-transition:enter-end="translate-x-0 opacity-100"
+        x-transition:leave="transition-all transform duration-300 ease-in-out"
+        x-transition:leave-start="translate-x-0 opacity-100"
+        x-transition:leave-end="-translate-x-full opacity-0"
+        x-ref="sidebar"
+        @keydown.escape="window.innerWidth <= 768 ? isSidebarOpen = false : ''"
+        tabindex="-1"
+        class="fixed inset-y-0 z-10 flex flex-shrink-0 border-r bg-white focus:outline-none dark:border-primary-darker dark:bg-darker md:static"
+    >
+        <!-- Mini column -->
+        <nav class="flex h-full flex-shrink-0 flex-col border-r px-2 py-4 dark:border-primary-darker">
+            <!-- Brand -->
+            <div class="flex-shrink-0">
+                <a
+                    href="{{ baseUrl '/' }}"
+                    class="inline-block text-xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                >
+                    K-WD
+                </a>
+            </div>
+
+            <div class="flex flex-1 flex-col items-center justify-center gap-4">
+                <!-- Home link -->
+                <!-- Active classes "bg-primary text-white hover:bg-primary-darker" -->
+                <!-- inActive classes "bg-primary-50 text-primary-lighter hover:bg-primary hover:text-white" -->
+                {{#btn
+                    href="#"
+                    srText="Home"
+                    icon="tabler--home"
+                    iconSizeClasses="h-7 w-7"
+
+                }}{{/btn}}
+
+                <!-- Message link -->
+                <!-- Active classes "bg-primary text-white hover:bg-primary-darker" -->
+                <!-- inActive classes "bg-primary-50 text-primary-lighter hover:bg-primary-light hover:text-primary" -->
+                {{#btn
+                    variant="primary-light"
+                    href="#"
+                    srText="Messages"
+                    icon="tabler--message"
+                    iconSizeClasses="h-7 w-7"
+
+                }}{{/btn}}
+
+                <!-- Conntacts link -->
+                <!-- Active classes "bg-primary text-white hover:bg-primary-darker" -->
+                <!-- inActive classes "bg-primary-50 text-primary-lighter hover:bg-primary-light hover:text-primary" -->
+                {{#btn
+                    variant="primary-light"
+                    href="#"
+                    srText="Conntacts"
+                    icon="tabler--user"
+                    iconSizeClasses="h-7 w-7"
+
+                }}{{/btn}}
+
+                <!-- Another link -->
+                <!-- Active classes "bg-primary text-white hover:bg-primary-darker" -->
+                <!-- inActive classes "bg-primary-50 text-primary-lighter hover:bg-primary-light hover:text-primary" -->
+                {{#btn
+                    variant="primary-light"
+                    href="#"
+                    srText="Another Link"
+                    icon="tabler--grid-3x3"
+                    iconSizeClasses="h-7 w-7"
+
+                }}{{/btn}}
+            </div>
+
+            <!-- Sidebar footer -->
+            <div class="flex flex-shrink-0 items-center justify-center">
+                <!-- Logout button -->
+                {{#btn
+                    variant="primary-light"
+                    srText="Logout"
+                    icon="tabler--logout"
+                    iconSizeClasses="h-7 w-7"
+
+                }}{{/btn}}
+            </div>
+        </nav>
+    </aside>
+
+    <div class="flex h-screen flex-1 overflow-y-scroll">
+        <!-- Main content -->
+        <main class="flex-1">
+            <h1 class="sr-only">Mini sidebar layout</h1>
+
+            <div class="flex items-center justify-between p-4">
+                <div class="flex items-center space-x-4 md:space-x-0">
+                    <!-- Sidebar button -->
+                    <button
+                        @click="isSidebarOpen = true; $nextTick(() => { $refs.sidebar.focus() })"
+                        class="rounded-md bg-primary-50 p-1 text-primary-lighter transition-colors duration-200 hover:bg-primary-100 hover:text-primary focus:outline-none focus:ring dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light md:hidden"
+                    >
+                        <span class="sr-only">Open main manu</span>
+                        <span aria-hidden="true">
+                            <svg
+                                x-show="!isSidebarOpen"
+                                class="h-8 w-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                            <svg
+                                x-show="isSidebarOpen"
+                                class="h-8 w-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </span>
+                    </button>
+                    <h1 class="text-2xl font-medium">Home</h1>
+                </div>
+
+                <div class="space-x-2">
+                    <!-- Toggle dark theme button -->
+                    {{#btn
+                        variant="primary-light"
+                        srText="Toggle dark mode"
+                        className="p-2"
+                        attrs='@click="$store.settings.darkMode.toggle()"'
+                    }}
+                    <span
+                        x-show="!$store.settings.darkMode.value"
+                        aria-hidden="true"
+                        class="iconify h-6 w-6 tabler--moon"
+                    ></span>
+                    <span
+                        x-show="$store.settings.darkMode.value"
+                        aria-hidden="true"
+                        class="iconify h-6 w-6 tabler--sun"
+                    ></span>
+                    {{/btn}}
+
+                    <!-- Search panel button -->
+                    {{#btn
+                        variant="primary-light"
+                        srText="Open search panel"
+                        icon="tabler--search"
+                        iconSizeClasses="h-6 w-6"
+                        attrs='@click="openSearchPanel"'
+
+
+
+
+
+                    }}{{/btn}}
+
+                    <!-- User panel button -->
+                    {{#btn
+                        variant="primary-light"
+                        srText="Open search panel"
+                        icon="tabler--dots-vertical"
+                        className="xl:hidden"
+                        iconSizeClasses="h-6 w-6"
+                        attrs='@click="openUserPanel"'
+
+
+
+
+
+                    }}{{/btn}}
+                </div>
+            </div>
+
+            <section class="flex flex-col items-center justify-center space-y-4 p-4">
+                <h2 class="text-center text-2xl font-semibold md:text-3xl">Mini Sidebar</h2>
+                <div class="flex h-72 w-80 space-x-1 bg-white p-1 shadow-md dark:bg-darker">
+                    <div class="h-full w-6 bg-gray-200 dark:bg-dark"></div>
+                    <div class="h-full flex-1 bg-gray-100 dark:bg-dark"></div>
+                    <div class="h-full w-16 bg-gray-200 dark:bg-dark"></div>
+                </div>
+                <a href="{{ baseUrl '/' }}" class="text-blue-500 hover:underline">Back to default dashboard</a>
+            </section>
+
+            <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6">
+                <template x-for="i in 100" x-key="i">
+                    <div class="rounded-md bg-white p-2 text-center shadow dark:bg-darker">Dummy content</div>
+                </template>
+            </div>
+        </main>
+
+        <!-- User panel -->
+        <section
+            x-show="isUserPanelOpen"
+            x-transition:enter="transition duration-300 ease-in-out transform"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition duration-300 ease-in-out transform"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            @keydown.escape="window.innerWidth <= 1024 ? isUserPanelOpen = false : ''"
+            tabindex="-1"
+            x-ref="userPanel"
+            class="fixed inset-y-0 right-0 top-0 z-10 w-80 flex-shrink-0 bg-white focus:outline-none dark:border-primary-darker dark:bg-darker dark:text-light xl:sticky xl:z-0 xl:border-l"
+        >
+            <h2 class="sr-only">User panel</h2>
+
+            <!-- Close button -->
+            <div class="absolute left-0 -translate-x-full transform p-2 xl:hidden">
+                <button
+                    @click="isUserPanelOpen = false"
+                    class="rounded-md p-2 text-dark focus:outline-none focus:ring dark:text-light"
+                >
+                    <svg
+                        class="h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="flex h-screen flex-col">
+                <!-- Panel header -->
+                <div class="flex-shrink-0 p-4">
+                    <!-- Settings button -->
+                    {{#btn
+                        variant="primary-light"
+                        srText="Open settings panel"
+                        icon="tabler--settings"
+                        iconSizeClasses="h-6 w-6"
+                        attrs='@click="$store.settings.panel.open()"'
+
+
+
+
+
+                    }}{{/btn}}
+                </div>
+
+                <!-- Panel content -->
+                <div class="flex-1 space-y-8 overflow-y-hidden p-4 hover:overflow-y-auto">
+                    <!-- content -->
+                    <div class="flex flex-col items-center space-y-2">
+                        <!-- User avatar -->
+                        <img class="h-20 w-20 rounded-lg dark:opacity-70" src="/images/avatar.jpeg" alt="Ahmed Kamel" />
+                        <h2 class="text-xl font-medium text-gray-600 dark:text-light">Ahmed Kamel</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-normal text-gray-600 dark:text-light">Messages</h3>
+                            <a href="#" class="text-blue-500 hover:underline">View all</a>
+                        </div>
+
+                        <div class="space-y-4">
+                            <a href="#" class="group flex items-start space-x-2">
+                                <img
+                                    class="h-12 w-12 flex-shrink-0 rounded-full object-cover"
+                                    src="/images/1.png"
+                                    alt="User name"
+                                />
+                                <div class="overflow-hidden">
+                                    <h4
+                                        class="font-semibold text-gray-400 transition-colors group-hover:text-gray-900 dark:text-primary-dark dark:group-hover:text-primary-lighter"
+                                    >
+                                        John Doe
+                                    </h4>
+                                    <p class="truncate text-sm text-gray-400">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas eaque
+                                        nesciunt doloremque ullam
+                                    </p>
+                                </div>
+                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light">
+                                    1h ago
+                                </span>
+                            </a>
+                            <a href="#" class="group flex items-start space-x-2">
+                                <img
+                                    class="h-12 w-12 flex-shrink-0 rounded-full object-cover"
+                                    src="/images/1.png"
+                                    alt="User name"
+                                />
+
+                                <div class="overflow-hidden">
+                                    <h4
+                                        class="font-semibold text-gray-400 transition-colors group-hover:text-gray-900 dark:text-primary-dark dark:group-hover:text-primary-lighter"
+                                    >
+                                        Someone
+                                    </h4>
+
+                                    <p class="truncate text-sm text-gray-400">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas eaque
+                                        nesciunt doloremque ullam
+                                    </p>
+                                </div>
+
+                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light">
+                                    1h ago
+                                </span>
+                            </a>
+
+                            <a href="#" class="group flex items-start space-x-2">
+                                <img
+                                    class="h-12 w-12 flex-shrink-0 rounded-full object-cover"
+                                    src="/images/1.png"
+                                    alt="User name"
+                                />
+
+                                <div class="overflow-hidden">
+                                    <h4
+                                        class="font-semibold text-gray-400 transition-colors group-hover:text-gray-900 dark:text-primary-dark dark:group-hover:text-primary-lighter"
+                                    >
+                                        Another Person
+                                    </h4>
+
+                                    <p class="truncate text-sm text-gray-400">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas eaque
+                                        nesciunt doloremque ullam
+                                    </p>
+                                </div>
+
+                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light">
+                                    1h ago
+                                </span>
+                            </a>
+
+                            <a href="#" class="group flex items-start space-x-2">
+                                <img
+                                    class="h-12 w-12 flex-shrink-0 rounded-full object-cover"
+                                    src="/images/1.png"
+                                    alt="User name"
+                                />
+
+                                <div class="overflow-hidden">
+                                    <h4
+                                        class="font-semibold text-gray-400 transition-colors group-hover:text-gray-900 dark:text-primary-dark dark:group-hover:text-primary-lighter"
+                                    >
+                                        Another Name
+                                    </h4>
+
+                                    <p class="truncate text-sm text-gray-400">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptas eaque
+                                        nesciunt doloremque ullam
+                                    </p>
+                                </div>
+
+                                <span class="whitespace-nowrap text-xs text-gray-500 dark:text-primary-light">
+                                    1h ago
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel footer -->
+                <footer
+                    class="flex flex-shrink-0 items-center justify-between border-t px-4 py-2 dark:border-primary-darker"
+                >
+                    <div class="text-sm">
+                        View on
+                        <a
+                            href="https://github.com/Kamona-WD/kwd-dashboard"
+                            target="_blank"
+                            class="text-blue-500 hover:underline"
+                        >
+                            github
+                        </a>
+                    </div>
+                    <div class="text-sm">
+                        Made by
+                        <a href="https://github.com/Kamona-WD" target="_blank" class="text-blue-500 hover:underline">
+                            Ahmed Kamel
+                        </a>
+                    </div>
+                </footer>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Panels -->
+
+<!-- Settings Panel -->
+{{> partials/panels/settings }}
+
+<!-- Notification panel -->
+{{> partials/panels/notifications }}
+
+<!-- Search panel -->
+{{> partials/panels/search }}
+
+{{#*inline "before-script"}}
+<script>
+    function layout() {
+        return {
+            watchScreen() {
+                if (window.innerWidth <= 768) {
+                    this.isSidebarOpen = false
+                    this.isUserPanelOpen = false
+                } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+                    this.isSidebarOpen = true
+                    this.isUserPanelOpen = false
+                } else if (window.innerWidth >= 1280) {
+                    this.isSidebarOpen = true
+                    this.isUserPanelOpen = true
+                }
+            },
+            isSidebarOpen: window.innerWidth >= 768 ? true : false,
+            toggleSidbarMenu() {
+                this.isSidebarOpen = !this.isSidebarOpen
+            },
+            isUserPanelOpen: window.innerWidth >= 1280 ? true : false,
+            openUserPanel() {
+                this.isUserPanelOpen = true
+                this.$nextTick(() => {
+                    this.$refs.userPanel.focus()
+                })
+            },
+        }
+    }
+</script>
+{{/inline}}
+
+{{#*inline "after-script"}}{{/inline}}
+
+{{/layouts/base}}

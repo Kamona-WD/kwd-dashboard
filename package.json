@@ -1,42 +1,80 @@
 {
-  "name": "kwd-dashboard",
-  "version": "0.0.1",
-  "description": "Responsive dashboard built with tailwindcss alpinejs",
-  "scripts": {
-    "serve": "run-p css:watch html:serve",
-    "prod": "run-s css:build",
-    "css:watch": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -w",
-    "css:build": "tailwindcss -i src/tailwind.css -o public/build/css/tailwind.css -m",
-    "html:serve": "live-server ./public",
-    "predeploy": "run-s css:build",
-    "deploy": "gh-pages -d public"
-  },
-  "keywords": [
-    "dashboard",
-    "tailwindcss",
-    "layout",
-    "alpinejs",
-    "admin",
-    "template"
-  ],
-  "author": {
-    "name": "Ahmed Kamel",
-    "email": "ak3849909@gmail.com",
-    "url": "https://github.com/Kamona-WD"
-  },
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^10.3.1",
-    "gh-pages": "^3.2.3",
-    "live-server": "^1.2.1",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.7"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 120
-  }
+    "name": "kwd-dashboard",
+    "version": "0.1.0",
+    "description": "Responsive dashboard template built with tailwindcss alpinejs",
+    "license": "MIT",
+    "type": "module",
+    "author": {
+        "name": "Ahmed Kamel",
+        "email": "ak3849909@gmail.com",
+        "url": "https://github.com/Kamona-WD"
+    },
+    "homepage": "https://kamona-wd.github.io/kwd-dashboard/",
+    "keywords": [
+        "dashboard",
+        "tailwindcss",
+        "layout",
+        "alpinejs",
+        "admin",
+        "template"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kamona-wd/kwd-dashboard"
+    },
+    "bugs": {
+        "url": "https://github.com/kamona-wd/kwd-dashboard/issues"
+    },
+    "main": "plugins/alpinejs/module.cjs.js",
+    "module": "plugins/alpinejs/module.esm.js",
+    "unpkg": "plugins/alpinejs/cdn.min.js",
+    "files": [
+        "plugins/**/*"
+    ],
+    "exports": {
+        "./alpinejs": {
+            "require": "./plugins/alpinejs/module.cjs.js",
+            "import": "./plugins/alpinejs/module.esm.js"
+        },
+        "./tailwindcss": {
+            "require": "./plugins/tailwindcss.js",
+            "import": "./plugins/tailwindcss.js"
+        },
+        "./plugins/*": "./plugins/*"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build --emptyOutDir",
+        "preview": "vite preview",
+        "format": "prettier --write \"src\" \"dist/**/*.html\"",
+        "deploy": "gh-pages -d dist",
+        "alpine:build": "node src/plugins/alpinejs/build",
+        "tw:build": "node src/plugins/tailwindcss/build",
+        "p": "prettier --write"
+    },
+    "devDependencies": {
+        "@alpinejs/anchor": "^3.14.8",
+        "@alpinejs/collapse": "^3.14.8",
+        "@alpinejs/focus": "^3.14.8",
+        "@alpinejs/persist": "^3.14.8",
+        "@alpinejs/resize": "^3.14.8",
+        "@iconify-json/tabler": "^1.2.13",
+        "@iconify/tailwind": "^1.2.0",
+        "@popperjs/core": "^2.11.8",
+        "@tailwindcss/forms": "^0.5.9",
+        "alpinejs": "^3.14.8",
+        "apexcharts": "^4.3.0",
+        "autoprefixer": "^10.4.20",
+        "esbuild": "^0.24.2",
+        "gh-pages": "^6.3.0",
+        "perfect-scrollbar": "^1.5.6",
+        "postcss": "^8.4.49",
+        "postcss-import": "^16.1.0",
+        "prettier": "^3.4.2",
+        "prettier-plugin-tailwindcss": "^0.6.9",
+        "tailwind-merge": "^2.6.0",
+        "tailwindcss": "^3.4.17",
+        "vite": "^6.0.7",
+        "vite-plugin-handlebars": "^2.0.0"
+    }
 }

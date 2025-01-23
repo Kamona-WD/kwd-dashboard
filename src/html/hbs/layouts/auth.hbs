@@ -1,0 +1,36 @@
+{{#> layouts/base pageTitle=pageTitle }}
+
+<div class="flex min-h-screen flex-col gap-24">
+    <div class="container mx-auto flex-1 py-10">
+        <div class="flex flex-col items-center justify-center gap-24">
+            <div class="flex-shrink-0">
+                <a
+                    href="{{ baseUrl '/' }}"
+                    class="inline-block text-3xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
+                >
+                    K-WD
+                </a>
+            </div>
+
+            <main class="w-full sm:max-w-md">
+                {{> @partial-block}}
+            </main>
+        </div>
+    </div>
+
+    {{> partials/footer}}
+</div>
+
+<!-- Toggle dark mode button -->
+<div class="fixed right-5 top-5">
+    {{#btn
+        srText="Toggle dark mode"
+        className="p-2 shadow-md"
+        attrs='@click="$store.settings.darkMode.toggle()"'
+    }}
+    <span aria-hidden="true" class="iconify hidden h-8 w-8 text-white tabler--sun dark:block"></span>
+    <span aria-hidden="true" class="iconify h-8 w-8 text-white tabler--moon dark:hidden"></span>
+    {{/btn}}
+</div>
+
+{{/layouts/base}}
