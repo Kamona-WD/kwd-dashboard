@@ -16,7 +16,7 @@
         <meta name="keywords" content="Admin, Dashboard, Template, HTML, CSS, JavaScript, Tailwindcss, Alpinejs" />
         <meta name="author" content="Ahmed Kamel" />
 
-        <title>K-WD Dashboard  | Blank </title>
+        <title>K-WD Dashboard  | Tables </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,7 +33,7 @@
         </style>
 
 
-      <script type="module" crossorigin src="/kwd-dashboard/js/blank-page-WqKPVeSH.js"></script>
+      <script type="module" crossorigin src="/kwd-dashboard/js/tables-page-WqKPVeSH.js"></script>
       <link rel="modulepreload" crossorigin href="/kwd-dashboard/js/main-DnjRrJIT.js">
       <link rel="stylesheet" crossorigin href="/kwd-dashboard/css/main.css">
     </head>
@@ -65,12 +65,12 @@
                                     <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
                                     <span class="font-medium"> Dashboard </span>
                                 </a>
-                                <div x-data="{ open:  true  }">
+                                <div x-data="{ open:  false  }">
                                     <!-- active classes 'bg-primary text-white' -->
                                     <a
                                         href="#"
                                         @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2  bg-primary text-white  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                        class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
                                         :class="{ 'bg-primary text-white': open }"
                                         role="button"
                                         aria-haspopup="true"
@@ -106,7 +106,7 @@
                                             <a
                                                 href="/kwd-dashboard/pages/blank.html"
                                                 role="menuitem"
-                                                class="block p-2  text-gray-700 dark:text-light hover:text-gray-600 dark:hover:text-gray-400  transition-colors duration-200"
+                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
                                             >
                                                 Blank
                                             </a>
@@ -515,12 +515,12 @@
                                         <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
                                         <span class="font-medium"> Dashboard </span>
                                     </a>
-                                    <div x-data="{ open:  true  }">
+                                    <div x-data="{ open:  false  }">
                                         <!-- active classes 'bg-primary text-white' -->
                                         <a
                                             href="#"
                                             @click="$event.preventDefault(); open = !open"
-                                            class="flex items-center gap-2 rounded-md p-2  bg-primary text-white  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                            class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
                                             :class="{ 'bg-primary text-white': open }"
                                             role="button"
                                             aria-haspopup="true"
@@ -556,7 +556,7 @@
                                                 <a
                                                     href="/kwd-dashboard/pages/blank.html"
                                                     role="menuitem"
-                                                    class="block p-2  text-gray-700 dark:text-light hover:text-gray-600 dark:hover:text-gray-400  transition-colors duration-200"
+                                                    class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
                                                 >
                                                     Blank
                                                 </a>
@@ -693,9 +693,9 @@
                                                         href="#"
                                                         class="inline-flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                                                     >
-                                                            <span class="iconify tabler--file w-4 h-4"></span>
+                                                            <span class="iconify tabler--grid w-4 h-4"></span>
                 
-                                                        <span>Pages</span>
+                                                        <span>Components</span>
                                                     </a>
                 
                                                         <span
@@ -707,14 +707,14 @@
                                                         class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400"
                                                     >
                 
-                                                        <span>Blank</span>
+                                                        <span>Tables</span>
                                                     </span>
                                             </li>
                                     </ol>
                                 </nav>
                             <!-- Page header -->
                             <header class="flex items-center justify-between">
-                                <h2 class="text-2xl font-semibold">Blank</h2>
+                                <h2 class="text-2xl font-semibold">Tables</h2>
                                 
                                 
                                             <a href="https://github.com/Kamona-WD/kwd-dashboard" target="_blank" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-black text-gray-200 hover:bg-gray-900 focus:ring-black px-4 py-2">
@@ -736,7 +736,10 @@
                             
                             
                             
-                            <!--  -->
+                            <h1 class="sr-only">Tables</h1>
+                            
+                            <!-- Content -->
+                            <div class="mt-2 gap-8 p-4"></div>
                             
                              
                             

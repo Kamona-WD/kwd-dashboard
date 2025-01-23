@@ -16,7 +16,7 @@
         <meta name="keywords" content="Admin, Dashboard, Template, HTML, CSS, JavaScript, Tailwindcss, Alpinejs" />
         <meta name="author" content="Ahmed Kamel" />
 
-        <title>K-WD Dashboard  | Two Columns Sidebar </title>
+        <title>K-WD Dashboard  | Mini + One Column Sidebar </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,7 +33,7 @@
         </style>
 
 
-      <script type="module" crossorigin src="/kwd-dashboard/js/two-columns-sidebar-page-WqKPVeSH.js"></script>
+      <script type="module" crossorigin src="/kwd-dashboard/js/mini-plus-one-column-sidebar-page-WqKPVeSH.js"></script>
       <link rel="modulepreload" crossorigin href="/kwd-dashboard/js/main-DnjRrJIT.js">
       <link rel="stylesheet" crossorigin href="/kwd-dashboard/css/main.css">
     </head>
@@ -51,21 +51,18 @@
                 
                 
                 
-                <div
-                    x-data="layout"
-                    x-resize.document="watchScreen"
-                    class="flex h-screen bg-gray-100 text-gray-900 antialiased dark:bg-dark dark:text-light"
-                >
-                    <!-- Sidebar first column -->
+                <div class="flex h-screen bg-gray-100 text-gray-900 dark:bg-dark dark:text-light">
+                    <!-- Sidebar -->
                     <!-- Backdrop -->
-                    <!-- <div
+                    <div
                         x-show="isSidebarOpen"
                         @click="isSidebarOpen = false"
                         class="fixed inset-0 z-10 bg-primary-darker lg:hidden"
                         style="opacity: 0.5"
                         aria-hidden="true"
-                    ></div> -->
+                    ></div>
                 
+                    <!-- Sidebar content -->
                     <aside
                         x-show="isSidebarOpen"
                         x-transition:enter="transition-all transform duration-300 ease-in-out"
@@ -77,173 +74,33 @@
                         x-ref="sidebar"
                         @keydown.escape="window.innerWidth <= 1024 ? isSidebarOpen = false : ''"
                         tabindex="-1"
-                        class="fixed inset-y-0 z-10 w-64 flex-shrink-0 border-r bg-white focus:outline-none dark:border-primary-darker dark:bg-darker lg:static"
+                        class="fixed inset-y-0 z-10 flex flex-shrink-0 overflow-hidden border-r bg-white focus:outline-none dark:border-primary-darker dark:bg-darker lg:static"
+                        x-resize.document="() => { if (window.innerWidth <= 1024) { isSidebarOpen = false } else if (window.innerWidth >= 1024) { isSidebarOpen = true } }"
                     >
-                        <div class="flex h-full flex-col">
-                            <!-- Sidebar links -->
-                            <nav aria-label="Main" class="flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto">
+                        <!-- Mini column -->
+                        <div class="flex h-full flex-shrink-0 flex-col border-r px-2 py-4 dark:border-primary-darker">
+                            <!-- Brand -->
+                            <div class="flex-shrink-0">
                                 <a
                                     href="/kwd-dashboard/"
-                                    class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                    class="inline-block text-xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
                                 >
-                                    <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
-                                    <span class="font-medium"> Dashboard </span>
+                                    K-WD
                                 </a>
-                                <div x-data="{ open:  false  }">
-                                    <!-- active classes 'bg-primary text-white' -->
-                                    <a
-                                        href="#"
-                                        @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
-                                        :class="{ 'bg-primary text-white': open }"
-                                        role="button"
-                                        aria-haspopup="true"
-                                        :aria-expanded="open ? 'true' : 'false'"
-                                    >
-                                        <span aria-hidden="true" class="iconify tabler--file h-5 w-5"></span>
-                                        <span class="font-medium"> Pages </span>
-                                        <span
-                                            aria-hidden="true"
-                                            class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
-                                            :class="{ 'rotate-180': open }"
-                                        ></span>
-                                    </a>
+                            </div>
+                            <div class="flex flex-1 flex-col items-center justify-center space-y-4">
+                                <!-- Notification button -->
                                 
-                                    <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
-                                        <div class="mt-2">
-                                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                            <a
-                                                href="/kwd-dashboard/pages/404.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                404
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/pages/500.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                500
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/pages/blank.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Blank
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div x-data="{ open:  true  }">
-                                    <!-- active classes 'bg-primary text-white' -->
-                                    <a
-                                        href="#"
-                                        @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2  bg-primary text-white  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
-                                        :class="{ 'bg-primary text-white': open }"
-                                        role="button"
-                                        aria-haspopup="true"
-                                        :aria-expanded="open ? 'true' : 'false'"
-                                    >
-                                        <span aria-hidden="true" class="iconify tabler--grid-pattern h-5 w-5"></span>
-                                        <span class="font-medium"> Layouts </span>
-                                        <span
-                                            aria-hidden="true"
-                                            class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
-                                            :class="{ 'rotate-180': open }"
-                                        ></span>
-                                    </a>
+                            <button  @click="openNotificationsPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
+                                <span class="sr-only">Open Notification panel</span>
+                                <span aria-hidden="true" class="iconify tabler--bell h-7 w-7 " ></span>
                                 
-                                    <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Layouts">
-                                        <div class="mt-2">
-                                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                            <a
-                                                href="/kwd-dashboard/layouts/two-columns-sidebar.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-700 dark:text-light hover:text-gray-600 dark:hover:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Two columns sidebar
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/layouts/mini-plus-one-column-sidebar.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Mini &amp; Column sidebar
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/layouts/mini-sidebar.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Mini sidebar
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div x-data="{ open:  false  }">
-                                    <!-- active classes 'bg-primary text-white' -->
-                                    <a
-                                        href="#"
-                                        @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
-                                        :class="{ 'bg-primary text-white': open }"
-                                        role="button"
-                                        aria-haspopup="true"
-                                        :aria-expanded="open ? 'true' : 'false'"
-                                    >
-                                        <span aria-hidden="true" class="iconify tabler--shield h-5 w-5"></span>
-                                        <span class="font-medium"> Authentication </span>
-                                        <span
-                                            aria-hidden="true"
-                                            class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
-                                            :class="{ 'rotate-180': open }"
-                                        ></span>
-                                    </a>
                                 
-                                    <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Authentication">
-                                        <div class="mt-2">
-                                            <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                                            <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                            <a
-                                                href="/kwd-dashboard/auth/login.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Login
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/auth/register.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Register
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/auth/forgot-password.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Forgot password
-                                            </a>
-                                            <a
-                                                href="/kwd-dashboard/auth/reset-password.html"
-                                                role="menuitem"
-                                                class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
-                                            >
-                                                Reset password
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </nav>
+                                
+                                
+                            </button>
+                        
                 
-                            <!-- Sidebar footer -->
-                            <div class="relative flex flex-shrink-0 items-center justify-center space-x-4 px-2 py-4">
                                 <!-- Search button -->
                                 
                             <button  @click="openSearchPanel" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
@@ -256,6 +113,21 @@
                             </button>
                         
                 
+                                <!-- Settings button -->
+                                
+                            <button  @click="$store.settings.panel.open()" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
+                                <span class="sr-only">Open settings panel</span>
+                                <span aria-hidden="true" class="iconify tabler--settings h-7 w-7 " ></span>
+                                
+                                
+                                
+                                
+                            </button>
+                        
+                            </div>
+                
+                            <!-- Mini column footer -->
+                            <div class="flex flex-shrink-0 items-center justify-center">
                                 <!-- User avatar button -->
                                 <div x-dropdown>
                 
@@ -264,7 +136,7 @@
                                 
                                 
                                 
-                                                    <img class="h-12 w-12 rounded-md" src="/kwd-dashboard/images/avatar.jpeg" alt="Ahmed Kamel" />
+                                                    <img class="h-10 w-10 rounded-md" src="/kwd-dashboard/images/avatar.jpeg" alt="Ahmed Kamel" />
                 
                                 
                             </button>
@@ -272,7 +144,7 @@
                                     <!-- User dropdown menu -->
                                     <div
                                         x-dropdown:menu
-                                        class="left-5 right-5 min-w-max max-w-xs rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
+                                        class="mb-4 w-56 min-w-max origin-bottom-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark"
                                     >
                                         <a
                                             href="#"
@@ -297,100 +169,182 @@
                                         </a>
                                     </div>
                                 </div>
-                
-                                <!-- Settings button -->
-                                
-                            <button  @click="$store.settings.panel.open()" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-2">
-                                <span class="sr-only">Open settings panel</span>
-                                <span aria-hidden="true" class="iconify tabler--settings h-7 w-7 " ></span>
-                                
-                                
-                                
-                                
-                            </button>
-                        
                             </div>
                         </div>
-                    </aside>
                 
-                    <!-- Second column -->
-                    <!-- Backdrop -->
-                    <div
-                        x-show="isSecondSidebarOpen"
-                        @click="isSecondSidebarOpen = false"
-                        class="fixed inset-0 z-10 bg-primary-darker lg:hidden"
-                        style="opacity: 0.5"
-                        aria-hidden="true"
-                    ></div>
-                
-                    <section
-                        x-show="isSecondSidebarOpen"
-                        x-transition:enter="transition-all transform duration-300 ease-in-out"
-                        x-transition:enter-start="-translate-x-full opacity-0"
-                        x-transition:enter-end="translate-x-0 opacity-100"
-                        x-transition:leave="transition-all transform duration-300 ease-in-out"
-                        x-transition:leave-start="translate-x-0 opacity-100"
-                        x-transition:leave-end="-translate-x-full opacity-0"
-                        x-ref="secondSidebar"
-                        @keydown.escape="window.innerWidth <= 1024 ? isSecondSidebarOpen = false : ''"
-                        tabindex="-1"
-                        class="fixed inset-y-0 z-10 w-64 flex-shrink-0 border-r bg-white focus:outline-none dark:border-primary-darker dark:bg-darker lg:static"
-                        aria-labelledby="secondSidebarHeader"
-                    >
-                        <div class="flex h-screen flex-col">
-                            <!-- Panel header -->
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-between border-b px-4 py-3 dark:border-primary-darker">
-                                    <h2 id="secondSidebarHeader" class="font-semibold">Header</h2>
-                
-                
-                            <button  @click="isSecondSidebarOpen = false" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1 lg:hidden">
-                                <span class="sr-only">Toggle second sidebar panel</span>
-                                
-                                
-                                
-                                                    <span aria-hidden="true" class="iconify h-8 w-8 tabler--x"></span>
-                
-                                
-                            </button>
-                                        </div>
-                            </div>
-                
-                            <!-- Panel content -->
-                            <div class="flex-1 overflow-y-hidden pt-4 hover:overflow-y-auto">
-                                <div class="space-y-4">
-                                    <!-- Content -->
-                                    <p class="px-4">Content</p>
+                        <!-- Sidebar links -->
+                        <nav aria-label="Main" class="w-64 flex-1 space-y-2 overflow-y-hidden px-2 py-4 hover:overflow-y-auto">
+                            <a
+                                href="/kwd-dashboard/"
+                                class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                            >
+                                <span aria-hidden="true" class="iconify tabler--home h-5 w-5"></span>
+                                <span class="font-medium"> Dashboard </span>
+                            </a>
+                            <div x-data="{ open:  false  }">
+                                <!-- active classes 'bg-primary text-white' -->
+                                <a
+                                    href="#"
+                                    @click="$event.preventDefault(); open = !open"
+                                    class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                    :class="{ 'bg-primary text-white': open }"
+                                    role="button"
+                                    aria-haspopup="true"
+                                    :aria-expanded="open ? 'true' : 'false'"
+                                >
+                                    <span aria-hidden="true" class="iconify tabler--file h-5 w-5"></span>
+                                    <span class="font-medium"> Pages </span>
+                                    <span
+                                        aria-hidden="true"
+                                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                        :class="{ 'rotate-180': open }"
+                                    ></span>
+                                </a>
+                            
+                                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Pages">
+                                    <div class="mt-2">
+                                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                        <a
+                                            href="/kwd-dashboard/pages/404.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            404
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/pages/500.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            500
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/pages/blank.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Blank
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                            <div x-data="{ open:  true  }">
+                                <!-- active classes 'bg-primary text-white' -->
+                                <a
+                                    href="#"
+                                    @click="$event.preventDefault(); open = !open"
+                                    class="flex items-center gap-2 rounded-md p-2  bg-primary text-white  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                    :class="{ 'bg-primary text-white': open }"
+                                    role="button"
+                                    aria-haspopup="true"
+                                    :aria-expanded="open ? 'true' : 'false'"
+                                >
+                                    <span aria-hidden="true" class="iconify tabler--grid-pattern h-5 w-5"></span>
+                                    <span class="font-medium"> Layouts </span>
+                                    <span
+                                        aria-hidden="true"
+                                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                        :class="{ 'rotate-180': open }"
+                                    ></span>
+                                </a>
+                            
+                                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Layouts">
+                                    <div class="mt-2">
+                                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                        <a
+                                            href="/kwd-dashboard/layouts/two-columns-sidebar.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Two columns sidebar
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/layouts/mini-plus-one-column-sidebar.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-700 dark:text-light hover:text-gray-600 dark:hover:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Mini &amp; Column sidebar
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/layouts/mini-sidebar.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Mini sidebar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div x-data="{ open:  false  }">
+                                <!-- active classes 'bg-primary text-white' -->
+                                <a
+                                    href="#"
+                                    @click="$event.preventDefault(); open = !open"
+                                    class="flex items-center gap-2 rounded-md p-2  text-gray-600  transition-colors hover:bg-primary-100 hover:text-gray-500 dark:text-light dark:hover:bg-primary-darker"
+                                    :class="{ 'bg-primary text-white': open }"
+                                    role="button"
+                                    aria-haspopup="true"
+                                    :aria-expanded="open ? 'true' : 'false'"
+                                >
+                                    <span aria-hidden="true" class="iconify tabler--shield h-5 w-5"></span>
+                                    <span class="font-medium"> Authentication </span>
+                                    <span
+                                        aria-hidden="true"
+                                        class="iconify ml-auto h-4 w-4 transition-transform tabler--chevron-down"
+                                        :class="{ 'rotate-180': open }"
+                                    ></span>
+                                </a>
+                            
+                                <div x-show="open" x-collapse class="space-y-2 px-7" role="menu" arial-label="Authentication">
+                                    <div class="mt-2">
+                                        <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                                        <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                                        <a
+                                            href="/kwd-dashboard/auth/login.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Login
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/auth/register.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Register
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/auth/forgot-password.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Forgot password
+                                        </a>
+                                        <a
+                                            href="/kwd-dashboard/auth/reset-password.html"
+                                            role="menuitem"
+                                            class="block p-2  text-gray-500 dark:text-gray-400  transition-colors duration-200"
+                                        >
+                                            Reset password
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </aside>
                 
-                    <!-- Sidebar buttons -->
-                    <div class="fixed right-10 top-5 flex items-center gap-4 lg:hidden">
+                    <!-- Sidebar button -->
+                    <div class="fixed right-10 top-5 flex items-center space-x-4 lg:hidden">
                 
-                            <button  @click="isSidebarOpen = !isSidebarOpen; $nextTick(() => { $refs.sidebar?.focus() })" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1">
+                            <button  @click="isSidebarOpen = true; $nextTick(() => { $refs.sidebar.focus() })" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1">
                                 <span class="sr-only">Toggle main manu</span>
                                 
                                 
                                 
                                         <span x-show="!isSidebarOpen" aria-hidden="true" class="iconify h-8 w-8 tabler--menu-3"></span>
                         <span x-show="isSidebarOpen" aria-hidden="true" class="iconify h-8 w-8 tabler--x"></span>
-                
-                                
-                            </button>
-                        
-                
-                            <button  @click="isSecondSidebarOpen = true; $nextTick(() => { $refs.secondSidebar.focus() })" type="button" class="inline-flex items-center justify-center gap-2 rounded-md transition-colors font-medium select-none focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark disabled:cursor-not-allowed disabled:opacity-50 bg-primary-50 text-primary-lighter hover:bg-primary-100 hover:text-primary focus:ring-primary-lighter dark:bg-dark dark:hover:bg-primary-dark dark:hover:text-light p-1">
-                                <span class="sr-only">Toggle second sidebar panel</span>
-                                
-                                
-                                
-                                        <span
-                            aria-hidden="true"
-                            class="iconify h-8 w-8 transition-transform tabler--chevron-right"
-                            :class="{ 'rotate-180': isSecondSidebarOpen }"
-                        ></span>
                 
                                 
                             </button>
@@ -401,10 +355,10 @@
                         <div
                             class="flex h-full min-h-screen flex-1 flex-col items-center justify-center overflow-y-auto overflow-x-hidden p-4"
                         >
-                            <h1 class="mb-4 text-center text-2xl font-semibold md:text-3xl">Two Columns - Sidebar</h1>
+                            <h1 class="mb-4 text-center text-2xl font-semibold md:text-3xl">Mini + One Columns Sidebar</h1>
                             <div class="space-y-4">
                                 <div class="relative flex h-72 w-80 space-x-1 bg-white p-1 shadow-md dark:bg-darker">
-                                    <div class="h-full w-16 bg-gray-200 dark:bg-dark"></div>
+                                    <div class="h-full w-6 bg-gray-200 dark:bg-dark"></div>
                                     <div class="h-full w-16 bg-gray-200 dark:bg-dark"></div>
                                     <div class="h-full flex-1 bg-gray-100 dark:bg-dark"></div>
                                 </div>
@@ -914,35 +868,11 @@
                     </div>
                 </section>
                 
-                
-                
+                 
                 
             </div>
         </div>
 
-        <script>
-            function layout() {
-                return {
-                    watchScreen() {
-                        if (window.innerWidth <= 1024) {
-                            this.isSidebarOpen = false
-                            this.isSecondSidebarOpen = false
-                        } else if (window.innerWidth >= 1024) {
-                            this.isSidebarOpen = true
-                            this.isSecondSidebarOpen = true
-                        }
-                    },
-                    isSidebarOpen: window.innerWidth >= 1024 ? true : false,
-                    toggleSidbarMenu() {
-                        this.isSidebarOpen = !this.isSidebarOpen
-                    },
-                    isSecondSidebarOpen: window.innerWidth >= 1024 ? true : false,
-                    toggleSecondSidbarColumn() {
-                        this.isSecondSidebarOpen = !this.isSecondSidebarOpen
-                    },
-                }
-            }
-        </script>
 
     </body>
 </html>
