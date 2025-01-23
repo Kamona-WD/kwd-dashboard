@@ -1,6 +1,6 @@
 {
     "name": "kwd-dashboard",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Responsive dashboard template built with tailwindcss alpinejs",
     "license": "MIT",
     "type": "module",
