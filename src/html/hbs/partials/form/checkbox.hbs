@@ -1,0 +1,17 @@
+{{#if label}}
+<label class="inline-flex items-center gap-2">
+    <input
+        name="{{ name }}"
+        type="checkbox"
+        class="focus:border-primary-lighter checked:bg-primary scale-125 transform rounded border text-primary focus:ring focus:ring-primary-lighter dark:border-gray-500 dark:bg-darker dark:checked:bg-primary dark:focus:ring-offset-dark"
+    />
+
+    <span class="text-sm text-gray-600 dark:text-gray-400">{{ label }}</span>
+</label>
+{{else}}
+<input
+    name="{{ name }}"
+    type="checkbox"
+    class="focus:border-primary-lighter checked:bg-primary scale-125 transform rounded border text-primary focus:ring focus:ring-primary-lighter dark:border-gray-500 dark:bg-darker dark:checked:bg-primary dark:focus:ring-offset-dark"
+/>
+{{/if}}
