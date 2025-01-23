@@ -29,7 +29,9 @@
             <!-- Remember me -->
             {{> partials/form/checkbox name="remembr_me" label="Remember me" }}
 
-            <a href="{{ baseUrl 'auth/forgot-password.html' }}" class="text-blue-600 hover:underline">Forgot Password?</a>
+            <a href="{{ baseUrl 'auth/forgot-password.html' }}" class="text-blue-600 hover:underline">
+                Forgot Password?
+            </a>
         </div>
 
         {{#btn 
@@ -37,6 +39,7 @@
             text="Log in" 
             startIcon="tabler--login"
             className="w-full"
+
 
 
 
@@ -61,11 +64,13 @@
 
 
 
+
 }}{{/btn}}
 
 <!-- Register link -->
 <div class="text-gray-600 dark:text-gray-400">
-    Don't have an account yet? <a href="{{ baseUrl 'auth/register.html' }}" class="text-blue-600 hover:underline">Register</a>
+    Don't have an account yet?
+    <a href="{{ baseUrl 'auth/register.html' }}" class="text-blue-600 hover:underline">Register</a>
 </div>
 {{/ partials/auth-card}}
 

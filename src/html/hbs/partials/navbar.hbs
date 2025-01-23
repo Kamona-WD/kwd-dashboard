@@ -12,6 +12,7 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="{ \'-rotate-180\': !isSidebarOpen }"'
+
             }}{{/btn}}
 
             <!-- Mobile menu button -->
@@ -24,11 +25,12 @@
                 iconSizeClasses="h-8 w-8" 
                 iconClasses="transition-transform" 
                 iconAttrs=':class="isMobileMainMenuOpen ? \'tabler--x\' : \'tabler--menu-2\'"'
+
             }}{{/btn}}
 
             <!-- Brand -->
             <a
-                href="/"
+                href="{{ baseUrl '/' }}"
                 class="inline-block text-2xl font-bold uppercase tracking-wider text-primary-dark dark:text-light"
             >
                 K-WD
@@ -43,6 +45,7 @@
             attrs='@click="isMobileSubMenuOpen = !isMobileSubMenuOpen"' 
             icon="tabler--dots-vertical"
             iconSizeClasses="h-8 w-8"
+
         }}{{/btn}}
 
         <nav aria-label="Secondary" class="hidden space-x-2 md:flex md:items-center">
@@ -53,8 +56,12 @@
                 attrs='@click="$store.settings.darkMode.toggle()"' 
                 className="p-2"
             }}
-                <span x-show="!$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--moon w-6 h-6"></span>
-                <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--sun w-6 h-6"></span>
+            <span
+                x-show="!$store.settings.darkMode.value"
+                aria-hidden="true"
+                class="iconify h-6 w-6 tabler--moon"
+            ></span>
+            <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify h-6 w-6 tabler--sun"></span>
             {{/btn}}
 
             <!-- Notification button -->
@@ -63,6 +70,7 @@
                 srText="Open notification panel" 
                 attrs='@click="openNotificationsPanel"' 
                 icon="tabler--bell"
+
             }}{{/btn}}
 
             <!-- Search button -->
@@ -71,6 +79,7 @@
                 srText="Open search panel" 
                 attrs='@click="openSearchPanel"' 
                 icon="tabler--search"
+
             }}{{/btn}}
 
             <!-- Settings button -->
@@ -79,6 +88,7 @@
                 srText="Open settings panel" 
                 attrs='@click="$store.settings.panel.open()"' 
                 icon="tabler--settings"
+
             }}{{/btn}}
 
             {{> partials/user-menu }}
@@ -105,10 +115,17 @@
                     attrs='@click="$store.settings.darkMode.toggle()"' 
                     className="p-2"
                 }}
-                    <span x-show="!$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--moon w-6 h-6"></span>
-                    <span x-show="$store.settings.darkMode.value" aria-hidden="true" class="iconify tabler--sun w-6 h-6"></span>
+                <span
+                    x-show="!$store.settings.darkMode.value"
+                    aria-hidden="true"
+                    class="iconify h-6 w-6 tabler--moon"
+                ></span>
+                <span
+                    x-show="$store.settings.darkMode.value"
+                    aria-hidden="true"
+                    class="iconify h-6 w-6 tabler--sun"
+                ></span>
                 {{/btn}}
-                
 
                 <!-- Notification button -->
                 {{#btn 
@@ -116,6 +133,7 @@
                     srText="Open notification panel" 
                     attrs='@click="openNotificationsPanel"' 
                     icon="tabler--bell"
+
                 }}{{/btn}}
 
                 <!-- Search button -->
@@ -124,6 +142,7 @@
                     srText="Open search panel" 
                     attrs='@click="openSearchPanel"' 
                     icon="tabler--search"
+
                 }}{{/btn}}
 
                 <!-- Settings button -->
@@ -132,6 +151,7 @@
                     srText="Open settings panel" 
                     attrs='@click="$store.settings.panel.open(() => { isMobileSubMenuOpen = false })"' 
                     icon="tabler--settings"
+
                 }}{{/btn}}
             </div>
 

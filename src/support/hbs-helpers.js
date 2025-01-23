@@ -8,8 +8,8 @@ export default {
     notEq: function (v1, v2) {
         return v1 != v2
     },
-    baseUrl: function(url = '') {
-        if(url == '#') return '#'
+    baseUrl: function (url = '') {
+        if (url == '#') return '#'
 
         if (url == '/') {
             url = ''
