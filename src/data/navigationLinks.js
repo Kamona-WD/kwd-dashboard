@@ -4,21 +4,21 @@ export default [
         url: '/',
         iconName: 'tabler--home',
     },
-    {
-        title: 'Components',
-        url: null,
-        iconName: 'tabler--grid',
-        links: [
-            {
-                title: 'Form elements',
-                url: 'components/form-elements.html',
-            },
-            {
-                title: 'Tables',
-                url: 'components/tables.html',
-            },
-        ],
-    },
+    // {
+    //     title: 'Components',
+    //     url: null,
+    //     iconName: 'tabler--grid',
+    //     links: [
+    //         {
+    //             title: 'Form elements',
+    //             url: 'components/form-elements.html',
+    //         },
+    //         {
+    //             title: 'Tables',
+    //             url: 'components/tables.html',
+    //         },
+    //     ],
+    // },
     {
         title: 'Pages',
         url: null,

@@ -331,9 +331,9 @@ document.addEventListener('alpine:init', () => {
                     usersCount.innerText = randomUserCount
                 }
 
-                //   setInterval(() => {
-                //     fakeUsersCount()
-                //   }, 1000)
+                  setInterval(() => {
+                    fakeUsersCount()
+                  }, 2000)
 
                 onInit(c)
             },
